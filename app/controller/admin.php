@@ -51,20 +51,14 @@
 			verificarSession();
 			$this->view('common/head');
 			$this->view('admin/header');
-			$data = [
-				'categorias' => $this->getCategory()
-			];
-			$this->view('admin/menu',$data);
+			$this->view('admin/menu');
 			$this->view('admin/home');
 		}
-		public function content($content){
+		public function content(){
 			verificarSession();
 			$this->view('common/head');
 			$this->view('admin/header');
-			$data = [
-				'categorias' => $this->getCategory()
-			];
-			$this->view('admin/menu',$data);
+			$this->view('admin/menu');
 			$data = [
 				'content' => $this->contentModel->getAllContent()
 			];
@@ -75,13 +69,10 @@
 			$this->view('common/head');
 			$this->view('admin/header');
 			$data = [
-				'categorias' => $this->getCategory()
+				'categorias' => $this->contentModel->getAllCategory()
 			];
-			$this->view('admin/menu', $data);
+			$this->view('admin/menu');
 			$this->view('admin/category', $data);
-		}
-		public function getCategory(){
-			return $this->contentModel->getAllCategory();
 		}
 		public function insertCategory(){
 			if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -121,7 +112,7 @@
 				$this->view('common/head');
 				$this->view('admin/header');
 				$data = [
-					'categorias' => $this->getCategory(),
+					'categorias' => $this->contentModel->getAllCategory(),
 					'dataEditCategoria' => $dataEditCategoria
 				];
 				$this->view('admin/menu', $data);

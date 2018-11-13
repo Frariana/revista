@@ -1,16 +1,12 @@
 <div class="row">
   <div class="col s4 l2">
     <ul class="collapsible">
-      <?php if(!empty($data['categorias'])){ ?>
       <li>
         <div class="collapsible-header"><i class="material-icons">filter_drama</i>Publicaciones</div>
         <div class="collection">
-          <?php foreach ($data['categorias'] as $categoria) : ?>
-            <a href="<?php echo RUTA_URL."/admin/content/".$categoria->id_categoria; ?>" class="collection-item"><?php echo $categoria->titulo; ?></a>
-          <?php endforeach; ?>
+            <a href="<?php echo RUTA_URL."/admin/content/";?>" class="collection-item">Contenido</a>
         </div>
       </li>
-      <?php } ?>
       <li>
         <div style="border-top: 1px solid #ddd" class="collapsible-header"><i class="material-icons">place</i>Diseño</div>
         <div class="collection">
