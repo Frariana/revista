@@ -4,13 +4,13 @@
 		$edit = true;
 	}
 ?>
-<div class="row">
+<p>Crear nueva categoría:</p>
+<div class="row" style="border: 1px solid #e0e0e0">
 	<?php if($edit){ ?>
 		<form action="<?php echo RUTA_URL.'/admin/editCategory/'.$data['dataEditCategoria']['id_categoria']; ?>" method="post">
 	<?php }else{ ?>
 		<form action="<?php echo RUTA_URL?>/admin/insertCategory" method="post">
 	<?php } ?>
-	<p>Crear nueva categoría:</p>
   	<div class="col s5 input-field">
   		<?php if($edit){ ?>
   			<input value="<?php echo $data['dataEditCategoria']['titulo']; ?>" name="titulo" id="titulo" type="text" required>
@@ -27,9 +27,9 @@
     	<?php } ?>
     	<label for="icono">Icono</label>
   	</div>
-  	<div class="col s2">
+  	<div class="col s2 input-field">
   		<?php if($edit){ ?>
-			<button type="submit" class="waves-effect waves-light btn center-align">Modificar</button>
+			  <button type="submit" class="waves-effect waves-light btn center-align">Modificar</button>
   		<?php }else{ ?>
   			<button type="submit" class="waves-effect waves-light btn center-align">Agregar</button>
   		<?php } ?>

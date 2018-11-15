@@ -3,8 +3,9 @@
     function redireccionar($pagina){
         header('Location: '.RUTA_URL.$pagina);
     }
-    function verificarSession(){
-		if ($_SESSION == null){
-			redireccionar('/admin');
-		}
-	}
+ //    function verificarSession(){
+	// 	$this->session->init();
+	// 	if ($this->session->get('user') == null){
+	// 		redireccionar('/admin/home');
+	// 	}
+	// }

@@ -1,34 +1,54 @@
-<?php
+<?php 
+	class Session{
+	    
+	    private $sessionState = false; // The state of the session
+	    private $instance; // THE only instance of the class
+	    
+	    public function __construct() {}
+	    
+	    public function getInstance(){
+	        if (!isset($this->instance)){
+	            $this->instance = new Session();
+	        }
+	        $this->instance->startSession();
+	        return $this->instance;
+	    }
 
-    class Session{
-
-        public function start() {
-            session_start();
-        }
-        
-        public function getSession($key){
-            if (array_key_exists($key, $_SESSION)){
-                return $_SESSION[$key];
-            }else{
-                return null;
-            }
-        }
-
-        public function getSessions(){
-            return $_SESSION;
-        }
-        
-        public function setSession($array){
-            foreach ($array as $key => $value) {
-                $_SESSION[$key] =  $value;
-            }
-        }
-
-        public function destroy(){
-            session_destroy();
-            session_unset();
-            session_abort();
-        }
-    }
+	    public function getStatus(){
+	    	return $this->sessionState;
+	    }
+	    
+	    public function startSession(){
+	        if ( $this->sessionState == false ){
+	            $this->sessionState = session_start();
+	        }
+	        return $this->sessionState;
+	    }
+	    
+	    public function __set( $name , $value ){
+	        $_SESSION[$name] = $value;
+	    }
+	    
+	    public function __get( $name ){
+	        if (isset($_SESSION[$name])){
+	            return $_SESSION[$name];
+	        }
+	    }
+	    
+	    public function __isset( $name ){
+	        return isset($_SESSION[$name]);
+	    }
+	    
+	    public function __unset( $name ){
+	        unset( $_SESSION[$name] );
+	    }
+	    
+	    public function destroy(){
+	        session_destroy();
+	        unset($_SESSION);
+	    	$sessionState = false;
+	        return $sessionState;
+	    }
+	}
 
 ?>

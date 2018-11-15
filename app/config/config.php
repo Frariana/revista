@@ -12,9 +12,6 @@
     define ('NOMBRE_SITIO','La revista del futuro');
     #controller principal
     define ('CONTROLLER_ACTUAL', 'home');
-#https://www.brandnewweb.nl/
-#https://typestack.nl/
-#https://cryptapi.io/
-
-    define ('SESSION_STARTED', true);
-    define ('SESSION_NOT_STARTED', false);
+    #https://www.brandnewweb.nl/
+    #https://typestack.nl/
+    #https://cryptapi.io/

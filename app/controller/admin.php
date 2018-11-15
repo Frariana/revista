@@ -1,19 +1,31 @@
 <?php
 	class Admin extends Controller{
-		
+
 		public function __construct(){
-			parent::__construct();
 			$this->usersModel =  $this->model('user');
-			$this->contentModel =  $this->model('content');
+			$this->contentsModel =  $this->model('contents');
+			$this->session = Session::getInstance();
 		}
-		public function index(){
-			if ($this->userSession->getSession('user') != null){
+		public function index(){ 
+			if ($this->session->user){
 				redireccionar('/admin/home');
 			}else{
 				$this->view('common/head');
 				$this->view('common/header');
-				$this->view('admin/login');
+				$this->view('admin/login');	
 			}
+		}
+		public function verificarSession(){
+			if (!isset($this->session->user)){
+				redireccionar('/admin');
+			}
+		}
+		public function home(){
+			$this->verificarSession();
+			$this->view('common/head');
+			$this->view('admin/header');
+			$this->view('admin/menu');
+			$this->view('admin/home');
 		}
 		public function login(){
 			if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -28,7 +40,7 @@
 							'user' => $res->user,
 							'rol' => $res->rol
 						];
-						$this->userSession->setSession($array);
+						$this->session->user = $array['user'];
 						redireccionar('/admin/home');
 					}else{
 						$data = [
@@ -44,35 +56,20 @@
 			}
 		}
 		public function logout(){
-			$this->userSession->destroy();
+			$this->session->destroy();
 			redireccionar('/admin');
 		}
-		public function home(){
-			verificarSession();
-			$this->view('common/head');
-			$this->view('admin/header');
-			$this->view('admin/menu');
-			$this->view('admin/home');
-		}
-		public function content(){
-			verificarSession();
-			$this->view('common/head');
-			$this->view('admin/header');
-			$this->view('admin/menu');
-			$data = [
-				'content' => $this->contentModel->getAllContent()
-			];
-			$this->view('admin/content', $data);
-		}
 		public function categorias(){
-			verificarSession();
+			$this->verificarSession();
 			$this->view('common/head');
 			$this->view('admin/header');
 			$data = [
-				'categorias' => $this->contentModel->getAllCategory()
+				'categorias' => $this->contentsModel->getAllCategory()
 			];
 			$this->view('admin/menu');
 			$this->view('admin/category', $data);
+			$this->view('admin/data');
+			$this->view('admin/footer');
 		}
 		public function insertCategory(){
 			if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -80,7 +77,7 @@
 					'titulo' => $_POST['titulo'],
 					'icono' => $_POST['icono']
 				];
-				$res = $this->contentModel->insertCategory($data);
+				$res = $this->contentsModel->insertCategory($data);
 				if ($res){
 					$mensaje = "Nueva categoría creada";
 				}else{
@@ -96,14 +93,14 @@
 					'titulo' => $_POST['titulo'],
 					'icono' => $_POST['icono']
 				];
-				if ($this->contentModel->updateCategory($data)){
+				if ($this->contentsModel->updateCategory($data)){
 					$mensaje = "Categoría modificada";	
 				}else{
 					$mensaje = "Imposible modificar categoría, algo sucedió";
 				}
 				redireccionar('/admin/categorias');
 			}else{
-				$categoria = $this->contentModel->getCategoryForId($id);
+				$categoria = $this->contentsModel->getCategoryForId($id);
 				$dataEditCategoria = [
 					'id_categoria' => $categoria->id_categoria,
 					'titulo' => $categoria->titulo,
@@ -112,7 +109,7 @@
 				$this->view('common/head');
 				$this->view('admin/header');
 				$data = [
-					'categorias' => $this->contentModel->getAllCategory(),
+					'categorias' => $this->contentsModel->getAllCategory(),
 					'dataEditCategoria' => $dataEditCategoria
 				];
 				$this->view('admin/menu', $data);
@@ -120,7 +117,7 @@
 			}
 		}
 		public function deleteCategory($id){
-			if ($this->contentModel->deleteCategory($id)){
+			if ($this->contentsModel->deleteCategory($id)){
 				$mensaje = "Categoria borrada";
 			}else{
 				$mensaje = "Imposible modificar categoría, algo sucedió";
