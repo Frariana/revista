@@ -20,7 +20,15 @@
             <?php } ?>
       	     <label for="titulo">Título</label>
         </div>
-        
+        <div class="input-field col s12">
+            <i class="material-icons prefix">chrome_reader_mode</i>
+            <?php if ($edit) {?>
+                <textarea id="cuerpo" name="cuerpo" class="materialize-textarea" required><?php echo $data['dataEditContent']['cuerpo'] ?></textarea>
+            <?php }else{ ?>
+                <textarea id="cuerpo" name="cuerpo" class="materialize-textarea" required></textarea>
+            <?php } ?>
+            <label for="cuerpo">Textarea</label>
+        </div>
         <div class="input-field col s4">
         	<i class="material-icons prefix">account_circle</i>
         	<?php if ($edit) {?>
@@ -52,15 +60,6 @@
                 <input id="icono" name="icono" type="text" required>
             <?php } ?>
         	<label for="icono">Icono</label>
-        </div>
-        <div class="input-field col s12">
-            <i class="material-icons prefix">chrome_reader_mode</i>
-            <?php if ($edit) {?>
-                <input value="<?php echo $data['dataEditContent']['cuerpo'] ?>" id="cuerpo" name="cuerpo" type="text" required>
-            <?php }else{ ?>
-                <input id="cuerpo" name="cuerpo" type="text" required>
-            <?php } ?>
-            <label for="cuerpo">Cuerpo</label>
         </div>
         <div class="input-field col s12">
             <?php if ($edit) {?>

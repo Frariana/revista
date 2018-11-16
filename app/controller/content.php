@@ -84,6 +84,9 @@
 				];
 				$this->view('common/head');
 				$this->view('admin/header');
+				$data['categorias'] = [
+					'categorias' => $this->contentsModel->getAllCategory()
+				];
 				$this->view('admin/form_content', $data);
 			}
 		}

@@ -16,6 +16,7 @@
 		<?php if (!empty($data['contents'])){ ?>
 			<?php foreach ($data['contents'] as $content) : ?>
 				<li class="collection-item">
+          <i class="material-icons tiny teal-text"><?php echo $content->icono; ?></i>
 					<?php echo $content->titulo; ?>
 					<a href="#eliminar" class="secondary-content modal-trigger"><i class="tiny material-icons">delete</i></a>
         			<a href="<?php echo RUTA_URL.'/content/edit/'.$content->id_contenido; ?>" class="secondary-content"><i class="tiny material-icons">edit</i></a>
@@ -29,8 +30,8 @@
 <!-- Modal Structure Delete content-->
 <div id="eliminar" class="modal">
     <div class="modal-content">
-    	<h4>Eliminar</h4>
-      	<p>¿Estás seguro de eliminar éste contenido?</p>
+    	<h4>Eliminar<hr></h4>
+      <p>¿Estás seguro de eliminar éste contenido?</p>
     </div>
     <div class="modal-footer">
     	<a href="<?php echo RUTA_URL.'/content/delete/'.$content->id_contenido; ?>" class="modal-close waves-effect waves-light lighten-1 btn">Eliminar</a>
