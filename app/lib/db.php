@@ -20,8 +20,7 @@
                 $this->dbh->exec('set names utf8');
             }catch(PDOException $e){
                 $this->error = $e->getMessage();
-                echo "<br>Aquí el error: <br>";
-                echo $this->error;
+                echo "Error de DB: " . $this->error;
             }
         }
         #preparamos la consulta

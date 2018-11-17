@@ -1,7 +1,7 @@
 <?php
 	class Contents{
 		private $db;
-
+		#rowCount
 		public function __construct(){
 			$this->db = new Db;
 		}
