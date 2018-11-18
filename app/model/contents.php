@@ -4,6 +4,31 @@
 		#rowCount
 		public function __construct(){
 			$this->db = new Db;
+			$this->verificarDatabase();
+		}
+
+		private function verificarDatabase(){
+			$this->db->query('CREATE DATABASE IF NOT EXISTS revista;');
+			$this->db->query('
+				CREATE TABLE IF NOT EXISTS content (
+					id_contenido MEDIUMINT NOT NULL AUTO_INCREMENT,
+				  	titulo varchar(60) NOT NULL,
+				  	cuerpo varchar(60) NOT NULL,
+				  	icono varchar(60),
+				  	fecha datetime,
+				  	creador varchar(60) NOT NULL,
+				  	id_categoria int(11),
+				  	PRIMARY KEY (id_contenido)
+				) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+			');
+			$this->db->query('
+				CREATE TABLE IF NOT EXISTS category (
+					id_categoria int(11) NOT NULL AUTO_INCREMENT,
+					titulo varchar(60) NOT NULL,
+					icono varchar(60),
+					PRIMARY KEY(id_categoria)
+				)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+			');
 		}
 
 		public function getContentForId($id){
