@@ -10,14 +10,40 @@
         private $error;
 
         public function __construct(){
-            $dsn = 'mysql:host='.$this->host.';dbname='.$this->name_base;
+            $dsn = 'mysql:host='.$this->host.';';
             $options = array(
                 PDO::ATTR_PERSISTENT => true,
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
             );
             try{
                 $this->dbh = new PDO($dsn, $this->user, $this->password, $options);
-                $this->dbh->exec('set names utf8');
+                $this->dbh->exec('CREATE DATABASE IF NOT EXISTS '.$this->name_base.' character set utf8');
+                $this->dbh->exec("
+                    CREATE TABLE IF NOT EXISTS ".$this->name_base.".users (
+                        id_user MEDIUMINT NOT NULL AUTO_INCREMENT,
+                        email varchar(60) NOT NULL,
+                        rol varchar(60) NOT NULL,
+                        user varchar(255)  NOT NULL,
+                        password varchar(255)  NOT NULL,
+                        PRIMARY KEY (id_user)
+                    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+                    CREATE TABLE IF NOT EXISTS ".$this->name_base.".content (
+                        id_contenido MEDIUMINT NOT NULL AUTO_INCREMENT,
+                        titulo varchar(60) NOT NULL,
+                        cuerpo varchar(60) NOT NULL,
+                        icono varchar(60),
+                        fecha datetime,
+                        creador varchar(60) NOT NULL,
+                        id_categoria int(11),
+                        PRIMARY KEY (id_contenido)
+                    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+                    CREATE TABLE IF NOT EXISTS ".$this->name_base.".category (
+                        id_categoria int(11) NOT NULL AUTO_INCREMENT,
+                        titulo varchar(60) NOT NULL,
+                        icono varchar(60),
+                        PRIMARY KEY(id_categoria)
+                    )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+                ");
             }catch(PDOException $e){
                 $this->error = $e->getMessage();
                 echo "Error de DB: " . $this->error;

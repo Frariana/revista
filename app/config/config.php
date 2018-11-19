@@ -4,6 +4,7 @@
     define ('DB_USER', 'root');
     define ('DB_PASSWORD', '');
     define ('DB_NAME', 'revista');
+    #usuario de inicio insert into revista.users (email, rol, user, password) values ('frarianacastro@gmail.com','3','Frariana Castro','7110eda4d09e062aa5e4a390b0a572ac0d2c0220')
     #ruta de la app
     define ('RUTA_APP', dirname(dirname(__FILE__)));
     #ruta url ejemplo http://localhost/revista/

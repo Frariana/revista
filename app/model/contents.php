@@ -2,43 +2,19 @@
 	class Contents{
 		private $db;
 		#rowCount
+		private $name_base = DB_NAME;
 		public function __construct(){
 			$this->db = new Db;
-			$this->verificarDatabase();
-		}
-
-		private function verificarDatabase(){
-			$this->db->query('CREATE DATABASE IF NOT EXISTS revista;');
-			$this->db->query('
-				CREATE TABLE IF NOT EXISTS content (
-					id_contenido MEDIUMINT NOT NULL AUTO_INCREMENT,
-				  	titulo varchar(60) NOT NULL,
-				  	cuerpo varchar(60) NOT NULL,
-				  	icono varchar(60),
-				  	fecha datetime,
-				  	creador varchar(60) NOT NULL,
-				  	id_categoria int(11),
-				  	PRIMARY KEY (id_contenido)
-				) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-			');
-			$this->db->query('
-				CREATE TABLE IF NOT EXISTS category (
-					id_categoria int(11) NOT NULL AUTO_INCREMENT,
-					titulo varchar(60) NOT NULL,
-					icono varchar(60),
-					PRIMARY KEY(id_categoria)
-				)ENGINE=InnoDB DEFAULT CHARSET=utf8;
-			');
 		}
 
 		public function getContentForId($id){
-			$this->db->query('SELECT * FROM content WHERE id_contenido = :id_contenido');
+			$this->db->query("SELECT * FROM ".$this->name_base.".content WHERE id_contenido = :id_contenido");
             $this->db->bind(':id_contenido', $id);
             return $this->db->row();
 		}
 
 		public function getAllContent(){ #$cantidad
-			$this->db->query('SELECT * FROM content');
+			$this->db->query("SELECT * FROM ".$this->name_base.".content");
 			$res = $this->db->rows();
 			return $res;
 		}
@@ -48,7 +24,7 @@
 		}
 
 		public function insert($data){
-			$this->db->query('INSERT INTO content (titulo, cuerpo, icono, categoria, creador) VALUES (:titulo, :cuerpo, :icono, :categoria, :creador)');
+			$this->db->query("INSERT INTO ".$this->name_base.".content (titulo, cuerpo, icono, categoria, creador) VALUES (:titulo, :cuerpo, :icono, :categoria, :creador)");
 			$this->db->bind(':titulo', $data['titulo']);
 			$this->db->bind(':cuerpo', $data['cuerpo']);
 			$this->db->bind(':icono', $data['icono']);
@@ -63,7 +39,7 @@
 		}
 
 		public function update($data){
-			$this->db->query('UPDATE content SET titulo = :titulo, cuerpo = :cuerpo, icono = :icono, creador = :creador, categoria = :categoria WHERE id_contenido = :id_contenido');
+			$this->db->query("UPDATE ".$this->name_base.".content SET titulo = :titulo, cuerpo = :cuerpo, icono = :icono, creador = :creador, categoria = :categoria WHERE id_contenido = :id_contenido");
 			$this->db->bind(':id_contenido', $data['id_contenido']);
 			$this->db->bind(':titulo', $data['titulo']);
 			$this->db->bind(':cuerpo', $data['cuerpo']);
@@ -78,7 +54,7 @@
 		}
 
 		public function delete($id){
-			$this->db->query('DELETE from content where id_contenido = :id');
+			$this->db->query("DELETE from ".$this->name_base.".content where id_contenido = :id");
 			$this->db->bind(':id', $id);
 			if ($this->db->execute()){
 				return true;
@@ -88,7 +64,7 @@
 		}
 
 		public function insertCategory($data){
-			$this->db->query('INSERT INTO category (titulo, icono) VALUES (:titulo, :icono)');
+			$this->db->query("INSERT INTO ".$this->name_base.".category (titulo, icono) VALUES (:titulo, :icono)");
             $this->db->bind(':titulo', $data['titulo']);
             $this->db->bind(':icono', $data['icono']);
             if ($this->db->execute()){
@@ -99,18 +75,18 @@
 		}
 
 		public function getAllCategory(){
-			$this->db->query('SELECT * FROM category');
+			$this->db->query("SELECT * FROM ".$this->name_base.".category");
             return $this->db->rows();
 		}
 
 		public function getCategoryForId($id){
-			$this->db->query('SELECT * FROM category where id_categoria = :id');
+			$this->db->query("SELECT * FROM ".$this->name_base.". where id_categoria = :id");
 			$this->db->bind(':id', $id);
 			return $this->db->row();
 		}
 
 		public function updateCategory($data){
-			$this->db->query('UPDATE category SET titulo = :titulo, icono = :icono WHERE id_categoria = :id');
+			$this->db->query("UPDATE ".$this->name_base.".category SET titulo = :titulo, icono = :icono WHERE id_categoria = :id");
 			$this->db->bind(':id', $data['id_categoria']);
 			$this->db->bind(':titulo', $data['titulo']);
 			$this->db->bind(':icono', $data['icono']);
@@ -122,7 +98,7 @@
 		}
 
 		public function deleteCategory($id){
-			$this->db->query('DELETE FROM category where id_categoria = :id');
+			$this->db->query("DELETE FROM ".$this->name_base.".category where id_categoria = :id");
 			$this->db->bind(':id', $id);
 			if ($this->db->execute()){
 				return true;
