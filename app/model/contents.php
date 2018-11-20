@@ -24,11 +24,12 @@
 		}
 
 		public function insert($data){
-			$this->db->query("INSERT INTO ".$this->name_base.".content (titulo, cuerpo, icono, categoria, creador) VALUES (:titulo, :cuerpo, :icono, :categoria, :creador)");
+			$fecha = date('d-m-Y h:G a');
+			$this->db->query("INSERT INTO ".$this->name_base.".content (titulo, cuerpo, icono, id_categoria, creador, fecha) VALUES (:titulo, :cuerpo, :icono, :id_categoria, :creador, now())");
 			$this->db->bind(':titulo', $data['titulo']);
 			$this->db->bind(':cuerpo', $data['cuerpo']);
 			$this->db->bind(':icono', $data['icono']);
-			$this->db->bind(':categoria', $data['categoria']);
+			$this->db->bind(':id_categoria', $data['id_categoria']);
 			$this->db->bind(':creador', $data['creador']);
 
 			if ($this->db->execute()){
@@ -39,13 +40,13 @@
 		}
 
 		public function update($data){
-			$this->db->query("UPDATE ".$this->name_base.".content SET titulo = :titulo, cuerpo = :cuerpo, icono = :icono, creador = :creador, categoria = :categoria WHERE id_contenido = :id_contenido");
+			$this->db->query("UPDATE ".$this->name_base.".content SET titulo = :titulo, cuerpo = :cuerpo, icono = :icono, creador = :creador, id_categoria = :id_categoria WHERE id_contenido = :id_contenido");
 			$this->db->bind(':id_contenido', $data['id_contenido']);
 			$this->db->bind(':titulo', $data['titulo']);
 			$this->db->bind(':cuerpo', $data['cuerpo']);
 			$this->db->bind(':icono', $data['icono']);
 			$this->db->bind(':creador', $data['creador']);
-			$this->db->bind(':categoria', $data['categoria']);
+			$this->db->bind(':id_categoria', $data['id_categoria']);
 			if ($this->db->execute()){
 				return true;
 			}else{
@@ -80,7 +81,7 @@
 		}
 
 		public function getCategoryForId($id){
-			$this->db->query("SELECT * FROM ".$this->name_base.". where id_categoria = :id");
+			$this->db->query("SELECT * FROM ".$this->name_base.".category where id_categoria = :id");
 			$this->db->bind(':id', $id);
 			return $this->db->row();
 		}

@@ -1,3 +1,15 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
+<!-- Include Editor style. -->
+<link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+<!-- Include external JS libs. -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
+<!-- Include Editor JS files. -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/js/froala_editor.pkgd.min.js"></script>
+<!-- Initialize the editor. -->
+<script> $(function() { $('textarea').froalaEditor() }); </script>
 <?php
     $edit = false;
     if (array_key_exists('dataEditContent', $data)){
@@ -11,6 +23,38 @@
         <?php }else{ ?>
             <form action="<?php echo RUTA_URL."/content/insert" ?>" method="POST">
         <?php } ?>
+                <div class="input-field col s4">
+            <i class="material-icons prefix">account_circle</i>
+            <?php if ($edit) {?>
+                <input value="<?php echo $data['dataEditContent']['creador'] ?>" id="creador" name="creador" type="text" required>
+            <?php }else{ ?>
+                <input id="creador" name="creador" type="text" required value="<?php echo $this->session->user; ?>">
+            <?php } ?>
+            <label for="creador">Creador</label>
+        </div>
+        <div class="input-field col s4">
+            <i class="material-icons prefix">more</i>
+            <select id="categoria" name="categoria">
+            <?php if ($data['categorias']){?>
+                <option value="">Sin categoría</option>
+                <?php foreach ($data['categorias'] as $categoria) { ?>
+                    <option <?php if($edit == true){ if($categoria->id_categoria == $data['dataEditContent']['id_categoria']){ echo "selected"; } } ?> value="<?php echo $categoria->id_categoria; ?>"><?php echo $categoria->titulo; ?></option>
+                <?php } ?>
+            <?php }else{ ?>
+                <option value="">Sin categorías definidas aún</option>
+            <?php } ?>
+            </select>
+            <label>Categoría</label>
+        </div>
+        <div class="input-field col s4">
+            <i class="material-icons prefix">verified_user</i>
+            <?php if ($edit) {?>
+                <input value="<?php echo $data['dataEditContent']['icono'] ?>" id="icono" name="icono" type="text">
+            <?php }else{ ?>
+                <input id="icono" name="icono" type="text">
+            <?php } ?>
+            <label for="icono">Icono</label>
+        </div>
         <div class="input-field col s12">
             <i class="material-icons prefix">line_style</i>
             <?php if ($edit) {?>
@@ -27,39 +71,6 @@
             <?php }else{ ?>
                 <textarea id="cuerpo" name="cuerpo" class="materialize-textarea" required></textarea>
             <?php } ?>
-            <label for="cuerpo">Textarea</label>
-        </div>
-        <div class="input-field col s4">
-        	<i class="material-icons prefix">account_circle</i>
-        	<?php if ($edit) {?>
-                <input value="<?php echo $data['dataEditContent']['creador'] ?>" id="creador" name="creador" type="text" required>
-            <?php }else{ ?>
-                <input id="creador" name="creador" type="text" required value="<?php echo $this->session->user; ?>">
-            <?php } ?>
-        	<label for="creador">Creador</label>
-        </div>
-        <div class="input-field col s4">
-            <i class="material-icons prefix">more</i>
-            <select id="categoria" name="categoria">
-            <?php if ($data['categorias']){?>
-                <option value="">Sin categoría</option>
-                <?php foreach ($data['categorias'] as $categoria) { ?>
-                    <option value="<?php echo $categoria->titulo; ?>"><?php echo $categoria->titulo; ?></option>
-                <?php } ?>
-            <?php }else{ ?>
-                <option value="">Sin categorías definidas aún</option>
-            <?php } ?>
-            </select>
-            <label>Categoría</label>
-        </div>
-        <div class="input-field col s4">
-        	<i class="material-icons prefix">verified_user</i>
-        	<?php if ($edit) {?>
-                <input value="<?php echo $data['dataEditContent']['icono'] ?>" id="icono" name="icono" type="text" required>
-            <?php }else{ ?>
-                <input id="icono" name="icono" type="text" required>
-            <?php } ?>
-        	<label for="icono">Icono</label>
         </div>
         <div class="input-field col s12">
             <?php if ($edit) {?>

@@ -37,7 +37,7 @@
 					'cuerpo'    => $_POST['cuerpo'],
 					'icono'     => $_POST['icono'],
 					'creador'   => $_POST['creador'],
-					'categoria' => $_POST['categoria']
+					'id_categoria' => $_POST['categoria']
 				];
 				if ($this->contentsModel->insert($data)){
 					$mensaje = "Contenido creado";
@@ -49,9 +49,7 @@
 				#form
 				$this->view('common/head');
 				$this->view('admin/header');
-				$data = [
-					'categorias' => $this->contentsModel->getAllCategory()
-				];
+				$data['categorias'] =  $this->contentsModel->getAllCategory();
 				$this->view('admin/form_content', $data);
 			}
 		}
@@ -64,7 +62,7 @@
 					'cuerpo'       => $_POST['cuerpo'],
 					'icono'        => $_POST['icono'],
 					'creador'      => $_POST['creador'],
-					'categoria'    => $_POST['categoria']
+					'id_categoria'    => $_POST['categoria']
 				];
 				if ($this->contentsModel->update($data)){
 					$mensaje = "Contenido modificado";
@@ -80,13 +78,11 @@
 					'cuerpo'       => $content->cuerpo,
 					'icono'        => $content->icono,
 					'creador'      => $content->creador,
-					'categoria'    => $content->categoria
+					'id_categoria'    => $content->id_categoria
 				];
 				$this->view('common/head');
 				$this->view('admin/header');
-				$data['categorias'] = [
-					'categorias' => $this->contentsModel->getAllCategory()
-				];
+				$data['categorias'] =  $this->contentsModel->getAllCategory();
 				$this->view('admin/form_content', $data);
 			}
 		}

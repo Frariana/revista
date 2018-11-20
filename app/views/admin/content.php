@@ -1,25 +1,23 @@
 <p>Contenido:</p>
 <div class="row" style="border: 1px solid #e0e0e0">
-	<div class="col s8 input-field">
-  		<input name="buscar" id="buscar" type="text">
-    	<label for="buscar">Buscar</label>
-  	</div>
-  	<div class="col s2 input-field">
-  		
-  	</div>
-  	<div class="col s2 input-field">
-  		<a class="waves-effect waves-light btn right" href="<?php echo RUTA_URL."/content/insert";?>">Crear</a>
-  	</div>
+	<div class="col s10 input-field">
+		<input name="buscar" id="buscar" type="text">
+  	<label for="buscar">Buscar</label>
+	</div>
+	<div class="col s2 input-field">
+		<a class="waves-effect waves-light btn center-align" href="<?php echo RUTA_URL."/content/insert";?>">Crear</a>
+	</div>
 </div>
 <div class="row">
 	<ul class="collection">
 		<?php if (!empty($data['contents'])){ ?>
 			<?php foreach ($data['contents'] as $content) : ?>
 				<li class="collection-item">
-          <i class="material-icons tiny teal-text"><?php echo $content->icono; ?></i>
+          			<i class="material-icons tiny teal-text"><?php echo $content->icono; ?></i>
 					<?php echo $content->titulo; ?>
 					<a href="#eliminar" class="secondary-content modal-trigger"><i class="tiny material-icons">delete</i></a>
         			<a href="<?php echo RUTA_URL.'/content/edit/'.$content->id_contenido; ?>" class="secondary-content"><i class="tiny material-icons">edit</i></a>
+					<a href="<?php echo RUTA_URL.'/v/g/'.$content->id_contenido; ?>" class="secondary-content"><i class="tiny material-icons">find_in_page</i></a>
 				</li>
 			<?php endforeach; ?>
 		<?php }else{ ?>

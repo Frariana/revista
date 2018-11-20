@@ -1,4 +1,1 @@
-
-	home admin...
-</div>
-</div>
+home
