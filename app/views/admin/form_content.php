@@ -9,7 +9,7 @@
 <!-- Include Editor JS files. -->
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@2.9.1/js/froala_editor.pkgd.min.js"></script>
 <!-- Initialize the editor. -->
-<script> $(function() { $('textarea').froalaEditor() }); </script>
+
 <?php
     $edit = false;
     if (array_key_exists('dataEditContent', $data)){
@@ -87,5 +87,16 @@
 <script>
     $(document).ready(function(){
         $('select').formSelect();
+        $('textarea').froalaEditor({ language: 'es'}).on('froalaEditor.image.beforeUpload', function (e, editor, files) {
+            if (files.length) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var result = e.target.result;
+                    editor.image.insert(result, null, null, editor.image.get());
+                };
+                reader.readAsDataURL(files[0]);
+            }
+            return false;
+        });
     });
 </script>

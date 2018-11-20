@@ -30,7 +30,7 @@
                     CREATE TABLE IF NOT EXISTS ".$this->name_base.".content (
                         id_contenido MEDIUMINT NOT NULL AUTO_INCREMENT,
                         titulo varchar(60) NOT NULL,
-                        cuerpo text NOT NULL,
+                        cuerpo longtext NOT NULL,
                         icono varchar(60),
                         fecha datetime,
                         creador varchar(60) NOT NULL,
