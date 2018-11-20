@@ -15,7 +15,7 @@
 				<li class="collection-item">
           			<i class="material-icons tiny teal-text"><?php echo $content->icono; ?></i>
 					<?php echo $content->titulo; ?>
-					<a href="#eliminar" class="secondary-content modal-trigger"><i class="tiny material-icons">delete</i></a>
+					<a href="#eliminar" name="<?php echo $content->id_contenido; ?>" class="secondary-content modal-trigger botonesBorrar"><i class="tiny material-icons">delete</i></a>
         			<a href="<?php echo RUTA_URL.'/content/edit/'.$content->id_contenido; ?>" class="secondary-content"><i class="tiny material-icons">edit</i></a>
 					<a href="<?php echo RUTA_URL.'/v/g/'.$content->id_contenido; ?>" class="secondary-content"><i class="tiny material-icons">find_in_page</i></a>
 				</li>
@@ -29,16 +29,24 @@
 <div id="eliminar" class="modal">
     <div class="modal-content">
     	<h4>Eliminar<hr></h4>
-      <p>¿Estás seguro de eliminar éste contenido?</p>
+      	<p>¿Estás seguro de eliminar éste contenido?</p>
     </div>
     <div class="modal-footer">
-    	<a href="<?php echo RUTA_URL.'/content/delete/'.$content->id_contenido; ?>" class="modal-close waves-effect waves-light lighten-1 btn">Eliminar</a>
-      <a href="#" class="modal-close waves-effect waves-light grey lighten-1 btn">Cancelar</a>
+    	<a href="<?php echo RUTA_URL.'/content/delete/'.$content->id_contenido; ?>"></a>
+    	<a id="buttonDelete" class="modal-close waves-effect waves-light lighten-1 btn">Eliminar</a>
+      	<a href="#" class="modal-close waves-effect waves-light grey lighten-1 btn">Cancelar</a>
     </div>
 </div>
 
 <script>
 	$(document).ready(function(){
     	$('.modal').modal();
+    	$('#buscar').focus();
+    	$('.botonesBorrar').click(function(){
+    		var id = this.name;
+    		$('#buttonDelete').prop({
+    			href: '<?php echo RUTA_URL?>/content/delete/'+id
+    		});
+    	});
 	});
 </script>
