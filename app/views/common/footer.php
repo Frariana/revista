@@ -23,9 +23,17 @@
       <div class="footer-copyright">
         <div class="container">
         	© 2018 Copyright Text
-        	<a class="grey-text text-lighten-4 right" href="#!"> <i class="material-icons">keyboard_arrow_up</i>Ir arriba</a>
+        	<a class="grey-text text-lighten-4 right" href="" id="up"> <i class="material-icons">keyboard_arrow_up</i>Ir arriba</a>
         </div>
       </div>
     </footer>
 </body>
 </html>
+
+<script>
+  $(document).ready(function(){
+    $("#up").click(function(){
+      $(window).animate({ scrollTop: 0 }, "slow");
+    });
+  });
+</script>

@@ -5,7 +5,7 @@
 		      	<div class="card">
 		        	<div class="card-content">
 		          		<span class="card-title"><?php echo $content->titulo; ?></span>
-		          		<p><?php echo substr($content->cuerpo, 0, 50); ?>...</p>
+		          		<p class="truncate"><?php echo substr($content->cuerpo, 0, 50); ?></p>
 		        	</div>
 			        <div class="card-action">
 			          <a href="<?php echo RUTA_URL.'/v/g/'.$content->id_contenido; ?>">Ver</a>

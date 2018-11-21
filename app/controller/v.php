@@ -9,7 +9,6 @@
             $this->view('common/head');
             $data['categorias'] = $this->contentsModel->getAllCategory();
             $this->view('common/header', $data);
-            $this->view('common/menu_left');
             $data['contents'] = $this->contentsModel->getAllContent();
             $this->view('common/home', $data);
             $this->view('common/footer', $data);
@@ -20,6 +19,9 @@
             $this->view('common/header', $data);
             $data['content'] = $this->contentsModel->getContentForId($id);
             $this->view('common/content', $data);
+            $data['contents'] = $this->contentsModel->getAllContentsForCant(5);
+            $this->view('common/menu', $data);
+            $this->view('common/footer', $data);
         }
         public function c($id){ #ver categorias
             echo "view";

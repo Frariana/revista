@@ -23,6 +23,12 @@
 
 		}
 
+		public function getAllContentsForCant($cantidad){
+			$this->db->query("SELECT * FROM ".$this->name_base.".content ORDER BY fecha DESC LIMIT ".$cantidad);
+			$res = $this->db->rows();
+			return $res;
+		}
+
 		public function insert($data){
 			$fecha = date('d-m-Y h:G a');
 			$this->db->query("INSERT INTO ".$this->name_base.".content (titulo, cuerpo, icono, id_categoria, creador, fecha) VALUES (:titulo, :cuerpo, :icono, :id_categoria, :creador, now())");
@@ -64,17 +70,6 @@
 			}
 		}
 
-		public function insertCategory($data){
-			$this->db->query("INSERT INTO ".$this->name_base.".category (titulo, icono) VALUES (:titulo, :icono)");
-            $this->db->bind(':titulo', $data['titulo']);
-            $this->db->bind(':icono', $data['icono']);
-            if ($this->db->execute()){
-                return true;
-            }else{
-                return false;
-            }
-		}
-
 		public function getAllCategory(){
 			$this->db->query("SELECT * FROM ".$this->name_base.".category");
             return $this->db->rows();
@@ -84,6 +79,17 @@
 			$this->db->query("SELECT * FROM ".$this->name_base.".category where id_categoria = :id");
 			$this->db->bind(':id', $id);
 			return $this->db->row();
+		}
+
+		public function insertCategory($data){
+			$this->db->query("INSERT INTO ".$this->name_base.".category (titulo, icono) VALUES (:titulo, :icono)");
+            $this->db->bind(':titulo', $data['titulo']);
+            $this->db->bind(':icono', $data['icono']);
+            if ($this->db->execute()){
+                return true;
+            }else{
+                return false;
+            }
 		}
 
 		public function updateCategory($data){
