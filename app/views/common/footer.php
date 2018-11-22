@@ -14,7 +14,6 @@
                 <?php foreach ($data['categorias'] as $categoria){?>
                	<li><a class="grey-text text-lighten-3" href="#!"><?php echo $categoria->titulo; ?></a></li>
                 <?php } ?>
-                <li><a class="grey-text text-lighten-3" href="<?php echo RUTA_URL; ?>/admin">Admin</a></li>
         		  </ul>
           	</div>
           <?php } ?>
@@ -23,7 +22,7 @@
       <div class="footer-copyright">
         <div class="container">
         	© 2018 Copyright Text
-        	<a class="grey-text text-lighten-4 right" href="" id="up"> <i class="material-icons">keyboard_arrow_up</i>Ir arriba</a>
+        	<a class="grey-text text-lighten-3" href="<?php echo RUTA_URL; ?>/admin">Admin</a> <a class="grey-text text-lighten-4 right" href="" id="up"> <i class="material-icons">keyboard_arrow_up</i>Ir arriba</a>
         </div>
       </div>
     </footer>

@@ -10,14 +10,14 @@
         private $error;
 
         public function __construct(){
-            $dsn = 'mysql:host='.$this->host.';';
+            $dsn = 'mysql:host='.$this->host.';charset=utf8;';
             $options = array(
                 PDO::ATTR_PERSISTENT => true,
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
             );
             try{
                 $this->dbh = new PDO($dsn, $this->user, $this->password, $options);
-                $this->dbh->exec("CREATE DATABASE IF NOT EXISTS ".$this->name_base." CHARACTER SET 'UTF8' COLLATE 'utf8_general_ci';");
+                $this->dbh->exec("CREATE DATABASE IF NOT EXISTS ".$this->name_base." DEFAULT CHARACTER SET = 'utf8' DEFAULT COLLATE 'utf8_general_ci';");
                 $this->dbh->exec("
                     CREATE TABLE IF NOT EXISTS ".$this->name_base.".users (
                         id_user MEDIUMINT NOT NULL AUTO_INCREMENT,

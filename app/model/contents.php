@@ -1,10 +1,17 @@
 <?php
 	class Contents{
 		private $db;
-		#rowCount
+
 		private $name_base = DB_NAME;
+
 		public function __construct(){
 			$this->db = new Db;
+		}
+
+		public function getContentForTitle($url){
+			$this->db->query("SELECT * FROM ".$this->name_base.".content WHERE titulo = :titulo");
+            $this->db->bind(':titulo', $url);
+            return $this->db->row();
 		}
 
 		public function getContentForId($id){
@@ -30,7 +37,6 @@
 		}
 
 		public function insert($data){
-			$fecha = date('d-m-Y h:G a');
 			$this->db->query("INSERT INTO ".$this->name_base.".content (titulo, cuerpo, icono, id_categoria, creador, fecha) VALUES (:titulo, :cuerpo, :icono, :id_categoria, :creador, now())");
 			$this->db->bind(':titulo', $data['titulo']);
 			$this->db->bind(':cuerpo', $data['cuerpo']);
