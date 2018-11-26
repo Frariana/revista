@@ -38,7 +38,7 @@
             <?php if ($data['categorias']){?>
                 <option value="">Sin categoría</option>
                 <?php foreach ($data['categorias'] as $categoria) { ?>
-                    <option <?php if($edit == true){ if($categoria->id_categoria == $data['dataEditContent']['id_categoria']){ echo "selected"; } } ?> value="<?php echo $categoria->id_categoria; ?>"><?php echo $categoria->titulo; ?></option>
+                    <option <?php if($edit == true){ if($categoria->id_categoria == $data['dataEditContent']['id_categoria']){ echo "selected"; } } ?> value="<?php echo $categoria->id_categoria; ?>"><?php echo $categoria->category_titulo; ?></option>
                 <?php } ?>
             <?php }else{ ?>
                 <option value="">Sin categorías definidas aún</option>

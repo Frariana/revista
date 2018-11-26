@@ -29,7 +29,7 @@
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
                     CREATE TABLE IF NOT EXISTS ".$this->name_base.".content (
                         id_contenido MEDIUMINT NOT NULL AUTO_INCREMENT,
-                        titulo varchar(60) NOT NULL,
+                        content_titulo varchar(60) NOT NULL,
                         cuerpo longtext NOT NULL,
                         icono varchar(60),
                         fecha datetime,
@@ -39,7 +39,7 @@
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
                     CREATE TABLE IF NOT EXISTS ".$this->name_base.".category (
                         id_categoria int(11) NOT NULL AUTO_INCREMENT,
-                        titulo varchar(60) NOT NULL,
+                        category_titulo varchar(60) NOT NULL,
                         icono varchar(60),
                         PRIMARY KEY(id_categoria)
                     )ENGINE=InnoDB DEFAULT CHARSET=utf8;

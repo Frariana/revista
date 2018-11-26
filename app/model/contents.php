@@ -9,7 +9,7 @@
 		}
 
 		public function getContentForTitle($url){
-			$this->db->query("SELECT * FROM ".$this->name_base.".content WHERE titulo = :titulo");
+			$this->db->query("SELECT * FROM ".$this->name_base.".content WHERE content_titulo = :titulo");
             $this->db->bind(':titulo', $url);
             return $this->db->row();
 		}
@@ -27,7 +27,10 @@
 		}
 
 		public function getContentForCategory($categoria, $cantidad){
-
+			$this->db->query("SELECT * FROM ".$this->name_base.".content AS cont INNER JOIN ".$this->name_base.".category AS cat WHERE cat.category_titulo = :categoria AND cat.id_categoria = cont.id_categoria");
+			$this->db->bind(':categoria', $categoria);
+			$res = $this->db->rows();
+			return $res;
 		}
 
 		public function getAllContentsForCant($cantidad){
@@ -37,7 +40,7 @@
 		}
 
 		public function insert($data){
-			$this->db->query("INSERT INTO ".$this->name_base.".content (titulo, cuerpo, icono, id_categoria, creador, fecha) VALUES (:titulo, :cuerpo, :icono, :id_categoria, :creador, now())");
+			$this->db->query("INSERT INTO ".$this->name_base.".content (content_titulo, cuerpo, icono, id_categoria, creador, fecha) VALUES (:titulo, :cuerpo, :icono, :id_categoria, :creador, now())");
 			$this->db->bind(':titulo', $data['titulo']);
 			$this->db->bind(':cuerpo', $data['cuerpo']);
 			$this->db->bind(':icono', $data['icono']);
@@ -52,7 +55,7 @@
 		}
 
 		public function update($data){
-			$this->db->query("UPDATE ".$this->name_base.".content SET titulo = :titulo, cuerpo = :cuerpo, icono = :icono, creador = :creador, id_categoria = :id_categoria WHERE id_contenido = :id_contenido");
+			$this->db->query("UPDATE ".$this->name_base.".content SET content_titulo = :titulo, cuerpo = :cuerpo, icono = :icono, creador = :creador, id_categoria = :id_categoria WHERE id_contenido = :id_contenido");
 			$this->db->bind(':id_contenido', $data['id_contenido']);
 			$this->db->bind(':titulo', $data['titulo']);
 			$this->db->bind(':cuerpo', $data['cuerpo']);
@@ -88,7 +91,7 @@
 		}
 
 		public function insertCategory($data){
-			$this->db->query("INSERT INTO ".$this->name_base.".category (titulo, icono) VALUES (:titulo, :icono)");
+			$this->db->query("INSERT INTO ".$this->name_base.".category (category_titulo, icono) VALUES (:titulo, :icono)");
             $this->db->bind(':titulo', $data['titulo']);
             $this->db->bind(':icono', $data['icono']);
             if ($this->db->execute()){
@@ -99,7 +102,7 @@
 		}
 
 		public function updateCategory($data){
-			$this->db->query("UPDATE ".$this->name_base.".category SET titulo = :titulo, icono = :icono WHERE id_categoria = :id");
+			$this->db->query("UPDATE ".$this->name_base.".category SET category_titulo = :titulo, icono = :icono WHERE id_categoria = :id");
 			$this->db->bind(':id', $data['id_categoria']);
 			$this->db->bind(':titulo', $data['titulo']);
 			$this->db->bind(':icono', $data['icono']);

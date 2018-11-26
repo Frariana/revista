@@ -13,6 +13,7 @@
 				$this->view('common/head');
 				$this->view('common/header');
 				$this->view('admin/login');	
+				$this->view('admin/footer');
 			}
 		}
 		public function verificarSession(){

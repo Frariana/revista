@@ -1,5 +1,5 @@
+  </div>
 </div>
-	<script src="<?php echo RUTA_URL?>/js/main.js"></script>
   	<footer class="blue-grey page-footer">
       <div class="container">
         <div class="row">
@@ -12,7 +12,7 @@
             	<h5 class="white-text">Secciones</h5>
         		  <ul>
                 <?php foreach ($data['categorias'] as $categoria){?>
-               	<li><a class="grey-text text-lighten-3" href="#!"><?php echo $categoria->titulo; ?></a></li>
+               	<li><a class="grey-text text-lighten-3" href="#!"><?php echo $categoria->category_titulo; ?></a></li>
                 <?php } ?>
         		  </ul>
           	</div>

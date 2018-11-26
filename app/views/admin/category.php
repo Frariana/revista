@@ -13,7 +13,7 @@
 	<?php } ?>
   	<div class="col s5 input-field">
   		<?php if($edit){ ?>
-  			<input value="<?php echo $data['dataEditCategoria']['titulo']; ?>" name="titulo" id="titulo" type="text" required>
+  			<input value="<?php echo $data['dataEditCategoria']['category_titulo']; ?>" name="titulo" id="titulo" type="text" required>
 		<?php }else{ ?>
     		<input name="titulo" id="titulo" type="text" required>
     	<?php } ?>
@@ -46,7 +46,7 @@
         		<li class="collection-item">
         			<div>
         				<i class="tiny material-icons"><?php echo $categoria->icono; ?></i>
-        				<?php echo $categoria->titulo; ?>
+        				<?php echo $categoria->category_titulo; ?>
         				<a href="<?php echo RUTA_URL."/admin/deleteCategory/".$categoria->id_categoria; ?>" class="secondary-content"><i class="tiny material-icons">delete</i></a> 
         				<a href="<?php echo RUTA_URL."/admin/editCategory/".$categoria->id_categoria; ?>" class="secondary-content"><i class="tiny material-icons">edit</i></a>
         			</div>

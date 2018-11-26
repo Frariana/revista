@@ -18,7 +18,7 @@
     	return $year;
     }
     function _url($url){
-    	return str_replace("-", " ", $url);
+    	return str_replace("_", " ", $url);
     }
     function url($url){
 	    $url = str_replace(
@@ -47,7 +47,7 @@
 	        array('n', 'N', 'c', 'C'),
 	        $url
 	    );
-	    $url = str_replace(" ", "-", $url);
+	    $url = str_replace(" ", "_", $url);
 	    $url = strtolower($url);  
     	$url = preg_replace("/[^a-zA-Z0-9\_\-]+/", "", $url);
     	return $url;
