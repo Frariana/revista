@@ -5,7 +5,9 @@
             <?php if ($data['categorias']){ ?>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <?php foreach ($data['categorias'] as $categoria){?>
-                    <li><a class="blue-grey-text" href="<?php echo $categoria->id_categoria; ?>"><?php echo $categoria->titulo; ?></a></li>
+                    <li>
+                        <a class="blue-grey-text" href="<?php echo RUTA_URL.'/v/c/'.url($categoria->titulo); ?>"><?php echo $categoria->titulo; ?></a>
+                    </li>
                 <?php } ?>
             <?php } ?>
         </div>

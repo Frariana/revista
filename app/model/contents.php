@@ -26,7 +26,7 @@
 			return $res;
 		}
 
-		public function getAllContentForCategory($categoria, $cantidad){
+		public function getContentForCategory($categoria, $cantidad){
 
 		}
 
