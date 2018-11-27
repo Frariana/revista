@@ -10,7 +10,7 @@
     #ruta url ejemplo http://localhost/revista/
     define ('RUTA_URL', 'http://localhost/revista');
     #nombre sitio
-    define ('NOMBRE_SITIO','La revista del futuro');
+    define ('NOMBRE_SITIO','REVISTA');
     #controller principal
     define ('CONTROLLER_ACTUAL', 'v');
     #https://www.brandnewweb.nl/

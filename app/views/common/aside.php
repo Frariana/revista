@@ -2,7 +2,7 @@
 <div class="col l3">
 	<div class="row">
 		<div class="row">
-			<div style='font-size: 1.2em;'>Lo último</div><div class='divider'></div>
+			<div style='font-size: 1.2em;'>Recientes</div><div class='divider'></div>
 		</div>
 		<?php foreach($data['contents'] as $content) {?>
 			<?php if (!strstr($_SERVER['REQUEST_URI'], url($content->content_titulo))){?>

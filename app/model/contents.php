@@ -8,37 +8,6 @@
 			$this->db = new Db;
 		}
 
-		public function getContentForTitle($url){
-			$this->db->query("SELECT * FROM ".$this->name_base.".content WHERE content_titulo = :titulo");
-            $this->db->bind(':titulo', $url);
-            return $this->db->row();
-		}
-
-		public function getContentForId($id){
-			$this->db->query("SELECT * FROM ".$this->name_base.".content WHERE id_contenido = :id_contenido");
-            $this->db->bind(':id_contenido', $id);
-            return $this->db->row();
-		}
-
-		public function getAllContent(){ #$cantidad
-			$this->db->query("SELECT * FROM ".$this->name_base.".content");
-			$res = $this->db->rows();
-			return $res;
-		}
-
-		public function getContentForCategory($categoria, $cantidad){
-			$this->db->query("SELECT * FROM ".$this->name_base.".content AS cont INNER JOIN ".$this->name_base.".category AS cat WHERE cat.category_titulo = :categoria AND cat.id_categoria = cont.id_categoria");
-			$this->db->bind(':categoria', $categoria);
-			$res = $this->db->rows();
-			return $res;
-		}
-
-		public function getAllContentsForCant($cantidad){
-			$this->db->query("SELECT * FROM ".$this->name_base.".content ORDER BY fecha DESC LIMIT ".$cantidad);
-			$res = $this->db->rows();
-			return $res;
-		}
-
 		public function insert($data){
 			$this->db->query("INSERT INTO ".$this->name_base.".content (content_titulo, cuerpo, icono, id_categoria, creador, fecha) VALUES (:titulo, :cuerpo, :icono, :id_categoria, :creador, now())");
 			$this->db->bind(':titulo', $data['titulo']);
@@ -79,6 +48,44 @@
 			}
 		}
 
+		public function getContentForTitle($url){
+			$this->db->query("SELECT * FROM ".$this->name_base.".content WHERE content_titulo = :titulo");
+            $this->db->bind(':titulo', $url);
+            return $this->db->row();
+		}
+
+		public function getContentForId($id){
+			$this->db->query("SELECT * FROM ".$this->name_base.".content WHERE id_contenido = :id_contenido");
+            $this->db->bind(':id_contenido', $id);
+            return $this->db->row();
+		}
+
+		public function getAllContentsForCant($cantidad){
+			$this->db->query("SELECT * FROM ".$this->name_base.".content ORDER BY fecha DESC LIMIT ".$cantidad);
+			$res = $this->db->rows();
+			return $res;
+		}
+
+		public function getAllContent(){ #$cantidad
+			$this->db->query("SELECT * FROM ".$this->name_base.".content");
+			$res = $this->db->rows();
+			return $res;
+		}
+
+		public function getContentForCategory($categoria, $limit){
+			$this->db->query("SELECT * FROM ".$this->name_base.".content AS cont INNER JOIN ".$this->name_base.".category AS cat WHERE cat.category_titulo = :categoria AND cat.id_categoria = cont.id_categoria");
+			$this->db->bind(':categoria', $categoria);
+			$res = $this->db->rows();
+			return $res;
+		}
+
+		public function getCantContentForCategory($categoria, $limit){
+			$this->db->query("SELECT * FROM ".$this->name_base.".content AS cont INNER JOIN ".$this->name_base.".category AS cat WHERE cat.category_titulo = :categoria AND cat.id_categoria = cont.id_categoria");
+			$this->db->bind(':categoria', $categoria);
+			$res = $this->db->rowCount();
+			return $res;
+		}
+
 		public function getAllCategory(){
 			$this->db->query("SELECT * FROM ".$this->name_base.".category");
             return $this->db->rows();
@@ -87,6 +94,12 @@
 		public function getCategoryForId($id){
 			$this->db->query("SELECT * FROM ".$this->name_base.".category where id_categoria = :id");
 			$this->db->bind(':id', $id);
+			return $this->db->row();
+		}
+
+		public function getCategoryForTitle($category){
+			$this->db->query("SELECT * FROM ".$this->name_base.".category where category_titulo = :category");
+			$this->db->bind(':category', $category);
 			return $this->db->row();
 		}
 

@@ -1,5 +1,5 @@
 <div class="col l9">
-	<h4><?php echo $data['categoria']; ?></h4><br>
+	<br><h5><?php echo $data['categoria']; ?></h5><br>
 	<?php if ($data['elementos']){ ?>
 		<?php foreach ($data['elementos'] as $elemento) { ?>
 			<div class="row">
