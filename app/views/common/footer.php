@@ -12,7 +12,7 @@
             	<h5 class="white-text">Secciones</h5>
         		  <ul>
                 <?php foreach ($data['categorias'] as $categoria){?>
-               	<li><a class="grey-text text-lighten-3" href="#!"><?php echo $categoria->category_titulo; ?></a></li>
+               	<li><a class="grey-text text-lighten-3" href="#!"><i class="material-icons tiny"><?php echo $categoria->icono; ?></i><?php echo " ".$categoria->category_titulo; ?></a></li>
                 <?php } ?>
         		  </ul>
           	</div>

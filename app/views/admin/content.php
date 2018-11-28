@@ -32,7 +32,6 @@
       	<p>¿Estás seguro de eliminar éste contenido?</p>
     </div>
     <div class="modal-footer">
-    	<a href="<?php echo RUTA_URL.'/content/delete/'.$content->id_contenido; ?>"></a>
     	<a id="buttonDelete" class="modal-close waves-effect waves-light lighten-1 btn">Eliminar</a>
       	<a href="#" class="modal-close waves-effect waves-light grey lighten-1 btn">Cancelar</a>
     </div>

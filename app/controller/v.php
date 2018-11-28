@@ -7,7 +7,7 @@
         }
         public function index(){
             $this->view('common/head');
-            $data['categorias'] = $this->contentsModel->getAllCategory();
+            $data['categorias'] = $this->contentsModel->getAllCategoryWithContent();
             $this->view('common/header', $data);
             $data['contents'] = $this->contentsModel->getAllContent();
             $this->view('common/home', $data);
@@ -15,7 +15,7 @@
         }
         public function g($link){ #ver contenido por titulo
             $this->view('common/head');
-            $data['categorias'] = $this->contentsModel->getAllCategory();
+            $data['categorias'] = $this->contentsModel->getAllCategoryWithContent();
             $this->view('common/header', $data);
             $data['content'] = $this->contentsModel->getContentForTitle(_url($link));
             if (!$data['content']){
@@ -30,7 +30,7 @@
         }
         public function c($link){ #ver categorias
             $this->view('common/head');
-            $data['categorias'] = $this->contentsModel->getAllCategory();#ver si existe contenido para la cat
+            $data['categorias'] = $this->contentsModel->getAllCategoryWithContent();#ver si existe contenido para la cat
             $this->view('common/header', $data);
             $data['elementos'] = $this->contentsModel->getContentForCategory(_url($link), 10);
             $data['categoria'] = _url(ucwords($link));

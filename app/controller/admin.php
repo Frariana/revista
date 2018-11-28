@@ -104,7 +104,7 @@
 				$categoria = $this->contentsModel->getCategoryForId($id);
 				$dataEditCategoria = [
 					'id_categoria' => $categoria->id_categoria,
-					'titulo' => $categoria->titulo,
+					'category_titulo' => $categoria->category_titulo,
 					'icono' => $categoria->icono 
 				];
 				$this->view('common/head');

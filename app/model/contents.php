@@ -67,7 +67,7 @@
 		}
 
 		public function getAllContent(){ #$cantidad
-			$this->db->query("SELECT * FROM ".$this->name_base.".content");
+			$this->db->query("SELECT id_contenido, content_titulo, icono FROM ".$this->name_base.".content");
 			$res = $this->db->rows();
 			return $res;
 		}
@@ -89,6 +89,10 @@
 		public function getAllCategory(){
 			$this->db->query("SELECT * FROM ".$this->name_base.".category");
             return $this->db->rows();
+		}
+		public function getAllCategoryWithContent(){
+			$this->db->query("SELECT DISTINCT cat.category_titulo, cat.icono FROM ".$this->name_base.".category as cat inner join ".$this->name_base.".content as cont where cat.id_categoria = cont.id_categoria");
+			return $this->db->rows();
 		}
 
 		public function getCategoryForId($id){
