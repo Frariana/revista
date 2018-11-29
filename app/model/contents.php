@@ -91,7 +91,7 @@
             return $this->db->rows();
 		}
 		public function getAllCategoryWithContent(){
-			$this->db->query("SELECT DISTINCT cat.category_titulo, cat.icono FROM ".$this->name_base.".category as cat inner join ".$this->name_base.".content as cont where cat.id_categoria = cont.id_categoria");
+			$this->db->query("SELECT DISTINCT cat.category_titulo, cat.icono FROM ".$this->name_base.".category as cat inner join ".$this->name_base.".content as cont on cat.id_categoria = cont.id_categoria");
 			return $this->db->rows();
 		}
 
@@ -138,6 +138,10 @@
 			}else{
 				return false;
 			}
+		}
+		public function searchContent($data){
+			$this->db->query("SELECT content_titulo FROM ".$this->name_base.".content where content_titulo like '%" . $data . "%'");
+            return $this->db->rows();
 		}
 	}
 ?>

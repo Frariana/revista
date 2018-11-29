@@ -8,12 +8,13 @@
   <?php }
 ?>
 
-<p>
-  <a href="#modalCategoria" class="btn modal-trigger">Nueva categoría</a>
-<p>
-<div class="row" style="border: .5px solid #e0e0e0"></div>
+<br><div class="row">
+  <a href="#modalCategoria" class="waves-effect waves-light btn modal-trigger right">Nueva categoría</a>
+</div>
+<div class="row" style="border: .5px solid #e0e0e0">
+  <p style="margin-left: 1rem;">Categorías creadas:</p>
+</div>
 <div class="row">
-	Categorías creadas:
 	<ul class="collection with-header">
 		<?php if(empty($data['categorias'])){ ?>
 			<li class="collection-item">Sin categorias creadas aún</li>

@@ -94,5 +94,11 @@
 			}
 			redireccionar('/content');
 		}
+
+		public function searchContent($data){
+			$result = $this->contentsModel->searchContent($data);
+			header('Content-Type: application/json');
+            echo json_encode($result);
+		}
 	}
 ?>
