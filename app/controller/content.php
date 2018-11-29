@@ -95,10 +95,18 @@
 			redireccionar('/content');
 		}
 
-		public function searchContent($data){
-			$result = $this->contentsModel->searchContent($data);
-			header('Content-Type: application/json');
-            echo json_encode($result);
+		public function searchContent(){
+			header("Access-Control-Allow-Origin: *");
+			header("Content-Type: application/json; charset=UTF-8");
+			header("Access-Control-Allow-Methods: POST");
+			header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+			if (!isset($_POST['busqueda'])){
+				echo json_encode("error");
+			}else{
+				$data = $_POST['busqueda'];
+				$result = $this->contentsModel->searchContent($data);
+	            echo json_encode($result);
+			}
 		}
 	}
 ?>

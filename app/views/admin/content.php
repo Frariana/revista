@@ -53,26 +53,25 @@
 
     	$("#buscar").keyup(function(){
             var busqueda = $("#buscar").val();
+            var formData = {
+                'busqueda': busqueda
+            }
     		$.ajax({
-    			method: 'GET',
-    			url: '<?php echo RUTA_URL;?>/content/searchContent/' + $("#buscar").val(),
-    			data: busqueda,
+    			method: 'POST',
+    			url: '<?php echo RUTA_URL;?>/content/searchContent/',
+    			data: formData,
     			dataType: "json"
     		}).done(function(data){
     			if (data.length > 0){
     				$("#contenido").html("");
-                    console.clear();
 			    	$(data).each(function(index, element){
-						$("#contenido").append("<li class='collection-item'>" + 
-                            element.content_titulo 
-                        + "</li>");
-                        // console.log(element.content_titulo.split(busqueda, "-"));
+                        var res = element.content_titulo.match(new RegExp(busqueda, "i"));
+                        $("#contenido").append("<li class='collection-item'>" + element.content_titulo.replace(new RegExp(busqueda, "i"), res[0].bold()) + "</li>");
 				    });
 			    }else{
 			    	$("#contenido").html("<li class='collection-item'>Sin resultados</li>");
 			    }
 			}).fail(function(){
-    			console.log("fail: ");
     			$("#contenido").html(contenido);
     		});
     	});
