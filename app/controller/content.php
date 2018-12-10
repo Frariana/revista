@@ -74,7 +74,7 @@
 				$content = $this->contentsModel->getContentForId($id);
 				$data['dataEditContent'] = [
 					'id_contenido' => $content->id_contenido,
-					'titulo'       => $content->content_titulo,
+					'content_titulo'       => $content->content_titulo,
 					'cuerpo'       => $content->cuerpo,
 					'icono'        => $content->icono,
 					'creador'      => $content->creador,

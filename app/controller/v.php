@@ -9,7 +9,7 @@
             $this->view('common/head');
             $data['categorias'] = $this->contentsModel->getAllCategoryWithContent();
             $this->view('common/header', $data);
-            $data['contents'] = $this->contentsModel->getAllContent();
+            $data['contents'] = $this->contentsModel->getAllContentsForCant(20);
             $this->view('common/home', $data);
             $this->view('common/footer', $data);
         }

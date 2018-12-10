@@ -58,7 +58,7 @@
         <div class="input-field col s12">
             <i class="material-icons prefix">line_style</i>
             <?php if ($edit) {?>
-                <input value="<?php echo $data['dataEditContent']['titulo'] ?>" id="titulo" name="titulo" type="text" required>
+                <input value="<?php echo $data['dataEditContent']['content_titulo'] ?>" id="titulo" name="titulo" type="text" required>
             <?php }else{ ?>
                 <input id="titulo" name="titulo" type="text" required>
             <?php } ?>

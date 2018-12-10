@@ -14,7 +14,8 @@
 			<?php foreach ($data['contents'] as $content) : ?>
 				<li class="collection-item">
           			<i class="material-icons tiny teal-text"><?php echo $content->icono; ?></i>
-					<?php echo $content->content_titulo; ?>
+					<?php echo $content->content_titulo; ?> -
+					<script>formatoFecha('<?php echo $content->fecha; ?>')</script>
 					<a href="#eliminar" name="<?php echo $content->id_contenido; ?>" class="secondary-content modal-trigger botonesBorrar"><i class="tiny material-icons">delete</i></a>
         			<a href="<?php echo RUTA_URL.'/content/edit/'.$content->id_contenido; ?>" class="secondary-content"><i class="tiny material-icons">edit</i></a>
 					<a href="<?php echo RUTA_URL.'/v/g/'.url($content->content_titulo); ?>" class="secondary-content"><i class="tiny material-icons">find_in_page</i></a>
