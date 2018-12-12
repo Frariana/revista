@@ -1,4 +1,4 @@
-<br><div class="row">
+<div class="row">
 	<a class="waves-effect waves-light btn right" href="<?php echo RUTA_URL."/users/insert";?>">Crear usuario</a>
 </div>
 <div class="row">

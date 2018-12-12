@@ -35,7 +35,7 @@
 					'email' => $_POST['email'],
 					'password' => $_POST['password']
 				];
-				$res = $this->usersModel->getUser($datos['email']);
+				$res = $this->usersModel->getUserForEmail($datos['email']);
 				if (!empty($res)){
 					if ($res->password === sha1($datos['password'])){
 						$array = [

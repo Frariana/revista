@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col l2">
+  <div class="col s2">
     <ul class="collapsible">
       <li>
         <div class="collapsible-header"><i class="material-icons">filter_drama</i>Publicaciones</div>
@@ -23,5 +23,5 @@
       </li>
     </ul>
   </div>
-  <div class="col l10">
+  <div class="col s8">
     <br>

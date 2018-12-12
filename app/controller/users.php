@@ -16,7 +16,6 @@
 				'users' => $this->usersModel->getAllUsers()
 			];
 			$this->view('admin/users', $data);
-			$this->view('admin/data');
 			$this->view('admin/footer');
 		}
         public function insert(){
