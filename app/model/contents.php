@@ -9,12 +9,12 @@
 		}
 
 		public function insert($data){
-			$this->db->query("INSERT INTO ".$this->name_base.".content (content_titulo, cuerpo, icono, id_categoria, creador, fecha) VALUES (:titulo, :cuerpo, :icono, :id_categoria, :creador, now())");
+			$this->db->query("INSERT INTO ".$this->name_base.".content (content_titulo, cuerpo, fecha, creador, icono, id_categoria) VALUES (:titulo, :cuerpo, now(), :creador, :icono, :id_categoria )");
 			$this->db->bind(':titulo', $data['titulo']);
 			$this->db->bind(':cuerpo', $data['cuerpo']);
+			$this->db->bind(':creador', $data['creador']);
 			$this->db->bind(':icono', $data['icono']);
 			$this->db->bind(':id_categoria', $data['id_categoria']);
-			$this->db->bind(':creador', $data['creador']);
 
 			if ($this->db->execute()){
                 return true;
@@ -51,15 +51,15 @@
 		public function getContentForTitle($url){
 			$this->db->query("
 				SELECT
-				    co.content_titulo as content_titulo,
-				    co.cuerpo,
-				    ca.icono as icono,
-				    co.fecha as fecha,
-				    co.creador as creador
+					id_contenido,
+				    content_titulo,
+				    cuerpo,
+				    icono as icono,
+				    fecha as fecha,
+				    creador as creador
 				FROM
-				    ".$this->name_base.".content co
-				INNER JOIN ".$this->name_base.".category ca ON
-				    co.content_titulo = :titulo AND co.id_categoria = ca.id_categoria
+					".$this->name_base.".content
+				where content_titulo = :titulo 
 			");
             $this->db->bind(':titulo', $url);
             return $this->db->row();
@@ -68,17 +68,16 @@
 		public function getContentForId($id){
 			$this->db->query("
 				SELECT
-					co.id_contenido,
-				    co.content_titulo as content_titulo,
-				    SUBSTRING(co.cuerpo, 4, 50) AS cuerpo,
-				    ca.icono as icono,
-				    co.fecha as fecha,
-					co.creador as creador,
-					ca.id_categoria
+					id_contenido,
+				    content_titulo,
+				    SUBSTRING(cuerpo, 4, 50) AS cuerpo,
+				    icono,
+				    fecha,
+					creador,
+					id_categoria
 				FROM
-				    ".$this->name_base.".content co
-				INNER JOIN ".$this->name_base.".category ca ON
-				    id_contenido = :id_contenido AND co.id_categoria = ca.id_categoria
+				    ".$this->name_base.".content
+				where id_contenido = :id_contenido
 			");
             $this->db->bind(':id_contenido', $id);
             return $this->db->row();
@@ -87,16 +86,14 @@
 		public function getAllContentsForCant($cantidad){
 			$this->db->query("
 				SELECT 
-					co.content_titulo as content_titulo,
-				    SUBSTRING(co.cuerpo, 4, 50) AS cuerpo,
-				    ca.icono as icono,
-				    co.fecha as fecha,
-				    co.creador as creador
+					content_titulo,
+				    SUBSTRING(cuerpo, 4, 50) AS cuerpo,
+				    icono,
+				    fecha,
+				    creador
 				FROM 
-					".$this->name_base.".content co 
-				LEFT JOIN ".$this->name_base.".category ca ON
-					co.id_categoria = ca.id_categoria
-				ORDER BY co.fecha DESC LIMIT ".$cantidad);
+					".$this->name_base.".content
+				ORDER BY fecha DESC LIMIT ".$cantidad);
 			$res = $this->db->rows();
 			return $res;
 		}
@@ -104,17 +101,15 @@
 		public function getAllContent(){ 
 			$this->db->query("
 				SELECT 
-					co.id_contenido,
-					co.content_titulo as content_titulo,
-					SUBSTRING(co.cuerpo, 4, 50) AS cuerpo,
-					ca.icono as icono,
-					co.fecha as fecha,
-					co.creador as creador
+					id_contenido,
+					content_titulo,
+					SUBSTRING(cuerpo, 4, 50) AS cuerpo,
+					icono,
+					fecha,
+					creador
 				FROM 
-					".$this->name_base.".content co 
-				LEFT JOIN ".$this->name_base.".category ca ON
-					co.id_categoria = ca.id_categoria
-				ORDER BY co.fecha DESC
+					".$this->name_base.".content
+				ORDER BY fecha DESC
 			");
 			$res = $this->db->rows();
 			return $res;
@@ -122,16 +117,17 @@
 
 		public function getContentForCategory($categoria, $limit){
 			$this->db->query("
-				SELECT co.content_titulo as content_titulo,
-				SUBSTRING(co.cuerpo, 4, 50) AS cuerpo,
-				ca.icono as icono,
-				co.fecha as fecha,
-				co.creador as creador
-			FROM 
-				".$this->name_base.".content co 
-			INNER JOIN ".$this->name_base.".category ca ON
-				ca.category_titulo = :categoria
-			AND ca.id_categoria = co.id_categoria
+				SELECT 
+					co.content_titulo as content_titulo,
+					SUBSTRING(co.cuerpo, 4, 50) AS cuerpo,
+					ca.icono as icono,
+					co.fecha as fecha,
+					co.creador as creador
+				FROM 
+					".$this->name_base.".content co 
+				INNER JOIN ".$this->name_base.".category ca ON
+					ca.category_titulo = :categoria
+				AND ca.id_categoria = co.id_categoria
 			");
 
 			$this->db->bind(':categoria', $categoria);
@@ -140,14 +136,29 @@
 		}
 
 		public function getCantContentForCategory($categoria, $limit){
-			$this->db->query("SELECT * FROM ".$this->name_base.".content AS cont INNER JOIN ".$this->name_base.".category AS cat WHERE cat.category_titulo = :categoria AND cat.id_categoria = cont.id_categoria");
+			$this->db->query("
+				SELECT
+					co.content_titulo as content_titulo,
+					SUBSTRING(co.cuerpo, 4, 50) AS cuerpo,
+					ca.icono as icono,
+					co.fecha as fecha,
+					co.creador as creador 
+				FROM 
+					".$this->name_base.".content AS cont
+				INNER JOIN ".$this->name_base.".category AS cat
+				WHERE cat.category_titulo = :categoria 
+				AND cat.id_categoria = cont.id_categoria");
 			$this->db->bind(':categoria', $categoria);
 			$res = $this->db->rowCount();
 			return $res;
 		}
 
 		public function getAllCategory(){
-			$this->db->query("SELECT * FROM ".$this->name_base.".category");
+			$this->db->query("
+				SELECT 
+					*
+				FROM 
+					".$this->name_base.".category");
             return $this->db->rows();
 		}
 		
@@ -201,7 +212,14 @@
 			}
 		}
 		public function searchContent($data){
-			$this->db->query("SELECT content_titulo FROM ".$this->name_base.".content where content_titulo like '%" . $data . "%'");
+			$this->db->query("
+				SELECT
+					content_titulo,
+					icono,
+					fecha,
+					creador 
+				FROM ".$this->name_base.".content
+				where content_titulo like '%" . $data . "%'");
             return $this->db->rows();
 		}
 	}

@@ -21,7 +21,6 @@
 				'contents' => $this->contentsModel->getAllContent()
 			];
 			$this->view('admin/content', $data);
-			$this->view('admin/data');
 			$this->view('admin/footer');
 		}
 		public function verificarSession(){
@@ -32,12 +31,13 @@
 		public function insert(){
 			$this->verificarSession();
 			if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+				$icono = $this->contentsModel->getCategoryForId($_POST['id_categoria']);
 				$data = [
-					'titulo'    => $_POST['titulo'],
-					'cuerpo'    => $_POST['cuerpo'],
-					'icono'     => $_POST['icono'],
-					'creador'   => $_POST['creador'],
-					'id_categoria' => $_POST['categoria']
+					'titulo'       => $_POST['titulo'],
+					'cuerpo'       => $_POST['cuerpo'],
+					'creador'      => $_POST['creador'],
+					'icono'        => $icono->icono,
+					'id_categoria' => $_POST['id_categoria']
 				];
 				if ($this->contentsModel->insert($data)){
 					$mensaje = "Contenido creado";
@@ -56,13 +56,14 @@
 		public function edit($id){
 			$this->verificarSession();
 			if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+				$icono = $this->contentsModel->getCategoryForId($_POST['id_categoria']);
 				$data = [
 					'id_contenido' => $id,
 					'titulo'       => $_POST['titulo'],
 					'cuerpo'       => $_POST['cuerpo'],
-					'icono'        => $_POST['icono'],
 					'creador'      => $_POST['creador'],
-					'id_categoria'    => $_POST['categoria']
+					'icono'        => $icono->icono,
+					'id_categoria' => $_POST['categoria']
 				];
 				if ($this->contentsModel->update($data)){
 					$mensaje = "Contenido modificado";
@@ -73,12 +74,12 @@
 			}else{ #form
 				$content = $this->contentsModel->getContentForId($id);
 				$data['dataEditContent'] = [
-					'id_contenido' => $content->id_contenido,
-					'content_titulo'       => $content->content_titulo,
-					'cuerpo'       => $content->cuerpo,
-					'icono'        => $content->icono,
-					'creador'      => $content->creador,
-					'id_categoria'    => $content->id_categoria
+					'id_contenido'    => $content->id_contenido,
+					'content_titulo'  => $content->content_titulo,
+					'cuerpo'          => $content->cuerpo,
+					'creador'         => $content->creador,
+					'id_categoria'    => $content->id_categoria,
+					'icono'           => $content->icono
 				];
 				$this->view('common/head');
 				$this->view('admin/header');
@@ -95,7 +96,7 @@
 			redireccionar('/content');
 		}
 
-		public function searchContent(){
+		public function searchContent(){ //api rest
 			header("Access-Control-Allow-Origin: *");
 			header("Content-Type: application/json; charset=UTF-8");
 			header("Access-Control-Allow-Methods: POST");

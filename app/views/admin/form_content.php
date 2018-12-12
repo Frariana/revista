@@ -23,7 +23,7 @@
         <?php }else{ ?>
             <form action="<?php echo RUTA_URL."/content/insert" ?>" method="POST">
         <?php } ?>
-                <div class="input-field col s4">
+                <div class="input-field col s6">
             <i class="material-icons prefix">account_circle</i>
             <?php if ($edit) {?>
                 <input value="<?php echo $data['dataEditContent']['creador'] ?>" id="creador" name="creador" type="text" required>
@@ -32,28 +32,20 @@
             <?php } ?>
             <label for="creador">Creador</label>
         </div>
-        <div class="input-field col s4">
+        <div class="input-field col s6">
             <i class="material-icons prefix">more</i>
-            <select id="categoria" name="categoria">
-            <?php if ($data['categorias']){?>
-                <option value="">Sin categoría</option>
-                <?php foreach ($data['categorias'] as $categoria) { ?>
-                    <option <?php if($edit == true){ if($categoria->id_categoria == $data['dataEditContent']['id_categoria']){ echo "selected"; } } ?> value="<?php echo $categoria->id_categoria; ?>"><?php echo $categoria->category_titulo; ?></option>
+            <select id="categoria" name="id_categoria">
+                <?php if ($data['categorias']){?>
+                    <option value="">Sin categoría</option>
+                    <?php foreach ($data['categorias'] as $categoria) { ?>
+                        <option <?php if($edit == true){ if($categoria->id_categoria == $data['dataEditContent']['id_categoria']){ echo "selected"; } } ?> value="<?php echo $categoria->id_categoria; ?>"><?php echo $categoria->category_titulo; ?></option>
+                    <?php } ?>
+                <?php }else{ ?>
+                    <option value="">Sin categorías definidas aún</option>
                 <?php } ?>
-            <?php }else{ ?>
-                <option value="">Sin categorías definidas aún</option>
-            <?php } ?>
             </select>
+            <input type="hidden" name="icono" value="">
             <label>Categoría</label>
-        </div>
-        <div class="input-field col s4">
-            <i class="material-icons prefix">verified_user</i>
-            <?php if ($edit) {?>
-                <input value="<?php echo $data['dataEditContent']['icono'] ?>" id="icono" name="icono" type="text">
-            <?php }else{ ?>
-                <input id="icono" name="icono" type="text">
-            <?php } ?>
-            <label for="icono">Icono</label>
         </div>
         <div class="input-field col s12">
             <i class="material-icons prefix">line_style</i>

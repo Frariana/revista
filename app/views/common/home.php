@@ -1,9 +1,9 @@
 <?php if ($data['contents']){?>
 	<?php foreach($data['contents'] as $content){ ?>
-		<div class="col s12 m6 l3">
+		<div class="col s12">
 	      	<div class="card">
 	        	<div class="card-content">
-	          		<span class="card-title"><?php echo $content->content_titulo; ?></span>
+	          		<span class="card-title"><i class="material-icons tiny teal-text"><?php echo $content->icono; ?></i><?php echo $content->content_titulo; ?></span>
 	        	</div>
 		        <div class="card-action">
 		          <a href="<?php echo RUTA_URL.'/v/g/'.url($content->content_titulo); ?>">Ver</a>

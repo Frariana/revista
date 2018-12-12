@@ -1,39 +1,31 @@
 <?php
   $edit = false;
   if (array_key_exists('dataEditCategoria', $data)){
-    $edit = true; ?>
-    <script>
-      $('#modalCategoria').modal('open');
-    </script>
-  <?php }
+    $edit = true;
+  }
 ?>
-
-<br><div class="row">
+<div>
   <a href="#modalCategoria" class="waves-effect waves-light btn modal-trigger right">Nueva categoría</a>
 </div>
-<div class="row" style="border: .5px solid #e0e0e0">
-  <p style="margin-left: 1rem;">Categorías creadas:</p>
-</div>
-<div class="row">
-	<ul class="collection with-header">
-		<?php if(empty($data['categorias'])){ ?>
-			<li class="collection-item">Sin categorias creadas aún</li>
-		<?php }else{ ?>
-			<?php foreach ($data['categorias'] as $categoria) : ?>
-        		<li class="collection-item">
-        			<div>
-        				<i class="tiny material-icons"><?php echo $categoria->icono; ?></i>
-        				<?php echo $categoria->category_titulo; ?>
-                <a href="#eliminar" name="<?php echo $categoria->id_categoria; ?>" class="secondary-content modal-trigger botonesBorrar"><i class="tiny material-icons">delete</i></a>
-        				<a href="<?php echo RUTA_URL."/admin/editCategory/".$categoria->id_categoria; ?>" class="secondary-content"><i class="tiny material-icons">edit</i></a>
+<p style="margin-left: 1rem;">Categorías creadas:</p>
+<ul class="collection with-header">
+  <?php if(empty($data['categorias'])){ ?>
+    <li class="collection-item">Sin categorias creadas aún</li>
+  <?php }else{ ?>
+    <?php foreach ($data['categorias'] as $categoria) : ?>
+          <li class="collection-item">
+            <div>
+              <i class="tiny material-icons"><?php echo $categoria->icono; ?></i>
+              <?php echo $categoria->category_titulo; ?>
+              <a href="#eliminar" name="<?php echo $categoria->id_categoria; ?>" class="secondary-content modal-trigger botonesBorrar"><i class="tiny material-icons">delete</i></a>
+              <a href="<?php echo RUTA_URL."/admin/editCategory/".$categoria->id_categoria; ?>" class="secondary-content"><i class="tiny material-icons">edit</i></a>
 
 
-        			</div>
-        		</li>
-      		<?php endforeach; ?>
-		<?php } ?>
-	</ul>
-</div>
+            </div>
+          </li>
+        <?php endforeach; ?>
+  <?php } ?>
+</ul>
 
 <div id="eliminar" class="modal">
     <div class="modal-content">
@@ -93,27 +85,21 @@
 
 <script>
   $(document).ready(function(){
-      // $('.modal').modal();
-      $('#buscar').focus();
-      $('.botonesBorrar').click(function(){
-        var id = this.name;
-        $('#buttonDelete').prop({
-          href: '<?php echo RUTA_URL?>/admin/deleteCategory/'+id
-        });
-      });
-  });
-</script>
-
-<?php if (array_key_exists('dataEditCategoria', $data)){ ?>
-  <script>
     var redireccionar = function(){ 
       window.location = '<?php echo RUTA_URL?>/admin/categorias';
     };
-    $('#modalCategoria').modal({ 'preventScrolling': true, 'onCloseEnd': redireccionar });
-    $('#modalCategoria').modal('open');
-  </script>
-<?php }else{ ?>
-  <script>
-    $('.modal').modal();
-  </script>
-<?php } ?>
+    var url = window.location.href;
+    if (url.indexOf('editCategory') > 0){
+      $('#modalCategoria').modal({ 'preventScrolling': true, 'onCloseEnd': redireccionar });
+      $('#modalCategoria').modal('open');
+    }else{
+      $('.modal').modal();
+    }
+    $('.botonesBorrar').click(function(){
+      var id = this.name;
+      $('#buttonDelete').prop({
+        href: '<?php echo RUTA_URL?>/admin/deleteCategory/'+id
+      });
+    });
+  });
+</script>

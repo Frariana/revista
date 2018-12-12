@@ -27,6 +27,7 @@
 			$this->view('admin/header');
 			$this->view('admin/menu');
 			$this->view('admin/home');
+			$this->view('admin/footer');
 		}
 		public function login(){
 			if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -69,7 +70,6 @@
 			];
 			$this->view('admin/menu');
 			$this->view('admin/category', $data);
-			$this->view('admin/data');
 			$this->view('admin/footer');
 		}
 		public function insertCategory(){

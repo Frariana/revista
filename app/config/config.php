@@ -8,6 +8,7 @@
     #ruta de la app
     define ('RUTA_APP', dirname(dirname(__FILE__)));
     #ruta url ejemplo http://localhost/revista/
+    // define ('RUTA_URL', 'http://192.168.1.82:90/revista');
     define ('RUTA_URL', 'http://localhost/revista');
     #nombre sitio
     define ('NOMBRE_SITIO','REVISTA');

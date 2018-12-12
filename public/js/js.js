@@ -1,7 +1,10 @@
 $(document).ready(function(){
     $('.tooltipped').tooltip();
-    $('.modal').modal();
 });
+var redireccionar = function(){ 
+    window.location = '<?php echo RUTA_URL?>/admin/categorias';
+};
+
 function formatoFecha(fechaRecibida){
     moment.locale('es');
     var fechaActual = new Date();

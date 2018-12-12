@@ -23,4 +23,5 @@
       </li>
     </ul>
   </div>
-  <div class="col l8">
+  <div class="col l10">
+    <br>

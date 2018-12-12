@@ -31,9 +31,9 @@
                         id_contenido MEDIUMINT NOT NULL AUTO_INCREMENT,
                         content_titulo varchar(60) NOT NULL,
                         cuerpo longtext NOT NULL,
-                        icono varchar(60),
-                        fecha datetime,
+                        fecha datetime NOT NULL,
                         creador varchar(60) NOT NULL,
+                        icono varchar(60),
                         id_categoria int(11),
                         PRIMARY KEY (id_contenido)
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
