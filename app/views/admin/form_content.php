@@ -45,7 +45,6 @@
                 <?php } ?>
             </select>
             <input type="hidden" name="icono" value="">
-            <label>Categoría</label>
         </div>
         <div class="input-field col s12">
             <i class="material-icons prefix">line_style</i>

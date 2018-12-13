@@ -52,7 +52,7 @@
                 <?php if ($edit) {?>
                     <input value="<?php echo $data['password'] ?>" id="password2" name="password2" type="text" required>
                 <?php }else{ ?>
-                    <input id="password" name="password" type="text" required>
+                    <input id="password2" name="password2" type="text" required>
                 <?php } ?>
                 <label for="password">Confirmar Clave</label>
             </div>
@@ -69,5 +69,17 @@
 <script>
     $(document).ready(function(){
         $('select').formSelect();
+    });
+
+    $("#password2").keyup(function(){
+        var clave=$("#password").val();
+        var clave2=$("#password2").val();
+        if (clave!=clave2){
+            var clave=$("#password").css("color","red");
+            var clave2=$("#password2").css("color","red");
+        }else{
+            var clave=$("#password").css("color","#9e9e9e");
+            var clave2=$("#password2").css("color","#9e9e9e");
+        }
     });
 </script>

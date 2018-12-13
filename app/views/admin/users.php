@@ -5,11 +5,14 @@
     <ul class="collection">
         <?php foreach($data['users'] as $user): ?>
             <li class="collection-item avatar">
-                <img src="http://www.adsitsolutions.com/images/icons/grey/home-user-icon.png" alt="user" class="circle">
-                <span class="title"><?php echo $user->user; ?></span>
-                <p><?php if($user->rol){ echo "Administrador"; }else{ echo "Creador"; } ?>, <?php echo $user->email; ?> </p>
-                <p><a href="<?php echo RUTA_URL ?>/users/edit/<?php echo $user->id_user; ?>">Editar</a> 
-                <a style="margin-top: 1.75em;">Eliminar</a></p>
+                <img style="margin-top: 2em" src="http://www.adsitsolutions.com/images/icons/grey/home-user-icon.png" alt="user" class="circle">
+                <p><h5 class="teal-text"><?php echo $user->user; ?></h5></p>
+                <p><?php echo $user->email; ?></p>
+                <p><i><?php if($user->rol){ echo "Administrador"; }else{ echo "Creador"; } ?></i></p>
+                <p>
+                    <a href="<?php echo RUTA_URL ?>/users/edit/<?php echo $user->id_user; ?>">Editar</a> |
+                    <a style="margin-top: 1.75em;">Eliminar</a>
+                </p>
             </li>
         <?php endforeach; ?>
     </ul>
