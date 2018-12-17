@@ -25,7 +25,7 @@
 					'email'    => $_POST['email'],
 					'rol'      => $_POST['rol'],
 					'user'     => $_POST['user'],
-					'password' => $_POST['password']
+					'password' => sha1($_POST['password'])
 				];
 				if ($this->usersModel->insert($data)){
 					$mensaje = "Usuario creado";
@@ -81,6 +81,26 @@
 			if (!isset($this->session->user)){
 				redireccionar('/admin');
 			}
+		}
+		public function cambiarClave(){
+			if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+				$data = [
+					'idUser'         => $_POST['idUser'],
+					'passwordActual' => $_POST['passwordActual'],
+					'password1'      => $_POST['password1'],
+					'password2'      => $_POST['password2']
+				];
+				if ($data['password1'] == $data['password2']){
+					if ($this->usersModel->cambiarClave($data)){
+						$mensaje = "Clave modificada";	
+					}else{
+						$mensaje = "Imposible modificar clave, algo sucedió";
+					}
+				}else{
+					$mensaje = "Tu nueva clave no coincide";
+				}
+			}
+			redireccionar('/users');
 		}
     }
 ?>

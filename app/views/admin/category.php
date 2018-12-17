@@ -13,29 +13,27 @@
     <li class="collection-item">Sin categorias creadas aún</li>
   <?php }else{ ?>
     <?php foreach ($data['categorias'] as $categoria) : ?>
-          <li class="collection-item">
-            <div>
-              <i class="tiny material-icons"><?php echo $categoria->icono; ?></i>
-              <?php echo $categoria->category_titulo; ?>
-              <a href="#eliminar" name="<?php echo $categoria->id_categoria; ?>" class="secondary-content modal-trigger botonesBorrar"><i class="tiny material-icons">delete</i></a>
-              <a href="<?php echo RUTA_URL."/admin/editCategory/".$categoria->id_categoria; ?>" class="secondary-content"><i class="tiny material-icons">edit</i></a>
-
-
-            </div>
-          </li>
-        <?php endforeach; ?>
+      <li class="collection-item">
+        <div>
+          <i class="tiny material-icons"><?php echo $categoria->icono; ?></i>
+          <?php echo $categoria->category_titulo; ?>
+          <a href="#eliminar" name="<?php echo $categoria->id_categoria; ?>" class="secondary-content modal-trigger botonesBorrar"><i class="tiny material-icons">delete</i></a>
+          <a href="<?php echo RUTA_URL."/admin/editCategory/".$categoria->id_categoria; ?>" class="secondary-content"><i class="tiny material-icons">edit</i></a>
+        </div>
+      </li>
+    <?php endforeach; ?>
   <?php } ?>
 </ul>
 
 <div id="eliminar" class="modal">
-    <div class="modal-content">
-      <h4>Eliminar<hr></h4>
-        <p>¿Estás seguro de eliminar esta categoría?</p>
-    </div>
-    <div class="modal-footer">
-      <a id="buttonDelete" class="modal-close waves-effect waves-light lighten-1 btn">Eliminar</a>
-      <a href="#" class="modal-close waves-effect waves-light grey lighten-1 btn">Cancelar</a>
-    </div>
+  <div class="modal-content">
+    <h4>Eliminar<hr></h4>
+      <p>¿Estás seguro de eliminar esta categoría?</p>
+  </div>
+  <div class="modal-footer">
+    <a id="buttonDelete" class="modal-close waves-effect waves-light lighten-1 btn">Eliminar</a>
+    <a href="#" class="modal-close waves-effect waves-light grey lighten-1 btn">Cancelar</a>
+  </div>
 </div>
 
 <div id="modalCategoria" class="modal">

@@ -42,12 +42,11 @@
 		}
 
 		public function update($data){
-			$this->db->query("UPDATE ".$this->name_base.".users SET email = :email, rol = :rol, user = :user, password = :password WHERE id_user = :id_user");
+			$this->db->query("UPDATE ".$this->name_base.".users SET email = :email, rol = :rol, user = :user WHERE id_user = :id_user");
 			$this->db->bind(':id_user', $data['id_user']);
 			$this->db->bind(':email', $data['email']);
 			$this->db->bind(':rol', $data['rol']);
 			$this->db->bind(':user', $data['user']);
-			$this->db->bind(':password', $data['password']);
 			if ($this->db->execute()){
 				return true;
 			}else{
@@ -60,6 +59,28 @@
 			$this->db->bind(':id', $id);
 			if ($this->db->execute()){
 				return true;
+			}else{
+				return false;
+			}
+		}
+
+		public function cambiarClave($data){
+			$data['passwordActual'] = sha1($data['passwordActual']);
+			$data['password2']      = sha1($data['password2']);
+
+			$this->db->query("SELECT password FROM ".$this->name_base.".users WHERE id_user = :id");
+			$this->db->bind(':id', $data['idUser']);
+			$res = $this->db->row();
+			
+			if ($res->password == $data['passwordActual']){
+				$this->db->query("UPDATE ".$this->name_base.".users SET password = :password WHERE id_user = :id");
+				$this->db->bind(':id', $data['idUser']);
+				$this->db->bind(':password', $data['password2']);
+				if ($this->db->execute()){
+					return true;
+				}else{
+					return false;
+				}
 			}else{
 				return false;
 			}

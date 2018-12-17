@@ -1,6 +1,6 @@
-.uppercase{
-	text-transform: uppercase;
-}
 *{
 	/*color: #607d8b !important;*/
+}
+.uppercase{
+	text-transform: uppercase;
 }

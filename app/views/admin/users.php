@@ -6,12 +6,11 @@
         <?php foreach($data['users'] as $user): ?>
             <li class="collection-item avatar">
                 <img style="margin-top: 2em" src="http://www.adsitsolutions.com/images/icons/grey/home-user-icon.png" alt="user" class="circle">
-                <p><h5 class="teal-text"><?php echo $user->user; ?></h5></p>
-                <p><?php echo $user->email; ?></p>
+                <p><span class="teal-text"><?php echo $user->user; ?></span> - <?php echo $user->email; ?></p>
                 <p><i><?php if($user->rol){ echo "Administrador"; }else{ echo "Creador"; } ?></i></p>
-                <p>
-                    <a href="<?php echo RUTA_URL ?>/users/edit/<?php echo $user->id_user; ?>">Editar</a> |
-                    <a style="margin-top: 1.75em;">Eliminar</a>
+                <p class="links">
+                    <a class="editar" href="<?php echo RUTA_URL ?>/users/edit/<?php echo $user->id_user; ?>">Editar</a><span> |</span>
+                    <a class="eliminar" href="<?php echo RUTA_URL ?>/users/edit/<?php echo $user->id_user; ?>">Eliminar</a>
                 </p>
             </li>
         <?php endforeach; ?>
@@ -20,6 +19,9 @@
 
 <script>
     $(document).ready(function(){
-        $(".collection-item.avatar:first-child").attr('disabled', 'disabled');
+        $(".links").first().children().css({'color': 'silver'});
+        $(".links").first().children().click(function(e){
+            e.preventDefault();
+        });
     }); 
 </script>
