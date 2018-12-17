@@ -49,7 +49,6 @@
     		});
 		});
     	$("#buscar").keyup(function(){
-			console.clear();
 			$("li#collectionContent.collection-item").each(function(index, element){
 				var textLiActual = $(element).find('span').text();
 				var res = textLiActual.match(new RegExp($("#buscar").val(), "i"));
