@@ -12,13 +12,13 @@
 			$this->contentsModel =  $this->model('contents');
 			$this->session = Session::getInstance();
 		}
-		public function index(){
+		public function index($paginaActual = 0){
 			$this->verificarSession();
 			$this->view('common/head');
 			$this->view('admin/header');
 			$this->view('admin/menu');
 			$data = [
-				'contents' => $this->contentsModel->getAllContent()
+				'contents' => $this->contentsModel->getContentPaged($paginaActual)
 			];
 			$this->view('admin/content', $data);
 			$this->view('admin/footer');

@@ -115,6 +115,23 @@
 			return $res;
 		}
 
+		public function getContentPaged($page = 0, $cantidadPorPagina = 10){
+			$this->db->query("SELECT * FROM  ".$this->name_base.".content LIMIT :page, :cantidadPorPagina");
+			$this->db->bind(":page", $page);
+			$this->db->bind(":cantidadPorPagina", $cantidadPorPagina);
+			$data['contenido']       = $this->db->rows();
+			$data['paginaActual']    = $page;
+			$data['paginasAMostrar'] = ceil($this->getCantContent() / $cantidadPorPagina);
+			return $data;
+		}
+
+		public function getCantContent(){
+			$this->db->query("SELECT * FROM ".$this->name_base.".content where 1");
+			$this->db->execute();
+			$res = $this->db->rowCount();
+			return $res;
+		}
+
 		public function getContentForCategory($categoria, $limit){
 			$this->db->query("
 				SELECT 

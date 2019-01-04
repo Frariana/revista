@@ -10,8 +10,8 @@
 </div>
 <div class="row">
 	<ul class="collection" id="contenidoExistente">
-		<?php if (!empty($data['contents'])){ ?>
-			<?php foreach ($data['contents'] as $content) : ?>
+		<?php if (!empty($data['contents']['contenido'])){ ?>
+			<?php foreach ($data['contents']['contenido'] as $content) : ?>
 				<li class="collection-item" id="collectionContent">
           			<i class="material-icons tiny teal-text"><?php echo $content->icono; ?></i>
 					<span><?php echo $content->content_titulo; ?></span> -
@@ -27,6 +27,17 @@
 		<?php } ?>
 	</ul>
 </div>
+
+<ul class="pagination">
+    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+    <li class="active"><a href="#!">1</a></li>
+    <li class="waves-effect"><a href="#!">2</a></li>
+    <li class="waves-effect"><a href="#!">3</a></li>
+    <li class="waves-effect"><a href="#!">4</a></li>
+    <li class="waves-effect"><a href="#!">5</a></li>
+    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+</ul>
+
 <!-- Modal Structure Delete content-->
 <div id="eliminar" class="modal">
     <div class="modal-content">
