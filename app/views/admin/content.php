@@ -27,10 +27,12 @@
 		<?php } ?>
 	</ul>
 </div>
-
+<?php //echo $data['contents']['paginaActual']; paginasAMostrar ?>
 <ul class="pagination">
-    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-    <li class="active"><a href="#!">1</a></li>
+    <?php if ($data['contents']['inicio'] != $data['contents']['paginaActual']){?>
+    	<li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>
+	<?php } ?>
+    <li class="active teal"><a href="#!">1</a></li>
     <li class="waves-effect"><a href="#!">2</a></li>
     <li class="waves-effect"><a href="#!">3</a></li>
     <li class="waves-effect"><a href="#!">4</a></li>
