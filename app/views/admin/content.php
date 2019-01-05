@@ -32,11 +32,9 @@
     <?php if ($data['contents']['inicio'] != $data['contents']['paginaActual']){?>
     	<li class="disabled"><a><i class="material-icons">chevron_left</i></a></li>
 	<?php } ?>
-    <li class="active teal"><a href="#!">1</a></li>
-    <li class="waves-effect"><a href="#!">2</a></li>
-    <li class="waves-effect"><a href="#!">3</a></li>
-    <li class="waves-effect"><a href="#!">4</a></li>
-    <li class="waves-effect"><a href="#!">5</a></li>
+	<?php for ($i=$data['contents']['inicio']; $i <= $data['contents']['fin'] ; $i++) { 
+		# code...
+	} ?>
     <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
 </ul>
 
