@@ -9,8 +9,8 @@
                 <p><span class="teal-text"><?php echo $user->user; ?></span></p>
                 <p><?php echo $user->email; ?> - <i><?php if($user->rol){ echo "Administrador"; }else{ echo "Creador"; } ?></i></p>
                 <p class="links">
-                    <a class="editar" href="eliminar">Editar</a> |
-                    <a class="eliminar" href="<?php echo RUTA_URL ?>/users/edit/<?php echo $user->id_user; ?>">Eliminar</a><span> </span>
+                    <a class="editar" href="<?php echo RUTA_URL ?>/users/edit/<?php echo $user->id_user; ?>">Editar</a><span> |</span>
+                    <a name="<?php echo $user->id_user; ?>" class="modal-trigger botonesBorrar" href="#eliminar">Eliminar</a> 
                 </p>
             </li>
         <?php endforeach; ?>
@@ -38,9 +38,8 @@
         $('.botonesBorrar').click(function(){
     		var id = this.name;
     		$('#buttonDelete').prop({
-    			href: '<?php echo RUTA_URL?>/content/delete/'+id
+    			href: '<?php echo RUTA_URL?>/users/delete/'+id
     		});
 		});
     }); 
-    <?php echo RUTA_URL ?>/users/edit/<?php echo $user->id_user; ?>
 </script>

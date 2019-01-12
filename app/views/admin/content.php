@@ -27,17 +27,19 @@
 		<?php } ?>
 	</ul>
 </div>
-
-<ul class="pagination">
-    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-    <li class="active"><a href="#!">1</a></li>
-    <li class="waves-effect"><a href="#!">2</a></li>
-    <li class="waves-effect"><a href="#!">3</a></li>
-    <li class="waves-effect"><a href="#!">4</a></li>
-    <li class="waves-effect"><a href="#!">5</a></li>
-    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-</ul>
-
+<?php if ($data['contents']['paginasAMostrar'] > 1){ ?>
+	<ul class="pagination">
+		<?php if ($data['contents']['paginaActual']!= 1){ ?>
+			<li class="disabled"><a href="<?php echo RUTA_URL.'/content/'.($data['contents']['paginaActual'] - 1) ?>"><i class="material-icons">chevron_left</i></a></li>
+		<?php } ?>
+		<?php for ($i=1; $i <= count($data['contents']['paginasArray']); $i++) { ?>
+			<li <?php if ($data['contents']['paginaActual']==$data['contents']['paginasArray'][$i]){ echo "class='active teal'"; } ?>><a href="<?php echo RUTA_URL.'/content/'.$data['contents']['paginasArray'][$i] ?>"><?php echo $data['contents']['paginasArray'][$i] ?></a></li>	
+		<?php } ?>
+		<?php if ($data['contents']['fin']!= $data['contents']['paginaActual']){ ?>
+			<li class="waves-effect"><a href="<?php echo RUTA_URL.'/content/'.($data['contents']['paginaActual'] + 1) ?>"><i class="material-icons">chevron_right</i></a></li>
+		<?php } ?>
+	</ul>
+<?php } ?>
 <!-- Modal Structure Delete content-->
 <div id="eliminar" class="modal">
     <div class="modal-content">
