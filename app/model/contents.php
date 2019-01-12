@@ -115,10 +115,10 @@
 			return $res;
 		}
 
-		public function getContentPaged($page, $cantidadPorPagina = 10){
+		public function getContentPaged($page = 0, $cantidadPorPagina = 5){
 			$page = intval($page);
 			$this->db->query("SELECT * FROM  ".$this->name_base.".content LIMIT :page, :cantidadPorPagina");
-			$this->db->bind(":page", $page);
+			$this->db->bind(":page", $page - 1);
 			$this->db->bind(":cantidadPorPagina", $cantidadPorPagina);
 			$data['contenido']       = $this->db->rows();
 			$data['paginaActual']    = $page ++;

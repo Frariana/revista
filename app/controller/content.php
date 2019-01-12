@@ -12,7 +12,7 @@
 			$this->contentsModel =  $this->model('contents');
 			$this->session = Session::getInstance();
 		}
-		public function index($paginaActual = 0){
+		public function index($paginaActual = 1){
 			$this->verificarSession();
 			$this->view('common/head');
 			$this->view('admin/header');
