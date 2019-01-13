@@ -91,7 +91,8 @@
 				    SUBSTRING(cuerpo, 4, 50) AS cuerpo,
 				    icono,
 				    fecha,
-				    creador
+					creador,
+					imagen
 				FROM 
 					".$this->name_base.".content
 				ORDER BY fecha DESC LIMIT ".$cantidad);

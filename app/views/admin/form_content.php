@@ -55,10 +55,11 @@
             <?php } ?>
       	     <label for="titulo">Título</label>
         </div>
-        <div class="input-field col s4">
-            
+        <div class="input-field col s4 file-field">
+            <div class="btn">Imagen<input type="file" name="userfile" id="userfile" value="NULL"></div>
+            <div class="file-path-wrapper">
                 <input type="file" class="form-control" id="image" name="image" multiple>
-            
+            </div>
         </div>
         <div class="input-field col s12">
             <i class="material-icons prefix">chrome_reader_mode</i>
