@@ -115,22 +115,22 @@
 			return $res;
 		}
 
-		public function getContentPaged($page = 0, $cantidadPorPagina = 5){
+		public function getContentPaged($page = 1, $cantidadPorPagina = 10){
 			$page = intval($page);
 			$this->db->query("SELECT * FROM  ".$this->name_base.".content LIMIT :page, :cantidadPorPagina");
-			$this->db->bind(":page", $page - 1);
+			$this->db->bind(":page", ($page - 1) * $cantidadPorPagina);
 			$this->db->bind(":cantidadPorPagina", $cantidadPorPagina);
 			$data['contenido']       = $this->db->rows();
-			$data['paginaActual']    = $page ++;
+			$data['paginaActual']    = $page;
 			$data['paginasAMostrar'] = ceil($this->getCantContent() / $cantidadPorPagina);
-			if ($page > $cantidadPorPagina){
-				$data['inicio'] = $page - ceil($cantidadPorPagina / 2);
-				$data['fin'] = $page + ceil($cantidadPorPagina / 2);
-			}else{
+			// if ($page > $cantidadPorPagina){
+			// 	$data['inicio'] = $page - ceil($cantidadPorPagina / 2);
+			// 	$data['fin'] = $page + ceil($cantidadPorPagina / 2);
+			// }else{
 				$data['inicio'] = 1;
 				$data['fin']    = $data['paginasAMostrar'];
-			}
-			$cont = 1;
+			// }
+			$cont = 0;
 			for ($i=$data['inicio']; $i <= $data['fin']; $i++) { 
 				$data['paginasArray'][$cont] = $i;
 				$cont++;

@@ -53,4 +53,47 @@
     	$url = preg_replace("/[^a-zA-Z0-9\_\-\.]+/", "", $url);
     	return $url;
     }
+    if (!function_exists("subir_imagen")){
+		function subir_imagen($imagen){
+			$CI = & get_instance();
+			$config['file_name'] = $imagen;
+			$ruta="./public/img/";
+			$config['upload_path'] = $ruta;
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']	= '5100';
+			$config['max_width']  = '51024';
+			$config['max_height']  = '5768';
+			$CI->load->library('upload', $config);
+			if (!$CI->upload->do_upload()){
+				return "";
+			}else{
+				$data=array('upload_data' => $CI->upload->data());
+				$data["upload_data"]["file_name"];
+				$CI->load->library('image_lib');
+				$ancho_max=750;
+				if ($data["upload_data"]["image_width"]>750){
+					if ($data["upload_data"]["image_width"]>$data["upload_data"]["image_height"]){
+						$alto_max=$ancho_max*$data["upload_data"]["image_height"]/$data["upload_data"]["image_width"];
+					}else{
+						$alto_max=$ancho_max;
+						$ancho_max=$ancho_max*$data["upload_data"]["image_width"]/$data["upload_data"]["image_height"];
+					}
+					$config['image_library'] = 'gd2';
+					$config['create_thumb'] = FALSE;
+					$config['maintain_ratio'] = TRUE;
+					$config['width'] = $ancho_max;
+					$config['height'] = $alto_max;
+					$config['source_image']	= $data["upload_data"]["file_path"].$data["upload_data"]["file_name"];
+					$CI->image_lib->initialize($config);
+					$CI->image_lib->resize();
+				}
+				return $data["upload_data"]["file_name"];
+			}
+		}
+	}
+	if (!function_exists("borrar_imagen")){
+		function borrar_imagen($imagen){
+			@unlink($imagen);
+		}
+	}
 ?>

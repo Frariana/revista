@@ -32,7 +32,7 @@
 		<?php if ($data['contents']['paginaActual']!= 1){ ?>
 			<li class="disabled"><a href="<?php echo RUTA_URL.'/content/'.($data['contents']['paginaActual'] - 1) ?>"><i class="material-icons">chevron_left</i></a></li>
 		<?php } ?>
-		<?php for ($i=1; $i <= count($data['contents']['paginasArray']); $i++) { ?>
+		<?php for ($i=0; $i < count($data['contents']['paginasArray']); $i++) { ?>
 			<li <?php if ($data['contents']['paginaActual']==$data['contents']['paginasArray'][$i]){ echo "class='active teal'"; } ?>><a href="<?php echo RUTA_URL.'/content/'.$data['contents']['paginasArray'][$i] ?>"><?php echo $data['contents']['paginasArray'][$i] ?></a></li>	
 		<?php } ?>
 		<?php if ($data['contents']['fin']!= $data['contents']['paginaActual']){ ?>

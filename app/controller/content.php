@@ -32,6 +32,10 @@
 			$this->verificarSession();
 			if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$icono = $this->contentsModel->getCategoryForId($_POST['id_categoria']);
+				if ($data["imagen"]!=NULL){
+					$data["imagen"]=subir_imagen(url($data["titulo"]));
+					unset($data["file_name"]);
+				}
 				$data = [
 					'titulo'       => $_POST['titulo'],
 					'cuerpo'       => $_POST['cuerpo'],

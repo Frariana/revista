@@ -46,7 +46,7 @@
             </select>
             <input type="hidden" name="icono" value="">
         </div>
-        <div class="input-field col s12">
+        <div class="input-field col s8">
             <i class="material-icons prefix">line_style</i>
             <?php if ($edit) {?>
                 <input value="<?php echo $data['dataEditContent']['content_titulo'] ?>" id="titulo" name="titulo" type="text" required>
@@ -54,6 +54,12 @@
                 <input id="titulo" name="titulo" type="text" required>
             <?php } ?>
       	     <label for="titulo">Título</label>
+        </div>
+        <div class="input-field col s4 file-field">
+            <div class="btn">Imagen<input type="file" name="userfile" id="userfile" value="NULL"></div>
+            <div class="file-path-wrapper">
+                <input class="file-path" type="text" name="imagen" id="imagen">
+            </div>
         </div>
         <div class="input-field col s12">
             <i class="material-icons prefix">chrome_reader_mode</i>
