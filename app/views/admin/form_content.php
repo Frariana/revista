@@ -19,9 +19,9 @@
 <div class="container">
     <div class="row"><br>
         <?php if ($edit) {?>
-            <form action="<?php echo RUTA_URL.'/content/edit/'.$data['dataEditContent']['id_contenido'] ?>" method="POST">
+            <form action="<?php echo RUTA_URL.'/content/edit/'.$data['dataEditContent']['id_contenido'] ?>" method="POST" enctype="multipart/form-data">
         <?php }else{ ?>
-            <form action="<?php echo RUTA_URL."/content/insert" ?>" method="POST">
+            <form action="<?php echo RUTA_URL."/content/insert" ?>" method="POST" enctype="multipart/form-data">
         <?php } ?>
                 <div class="input-field col s6">
             <i class="material-icons prefix">account_circle</i>
@@ -55,11 +55,10 @@
             <?php } ?>
       	     <label for="titulo">Título</label>
         </div>
-        <div class="input-field col s4 file-field">
-            <div class="btn">Imagen<input type="file" name="userfile" id="userfile" value="NULL"></div>
-            <div class="file-path-wrapper">
-                <input class="file-path" type="text" name="imagen" id="imagen">
-            </div>
+        <div class="input-field col s4">
+            
+                <input type="file" class="form-control" id="image" name="image" multiple>
+            
         </div>
         <div class="input-field col s12">
             <i class="material-icons prefix">chrome_reader_mode</i>

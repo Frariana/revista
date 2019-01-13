@@ -31,16 +31,14 @@
 		public function insert(){
 			$this->verificarSession();
 			if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+				$imagen = file_get_contents($_FILES['image']['tmp_name']);
 				$icono = $this->contentsModel->getCategoryForId($_POST['id_categoria']);
-				if ($data["imagen"]!=NULL){
-					$data["imagen"]=subir_imagen(url($data["titulo"]));
-					unset($data["file_name"]);
-				}
 				$data = [
 					'titulo'       => $_POST['titulo'],
 					'cuerpo'       => $_POST['cuerpo'],
 					'creador'      => $_POST['creador'],
 					'icono'        => $icono->icono,
+					'imagen'       => $imagen,
 					'id_categoria' => $_POST['id_categoria']
 				];
 				if ($this->contentsModel->insert($data)){

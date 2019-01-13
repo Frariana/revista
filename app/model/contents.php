@@ -9,13 +9,13 @@
 		}
 
 		public function insert($data){
-			$this->db->query("INSERT INTO ".$this->name_base.".content (content_titulo, cuerpo, fecha, creador, icono, id_categoria) VALUES (:titulo, :cuerpo, now(), :creador, :icono, :id_categoria )");
+			$this->db->query("INSERT INTO ".$this->name_base.".content (content_titulo, cuerpo, fecha, creador, icono, id_categoria, imagen) VALUES (:titulo, :cuerpo, now(), :creador, :icono, :id_categoria, :imagen )");
 			$this->db->bind(':titulo', $data['titulo']);
 			$this->db->bind(':cuerpo', $data['cuerpo']);
 			$this->db->bind(':creador', $data['creador']);
 			$this->db->bind(':icono', $data['icono']);
 			$this->db->bind(':id_categoria', $data['id_categoria']);
-
+			$this->db->bind(':imagen', $data['imagen']);
 			if ($this->db->execute()){
                 return true;
             }else{
@@ -56,7 +56,8 @@
 				    cuerpo,
 				    icono as icono,
 				    fecha as fecha,
-				    creador as creador
+					creador as creador,
+					imagen
 				FROM
 					".$this->name_base.".content
 				where content_titulo = :titulo 
