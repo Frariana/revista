@@ -34,6 +34,7 @@
                         fecha datetime NOT NULL,
                         creador varchar(60) NOT NULL,
                         icono varchar(60),
+                        imagen longblob,
                         id_categoria int(11),
                         PRIMARY KEY (id_contenido)
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

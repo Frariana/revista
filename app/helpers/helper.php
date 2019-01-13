@@ -50,7 +50,7 @@
 	    );
 	    $url = str_replace(" ", "_", $url);
 	    $url = strtolower($url);  
-    	$url = preg_replace("/[^a-zA-Z0-9\_\-\.]+/", "", $url);
+    	$url = preg_replace("/[^a-zA-Z0-9\_\-\.\,\:]+/", "", $url);
     	return $url;
     }
     

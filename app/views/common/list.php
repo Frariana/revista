@@ -2,20 +2,20 @@
 	<br><h5><?php echo $data['categoria']; ?></h5><br>
 	<?php if ($data['elementos']){ ?>
 		<?php foreach ($data['elementos'] as $elemento) { ?>
-			<div class="row">
-				<a class="grey-text text-darken-3" href="<?php echo RUTA_URL.'/v/g/'.url($elemento->content_titulo); ?>" >
-					<div class="col s1">
-						<div class="white-text blue-grey ?> lighten-2 center" class='flow-text'>
-							<?php echo day($elemento->fecha); ?>
+			<div class="col s12 m6">
+				<div class="card">
+					<div class="card-image">
+						<?php echo '<img width="100%" src="data:image/jpeg;base64,'.base64_encode( $elemento->imagen ).'"/>';?>
+					</div>
+					<div class="card-stacked">
+						<div class="card-content">
+						<p><a class="grey-text text-darken-3" href="<?php echo RUTA_URL.'/v/g/'.url($elemento->content_titulo); ?>" ><br> Por <strong><?php echo $elemento->creador ?></strong> | <script>formatoFecha('<?php echo $elemento->fecha ?>');</script></p>
 						</div>
-	                    <div class="white-text blue-grey lighten-1 center" style="font-size: .7em">
-	                    	<?php echo moth($elemento->fecha); ?>
-	                    </div>
+						<div class="card-action">
+						<a href="<?php echo RUTA_URL.'/v/g/'.url($elemento->content_titulo); ?>">Ver</a>
+						</div>
 					</div>
-					<div class="col s11" style="padding: 0">
-						<span><?php echo substr($elemento->content_titulo, 0, 40); ?></span> - <span>Por </span><strong><?php echo $elemento->creador; ?></strong>
-					</div>
-				</a>
+				</div>
 			</div>
 		<?php } ?>
 	<?php }else{ ?>

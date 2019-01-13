@@ -154,7 +154,8 @@
 					SUBSTRING(co.cuerpo, 4, 50) AS cuerpo,
 					ca.icono as icono,
 					co.fecha as fecha,
-					co.creador as creador
+					co.creador as creador,
+					co.imagen as imagen
 				FROM 
 					".$this->name_base.".content co 
 				INNER JOIN ".$this->name_base.".category ca ON
