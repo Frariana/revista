@@ -5,12 +5,12 @@
     <ul class="collection">
         <?php foreach($data['users'] as $user): ?>
             <li class="collection-item avatar">
-                <img style="margin-top: 2em" src="http://www.adsitsolutions.com/images/icons/grey/home-user-icon.png" alt="user" class="circle">
+                <i class="medium material-icons grey-text">account_circle</i>
                 <p><span class="teal-text"><?php echo $user->user; ?></span></p>
                 <p><?php echo $user->email; ?> - <i><?php if($user->rol){ echo "Administrador"; }else{ echo "Creador"; } ?></i></p>
                 <p class="links">
-                    <a class="editar" href="<?php echo RUTA_URL ?>/users/edit/<?php echo $user->id_user; ?>">Editar</a><span> |</span>
-                    <a name="<?php echo $user->id_user; ?>" class="modal-trigger botonesBorrar" href="#eliminar">Eliminar</a> 
+                    <a class="editar" href="<?php echo RUTA_URL ?>/users/edit/<?php echo $user->id_user; ?>">Editar</a> <span> |</span>
+                    <a name="<?php echo $user->id_user; ?>" class="modal-trigger botonesBorrar" href="#eliminar">Eliminar</a>
                 </p>
             </li>
         <?php endforeach; ?>
@@ -31,7 +31,7 @@
 <script>
     $(document).ready(function(){
         $(".links").first().children().css({'color': 'silver'});
-        $(".links").first().children().click(function(e){
+        $(".botonesBorrar").first().children().click(function(e){
             e.preventDefault();
         });
         $('.modal').modal();
