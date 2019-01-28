@@ -1,7 +1,7 @@
 <?php if ($data['contents']){?>
 	<?php foreach($data['contents'] as $content){ ?>
 		<div class="col s12 m6">
-	    <div class="card">
+	    	<div class="card">
 				<?php if ($content->imagen){ ?>
 					<div class="card-image">
 						<img width="100%" src="data:image/jpeg;base64,<?php echo base64_encode($content->imagen);?>"/>
@@ -20,14 +20,14 @@
 							</div>
 						</div>	
 					<?php }else{ ?>
-						asdasda
+						.
 					<?php } ?>
 				<?php } ?>
 				<div class="card-action">
 					<a href="<?php echo RUTA_URL.'/v/g/'.url($content->content_titulo); ?>">Ver</a>
 				</div>
-	    </div>
-	  </div>
+	    	</div>
+	  	</div>
 	<?php } ?>
 <?php }else{ ?>
 	<div class="center-align" style="height: 400px">

@@ -5,7 +5,7 @@
 			<div class="col s12 m6">
 				<div class="card">
 					<div class="card-image">
-						<?php echo '<img width="100%" src="data:image/jpeg;base64,'.base64_encode( $elemento->imagen ).'"/>';?>
+						<?php if ($elemento->imagen){ echo '<img width="100%" src="data:image/jpeg;base64,'.base64_encode( $elemento->imagen ).'"/>'; } ?>
 					</div>
 					<div class="card-stacked">
 						<div class="card-content">

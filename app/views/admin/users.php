@@ -3,17 +3,16 @@
 </div>
 <div class="row">
     <ul class="collection">
-        <?php foreach($data['users'] as $user): ?>
+        <?php for ($i=0; $i < count($data['users']); $i++) { ?>
             <li class="collection-item avatar">
                 <i class="medium material-icons grey-text">account_circle</i>
-                <p><span class="teal-text"><?php echo $user->user; ?></span></p>
-                <p><?php echo $user->email; ?> - <i><?php if($user->rol){ echo "Administrador"; }else{ echo "Creador"; } ?></i></p>
-                <p class="links">
-                    <a class="editar" href="<?php echo RUTA_URL ?>/users/edit/<?php echo $user->id_user; ?>">Editar</a> <span> |</span>
-                    <a name="<?php echo $user->id_user; ?>" class="modal-trigger botonesBorrar" href="#eliminar">Eliminar</a>
-                </p>
+                <p><span class="teal-text"><?php echo $data['users'][$i]->user; ?></span></p>
+                <p><?php echo $data['users'][$i]->email; ?> - <i><?php if($data['users'][$i]->rol){ echo "Administrador"; }else{ echo "Creador"; } ?></i></p>
+                <a class="modal-trigger borrar" <?php if ($i != 0){ echo "href='#eliminar'"; } ?> name="<?php echo $data['users'][$i]->id_user; ?>">Eliminar</a>
+                <span> | </span>
+                <a class="editar" href="<?php echo RUTA_URL ?>/users/edit/<?php echo $data['users'][$i]->id_user; ?>">Editar</a> 
             </li>
-        <?php endforeach; ?>
+        <?php } ?>
     </ul>
 </div>
 
@@ -30,16 +29,16 @@
 
 <script>
     $(document).ready(function(){
-        $(".links").first().children().css({'color': 'silver'});
-        $(".botonesBorrar").first().children().click(function(e){
-            e.preventDefault();
-        });
+        var borrar = true;
         $('.modal').modal();
-        $('.botonesBorrar').click(function(){
-    		var id = this.name;
-    		$('#buttonDelete').prop({
-    			href: '<?php echo RUTA_URL?>/users/delete/'+id
-    		});
+        $('.borrar').first().css({'color': 'silver'});
+        $('.borrar').click(function(e){
+            if (borrar){
+                var id = this.name;
+                $('#buttonDelete').prop({
+                    href: '<?php echo RUTA_URL?>/users/delete/'+id
+                });
+            }
 		});
     }); 
 </script>
