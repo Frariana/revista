@@ -4,3 +4,6 @@
 .uppercase{
 	text-transform: uppercase;
 }
+.small{
+	padding: 1rem;
+}
