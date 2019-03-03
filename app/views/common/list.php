@@ -3,19 +3,35 @@
 	<?php if ($data['elementos']){ ?>
 		<?php foreach ($data['elementos'] as $elemento) { ?>
 			<div class="col s12 m6">
-				<div class="card">
-					<div class="card-image">
-						<?php if ($elemento->imagen){ echo '<img width="100%" src="data:image/jpeg;base64,'.base64_encode( $elemento->imagen ).'"/>'; } ?>
-					</div>
-					<div class="card-stacked">
-						<div class="card-content">
-						<p><a class="grey-text text-darken-3" href="<?php echo RUTA_URL.'/v/g/'.url($elemento->content_titulo); ?>" ><br> Por <strong><?php echo $elemento->creador ?></strong> | <script>formatoFecha('<?php echo $elemento->fecha ?>');</script></p>
+				<a href="<?php echo RUTA_URL.'/v/g/'.url($content->content_titulo); ?>">
+				<?php if ($content->imagen){ ?>
+					<div class="card">
+						<div class="card-image">
+							<img width="100%" src="data:image/jpeg;base64,<?php echo base64_encode($content->imagen);?>"/>
+							<span class="card-title" style='background: rgba(3, 3, 3, .3); text-shadow: 1px 1px #000000'>
+								<strong class="flow-text">
+									<?php if ($content->icono){
+										echo "<i class='material-icons'>".$content->icono."</i>";
+									} ?>
+									<?php echo $content->content_titulo; ?>
+								</strong>
+							</span>
 						</div>
-						<div class="card-action">
-						<a href="<?php echo RUTA_URL.'/v/g/'.url($elemento->content_titulo); ?>">Ver</a>
-						</div>
 					</div>
-				</div>
+				<?php }else{ ?>
+					<div class="card blue-grey darken-1">
+        				<div class="card-content white-text">
+        					<span class="card-title flow-text">
+								<?php if ($content->icono){
+									echo "<i class='material-icons'>".$content->icono."</i>";
+								} ?>
+								<?php echo $content->content_titulo; ?>
+        					</span>
+		          			<p><?php echo $content->cuerpo; ?></p>
+		        		</div>
+		        	</div>
+				<?php } ?>
+	    	</a>
 			</div>
 		<?php } ?>
 	<?php }else{ ?>
