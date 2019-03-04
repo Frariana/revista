@@ -32,9 +32,9 @@
             $this->view('common/head');
             $data['categorias'] = $this->contentsModel->getAllCategoryWithContent();#ver si existe contenido para la cat
             $this->view('common/header', $data);
-            $data['elementos'] = $this->contentsModel->getContentForCategory(_url($link), 10);
+            $data['contents'] = $this->contentsModel->getContentForCategory(_url($link), 10);
             $data['categoria'] = _url(ucwords($link));
-            if (!$data['elementos']){
+            if (!$data['contents']){
                 $data['mensajeNotFound'] = 'Sin contenido';
                 $this->view('common/not-found', $data);
             }else{

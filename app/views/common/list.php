@@ -1,7 +1,7 @@
 <div class="col l9">
 	<br><h5><?php echo $data['categoria']; ?></h5><br>
-	<?php if ($data['elementos']){ ?>
-		<?php foreach ($data['elementos'] as $elemento) { ?>
+	<?php if ($data['contents']){ ?>
+		<?php foreach ($data['contents'] as $content) { ?>
 			<div class="col s12 m6">
 				<a href="<?php echo RUTA_URL.'/v/g/'.url($content->content_titulo); ?>">
 				<?php if ($content->imagen){ ?>
