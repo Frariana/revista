@@ -1,19 +1,17 @@
 <div class="row">
-	<a class="waves-effect waves-light btn right" href="<?php echo RUTA_URL."/users/insert";?>">Crear usuario</a>
-</div>
-<div class="row">
-    <ul class="collection">
-        <?php for ($i=0; $i < count($data['users']); $i++) { ?>
-            <li class="collection-item avatar">
-                <i class="medium material-icons grey-text">account_circle</i>
-                <p><span class="teal-text"><?php echo $data['users'][$i]->user; ?></span></p>
-                <p><?php echo $data['users'][$i]->email; ?> - <i><?php if($data['users'][$i]->rol){ echo "Administrador"; }else{ echo "Creador"; } ?></i></p>
-                <a class="modal-trigger borrar" <?php if ($i != 0){ echo "href='#eliminar'"; } ?> name="<?php echo $data['users'][$i]->id_user; ?>">Eliminar</a>
-                <span> | </span>
-                <a class="editar" href="<?php echo RUTA_URL ?>/users/edit/<?php echo $data['users'][$i]->id_user; ?>">Editar</a> 
-            </li>
-        <?php } ?>
-    </ul>
+    <div class="col s12">
+        <a class="waves-effect waves-light btn right" href="<?php echo RUTA_URL."/users/insert";?>">Crear usuario</a>
+    </div>
+    <?php for ($i=0; $i < count($data['users']); $i++) { ?>
+        <div class="col s4">
+            <i class="medium material-icons grey-text">account_circle</i>
+            <div class="row"><span class="teal-text"><?php echo $data['users'][$i]->user; ?></span></div>
+            <div class="row"><?php echo $data['users'][$i]->email; ?> - <i><?php if($data['users'][$i]->rol){ echo "Administrador"; }else{ echo "Creador"; } ?></i></div>
+            <a class="modal-trigger borrar" <?php if ($i != 0){ echo "href='#eliminar'"; } ?> name="<?php echo $data['users'][$i]->id_user; ?>">Eliminar</a>
+            <span> | </span>
+            <a class="editar" href="<?php echo RUTA_URL ?>/users/edit/<?php echo $data['users'][$i]->id_user; ?>">Editar</a> 
+        </div>
+    <?php } ?>
 </div>
 
 <div id="eliminar" class="modal">
@@ -26,6 +24,7 @@
       	<a href="#" class="modal-close waves-effect waves-light grey lighten-1 btn">Cancelar</a>
     </div>
 </div>
+
 
 <script>
     $(document).ready(function(){

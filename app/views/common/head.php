@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="<?php echo RUTA_URL?>/js/moment.js"></script>
 	<script src="<?php echo RUTA_URL?>/js/js.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
     <title><?php echo NOMBRE_SITIO; ?></title>
 </head>
 <body>
