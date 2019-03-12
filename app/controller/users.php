@@ -28,7 +28,7 @@
 					'password' => sha1($_POST['password'])
 				];
 				if ($this->usersModel->insert($data)){
-					$mensaje = "Usuario creado";
+					echo "Materialize.toast('Usuario creado!', 4000);";
 				}else{
 					$mensaje = "Usuario no creado, algo sucedió";
 				}
@@ -50,7 +50,7 @@
 					'password' => $_POST['password']
 				];
 				if ($this->usersModel->update($data)){
-					$mensaje = "Usuario modificado";	
+					echo "Materialize.toast('Usuario modificado!', 4000);";	
 				}else{
 					$mensaje = "Imposible modificar usuario, algo sucedió";
 				}
