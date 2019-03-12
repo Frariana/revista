@@ -25,7 +25,7 @@
 		}
 		public function verificarSession(){
 			if (!isset($this->session->user)){
-				redireccionar('/admin');
+				redireccionar('/admin', $mensaje);
 			}
 		}
 		public function insert(){
@@ -46,7 +46,7 @@
 				}else{
 					$mensaje = "Contenido no creado, algo sucedió";
 				}
-				redireccionar('/content');
+				redireccionar('/content', $mensaje);
 			}else{
 				#form
 				$this->view('common/head');
@@ -72,7 +72,7 @@
 				}else{
 					$mensaje = "Contenido no modificado, algo sucedió";
 				}
-				redireccionar('/content');
+				redireccionar('/content', $mensaje);
 			}else{ #form
 				$content = $this->contentsModel->getContentForId($id);
 				$data['dataEditContent'] = [
@@ -95,7 +95,7 @@
 			}else{
 				$mensaje = "Contenido no eliminado, algo sucedió";
 			}
-			redireccionar('/content');
+			redireccionar('/content', $mensaje);
 		}
 
 		public function searchContent(){ //api rest

@@ -32,7 +32,7 @@
 				}else{
 					$mensaje = "Usuario no creado, algo sucedió";
 				}
-				redireccionar('/users');
+				redireccionar('/users', $mensaje);
 			}else{
 				#form
 				$this->view('common/head');
@@ -54,7 +54,7 @@
 				}else{
 					$mensaje = "Imposible modificar usuario, algo sucedió";
 				}
-				redireccionar('/users');
+				redireccionar('/users', $mensaje, $mensaje);
 			}else{
 				$user = $this->usersModel->getUserForId($id);
 				$data = [
@@ -75,11 +75,11 @@
 			}else{
 				$mensaje = "Imposible borrar usuario, algo sucedió";
 			}
-			redireccionar('/users');
+			redireccionar('/users', $mensaje);
 		}
         public function verificarSession(){
 			if (!isset($this->session->user)){
-				redireccionar('/admin');
+				redireccionar('/admin', $mensaje);
 			}
 		}
 		public function cambiarClave(){
@@ -100,7 +100,7 @@
 					$mensaje = "Tu nueva clave no coincide";
 				}
 			}
-			redireccionar('/users');
+			redireccionar('/users', $mensaje);
 		}
     }
 ?>
