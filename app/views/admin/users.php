@@ -1,18 +1,19 @@
-<div class="row">
-    <div class="col s12">
-        <a class="waves-effect waves-light btn right" href="<?php echo RUTA_URL."/users/insert";?>">Crear usuario</a>
-    </div>
-    <?php for ($i=0; $i < count($data['users']); $i++) { ?>
-        <div class="col s4">
-            <i class="medium material-icons grey-text">account_circle</i>
-            <div class="row"><span class="teal-text"><?php echo $data['users'][$i]->user; ?></span></div>
-            <div class="row"><?php echo $data['users'][$i]->email; ?> - <i><?php if($data['users'][$i]->rol){ echo "Administrador"; }else{ echo "Creador"; } ?></i></div>
-            <a class="modal-trigger borrar" <?php if ($i != 0){ echo "href='#eliminar'"; } ?> name="<?php echo $data['users'][$i]->id_user; ?>">Eliminar</a>
-            <span> | </span>
-            <a class="editar" href="<?php echo RUTA_URL ?>/users/edit/<?php echo $data['users'][$i]->id_user; ?>">Editar</a> 
-        </div>
-    <?php } ?>
+<div>
+    <a class="waves-effect waves-light btn right" href="<?php echo RUTA_URL."/users/insert";?>">Crear usuario</a>
 </div>
+<p style="margin-left: 1rem;">Usuarios creados:</p>
+<ul class="collection">
+    <?php for ($i=0; $i < count($data['users']); $i++) { ?>
+        <li class="collection-item">
+            <img src="<?php echo RUTA_URL.'/public/img/face.svg'?>" class="">
+            <?php echo $data['users'][$i]->user; ?><br>
+            <?php echo $data['users'][$i]->email;?><br>
+            <i><?php if($data['users'][$i]->rol){ echo "Administrador"; }else{ echo "Creador"; } ?></i>
+            <a class="modal-trigger borrar secondary-content" <?php if ($i != 0){ echo "href='#eliminar'"; } ?> name="<?php echo $data['users'][$i]->id_user; ?>">Eliminar</a>
+            <a class="editar secondary-content" href="<?php echo RUTA_URL ?>/users/edit/<?php echo $data['users'][$i]->id_user; ?>">Editar</a>
+        </li>
+    <?php } ?>
+</ul>
 
 <div id="eliminar" class="modal">
     <div class="modal-content">

@@ -1,3 +1,3 @@
-<div class="class">
+<p>
     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus cumque rerum doloremque accusantium itaque quidem repellendus facere deleniti nam aliquam, perspiciatis laudantium alias non omnis neque sequi quis distinctio error? Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi quas harum quaerat blanditiis exercitationem provident nostrum, unde culpa officiis laudantium mollitia aperiam quasi placeat earum facere quidem eum adipisci fugit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dicta incidunt, id optio ducimus reprehenderit, accusamus ex, ab minima officiis dolore ratione? Cumque laborum omnis enim, et qui suscipit nemo.
-</div>
+</p>

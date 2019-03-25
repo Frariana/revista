@@ -14,3 +14,9 @@
 .card-content{
 	height: 250px;
 }
+#mobile-demo > li{
+	color: rgba(0,0,0,0.54);
+}
+/*.borde-gris{
+	border: 1px solid #e0e0e0 !important;
+}*/

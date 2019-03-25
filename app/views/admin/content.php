@@ -1,14 +1,14 @@
-<div class="row">
+<div>
 	<a class="waves-effect waves-light btn right" href="<?php echo RUTA_URL."/content/insert";?>">Crear contenido</a>
 </div>
-<div class="row" style="border: 1px solid #e0e0e0">
+<div>
 	<div class="col s12 input-field">
 		<i class="material-icons prefix">search</i>
 		<input name="buscar" id="buscar" type="text">
   		<label for="buscar">Buscar</label>
 	</div>
 </div>
-<div class="row">
+<div class="">
 	<ul class="collection" id="contenidoExistente">
 		<?php if (!empty($data['contents']['contenido'])){ ?>
 			<?php foreach ($data['contents']['contenido'] as $content) : ?>

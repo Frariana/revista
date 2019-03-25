@@ -58,7 +58,7 @@
         <input name="icono" id="icono" type="hidden">
       <?php } ?>
 
-      <div class="col s12" id="grilla">
+      <div class="col s12 center-align" id="grilla">
         <i class="material-icons small teal-text icono">3d_rotation</i>
         <i class="material-icons small teal-text icono">ac_unit</i>
         <i class="material-icons small teal-text icono">access_alarm</i>
@@ -1047,15 +1047,6 @@
 		  $(this).removeClass("teal-text");
 			$(this).addClass("black-text");
 			$("#icono").val($(this).text());
-			// var icono_anterior = $("#span_icono").attr('class');
-			// $("#span_icono").removeClass(icono_anterior);
-			// $("#span_icono").addClass(icono);
-			// $("#span_icono").removeClass("black-text");
-			// $("#text_icono_seleccionado").val($("#span_icono").attr("class"));
-			// if (icono=="black-text"){
-			// 	$("#span_icono").addClass("flaticon-add");
-			// 	$("#text_icono_seleccionado").val(null);
-			// }
 		});
   });
 </script>

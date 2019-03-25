@@ -11,7 +11,7 @@
         <?php }else{ ?>
             <form action="<?php echo RUTA_URL."/users/insert" ?>" method="POST">
         <?php } ?>
-            <div class="input-field col s6">
+            <div class="input-field col s12 m6">
                 <i class="material-icons prefix">email</i>
                 <?php if ($edit) {?>
                     <input value="<?php echo $data['email'] ?>" id="email" name="email" type="text" required>
@@ -20,7 +20,7 @@
                 <?php } ?>
                 <label for="email">Email</label>
             </div>
-            <div class="input-field col s6">
+            <div class="input-field col s12 m6">
                 <i class="material-icons prefix">face</i>
                 <?php if ($edit) {?>
                     <input value="<?php echo $data['user'] ?>" id="user" name="user" type="text" required>
@@ -29,30 +29,30 @@
                 <?php } ?>
                 <label for="user">Nombre</label>
             </div>
-            <div class="input-field col s6">
+            <div class="input-field col s12 m6">
                 <i class="material-icons prefix">vpn_key</i>
                 <select id="rol" name="rol" required>
-                    <option value="">Selecciona tipo de acceso</option>
+                    <option value="" disabled>Rol de usuario</option>
                     <option value="0" <?php if ($edit){ if ($data['rol']=='0'){ echo 'selected'; } } ?> >Creador (Sólo crea contenido)</option>
                     <option value="1" <?php if ($edit){ if ($data['rol']=='1'){ echo 'selected'; } } ?> >Administrador</option>
                 </select>
                 <label for="rol">Rol</label>
             </div>
             <?php if (!$edit) {?>
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                     <i class="material-icons prefix">lock_outline</i>
                     <input id="password" name="password" type="password" required>
                     <label for="password">Clave</label>
                 </div>
             <?php } ?>
             <?php if (!$edit) {?>
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                     <i class="material-icons prefix">lock_outline</i>
                     <input id="password2" name="password2" type="password" required>
                     <label for="password2">Confirmar Clave</label>
                 </div>
             <?php }else{ ?>
-                <div class="input-field col s6">
+                <div class="input-field col s12 m6">
                     <a class="waves-effect waves-light  modal-trigger" href="#modal1"><i class="material-icons left">lock_outline</i>Cambiar clave</a>
                 </div>
             <?php } ?>
