@@ -8,7 +8,7 @@
 		}
 		public function index(){ 
 			if ($this->session->user){
-				redireccionar('/admin/home');
+				redireccionar('/admin/home', $mensaje);
 			}else{
 				$this->view('common/head');
 				$this->view('common/header');
@@ -18,7 +18,7 @@
 		}
 		public function verificarSession(){
 			if (!isset($this->session->user)){
-				redireccionar('/admin');
+				redireccionar('/admin', $mensaje);
 			}
 		}
 		public function home(){
@@ -43,7 +43,7 @@
 							'rol' => $res->rol
 						];
 						$this->session->user = $array['user'];
-						redireccionar('/admin/home');
+						redireccionar('/admin/home', $mensaje);
 					}else{
 						$data = [
 							'mensaje' => 'Acceso denegado'];
@@ -59,7 +59,7 @@
 		}
 		public function logout(){
 			$this->session->destroy();
-			redireccionar('/admin');
+			redireccionar('/admin', $mensaje);
 		}
 		public function categorias(){
 			$this->verificarSession();
@@ -84,7 +84,7 @@
 				}else{
 					$mensaje = "Imposible crear categoría, algo sucedió";
 				}
-				redireccionar('/admin/categorias');
+				redireccionar('/admin/categorias', $mensaje);
 			}
 		}
 		public function editCategory($id){
@@ -99,7 +99,7 @@
 				}else{
 					$mensaje = "Imposible modificar categoría, algo sucedió";
 				}
-				redireccionar('/admin/categorias');
+				redireccionar('/admin/categorias', $mensaje);
 			}else{
 				$categoria = $this->contentsModel->getCategoryForId($id);
 				$dataEditCategoria = [
@@ -123,7 +123,7 @@
 			}else{
 				$mensaje = "Imposible modificar categoría, algo sucedió";
 			}
-			redireccionar('/admin/categorias');
+			redireccionar('/admin/categorias', $mensaje, $mensaje);
 		}
 	}
 ?>

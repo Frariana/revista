@@ -29,6 +29,12 @@
 
 <script>
     $(document).ready(function(){
+        <?php if (strlen($mensajeToast) > 0){
+            echo "M.toast({html: '".$mensajeToast."'});";
+        }else{
+            echo "Sin mensaje";
+        } ?>
+        // M.toast({html: 'Eliminado'});
         var borrar = true;
         $('.modal').modal();
         $('.borrar').first().css({'color': 'silver'});
@@ -40,5 +46,5 @@
                 });
             }
 		});
-    }); 
+    });
 </script>

@@ -1,4 +1,5 @@
 <?php
+  $mensajeToast = "";
   require_once 'config/config.php';
   require_once 'helpers/helper.php';
   // require_once 'lib/db.php';

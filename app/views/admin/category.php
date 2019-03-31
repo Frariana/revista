@@ -3,6 +3,9 @@
   if (array_key_exists('dataEditCategoria', $data)){
     $edit = true;
   }
+  if (isset($mensaje)){
+    echo "M.toast({html: '".$mensaje."'})";
+  }
 ?>
 <div>
   <a href="#modalCategoria" class="waves-effect waves-light btn modal-trigger right">Nueva categoría</a>
