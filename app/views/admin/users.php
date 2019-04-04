@@ -9,8 +9,9 @@
             <?php echo $data['users'][$i]->user; ?><br>
             <?php echo $data['users'][$i]->email;?><br>
             <i><?php if($data['users'][$i]->rol){ echo "Administrador"; }else{ echo "Creador"; } ?></i>
-            <a class="modal-trigger borrar secondary-content" <?php if ($i != 0){ echo "href='#eliminar'"; } ?> name="<?php echo $data['users'][$i]->id_user; ?>">Eliminar</a>
-            <a class="editar secondary-content" href="<?php echo RUTA_URL ?>/users/edit/<?php echo $data['users'][$i]->id_user; ?>">Editar</a>
+            <a class="modal-trigger borrar secondary-content deep-orange-text text-darken-3" <?php if ($i != 0){ echo "href='#eliminar'"; } ?> name="<?php echo $data['users'][$i]->id_user; ?>">Eliminar</a>
+            <span class="secondary-content grey-text">&nbsp;|&nbsp;</span>
+            <a class="editar secondary-content orange-text text-darken-3" href="<?php echo RUTA_URL ?>/users/edit/<?php echo $data['users'][$i]->id_user; ?>">Editar</a>
         </li>
     <?php } ?>
 </ul>
@@ -29,22 +30,13 @@
 
 <script>
     $(document).ready(function(){
-        <?php if (strlen($mensajeToast) > 0){
-            echo "M.toast({html: '".$mensajeToast."'});";
-        }else{
-            echo "Sin mensaje";
-        } ?>
-        // M.toast({html: 'Eliminado'});
-        var borrar = true;
         $('.modal').modal();
         $('.borrar').first().css({'color': 'silver'});
         $('.borrar').click(function(e){
-            if (borrar){
-                var id = this.name;
-                $('#buttonDelete').prop({
-                    href: '<?php echo RUTA_URL?>/users/delete/'+id
-                });
-            }
+            var id = this.name;
+            $('#buttonDelete').prop({
+                href: '<?php echo RUTA_URL?>/users/delete/'+id
+            });
 		});
     });
 </script>

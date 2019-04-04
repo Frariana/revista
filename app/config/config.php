@@ -8,7 +8,7 @@
     #ruta de la app
     define ('RUTA_APP', dirname(dirname(__FILE__)));
     // define ('RUTA_URL', 'http://192.168.1.83:81/revista'); #ASUS
-    define ('RUTA_URL', 'http://192.168.0.18/revista');
+    define ('RUTA_URL', 'http://localhost/revista');
     #nombre sitio
     define ('NOMBRE_SITIO','REVISTA');
     #controller principal

@@ -3,7 +3,7 @@
 		<br><h3><?php echo $data['content']->content_titulo ?></h3>
 		<p>
 			<?php if ($data['content']->imagen){ 
-				echo '<img width="100%" src="data:image/jpeg;base64,'.base64_encode( $data['content']->imagen ).'"/>';
+				echo '<img class="materialboxed" width="100%" src="data:image/jpeg;base64,'.base64_encode( $data['content']->imagen ).'"/>';
 			} ?>
 			<br>
 			<?php if($data['content']->icono){?>
