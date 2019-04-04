@@ -17,7 +17,7 @@
                 </div>
                 <div class="card-action">
                     <button type="submit" class="waves-effect waves-light btn blue-grey center-align">Ingresar</button>
-                    <a href="<?php echo RUTA_URL; ?>" class="btn waves-effect waves white black-text">Volver al home</a>
+                    <a href="<?php echo RUTA_URL; ?>" class="waves-effect waves white blue-text text-lighten-1">&nbsp;Ir a home </a>
                 </div>
             </form>
         </div>  
