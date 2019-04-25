@@ -10,7 +10,8 @@
 
 		public function __construct(){
 			$this->contentsModel =  $this->model('contents');
-			$this->session = Session::getInstance();
+			$this->session = new Session;
+			$this->session->getInstance();
 		}
 		public function index($paginaActual = 1){
 			$this->verificarSession();

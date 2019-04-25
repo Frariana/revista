@@ -58,7 +58,7 @@
         <div class="input-field file-field col s4">
             <div class="btn">Imagen<input type="file" name="userfile" id="userfile" value="NULL"></div>
             <div class="file-path-wrapper">
-                <input type="text" class="file-path" id="image" name="image" multiple>
+                <input type="file" class="form-control" id="image" name="image" multiple>
             </div>
         </div>
         <div class="input-field col s12">

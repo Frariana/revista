@@ -13,7 +13,6 @@
 	        $this->instance->startSession();
 	        return $this->instance;
 	    }
-
 	    public function getStatus(){
 	    	return $this->sessionState;
 	    }
@@ -46,9 +45,8 @@
 	    public function destroy(){
 	        session_destroy();
 	        unset($_SESSION);
-	    	$sessionState = false;
-	        return $sessionState;
+	    	$sessionState = false;        
+        	return $sessionState;
 	    }
 	}
-
 ?>

@@ -10,7 +10,7 @@
         private $error;
 
         public function __construct(){
-            $dsn = 'mysql:host='.$this->host.';charset=utf8;';
+            $dsn = 'mysql:host='.$this->host.';port=3306;charset=utf8;';
             $options = array(
                 PDO::ATTR_PERSISTENT => true,
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION

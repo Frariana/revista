@@ -1,3 +1,5 @@
+<img class="materialboxed" width="100%" src="http://shared10.cl-prueba.site/~gatopard/public/img/p1.jpg"/>
+
 <?php if ($data['contents']){?>
 	<?php foreach($data['contents'] as $content){ ?>
 		<div class="col s12 m6 l4">

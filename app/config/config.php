@@ -1,6 +1,6 @@
 <?php
     #db
-    define ('DB_HOST', 'localhost');
+    define ('DB_HOST', '127.0.0.1');
     define ('DB_USER', 'root');
     define ('DB_PASSWORD', '');
     define ('DB_NAME', 'revista');
@@ -10,7 +10,7 @@
     // define ('RUTA_URL', 'http://192.168.1.83:81/revista'); #ASUS
     define ('RUTA_URL', 'http://localhost/revista');
     #nombre sitio
-    define ('NOMBRE_SITIO','REVISTA');
+    define ('NOMBRE_SITIO','Gato Pardo Estudio');
     #controller principal
     define ('CONTROLLER_ACTUAL', 'v');
     #https://www.brandnewweb.nl/

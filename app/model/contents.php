@@ -196,7 +196,7 @@
 		}
 		
 		public function getAllCategoryWithContent(){
-			$this->db->query("SELECT DISTINCT cat.category_titulo, cat.icono FROM ".$this->name_base.".category as cat inner join ".$this->name_base.".content as cont on cat.id_categoria = cont.id_categoria");
+			$this->db->query("SELECT DISTINCT cat.category_titulo, cat.icono FROM gatopard_gatopardoestudio.category as cat");
 			return $this->db->rows();
 		}
 

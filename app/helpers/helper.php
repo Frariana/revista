@@ -1,8 +1,7 @@
 <?php
     #para redireccionar pagina
     function redireccionar($pagina, $mensaje){
-    	$mensajeToast = $mensaje;
-		header('Location: '.RUTA_URL.$pagina);
+    	header('Location: '.RUTA_URL.$pagina);
     }
     function day($fecha){
     	$date  = DateTime::createFromFormat("Y-m-d H:i:s", $fecha);
