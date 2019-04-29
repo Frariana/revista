@@ -32,7 +32,7 @@
 		public function insert(){
 			$this->verificarSession();
 			if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-				$imagen = file_get_contents($_FILES['image']['tmp_name']);
+				$imagen = file_get_contents($_FILES['userfile']['tmp_name']);
 				$icono = $this->contentsModel->getCategoryForId($_POST['id_categoria']);
 				$data = [
 					'titulo'       => $_POST['titulo'],
@@ -40,8 +40,13 @@
 					'creador'      => $_POST['creador'],
 					'icono'        => $icono->icono,
 					'imagen'       => $imagen,
-					'id_categoria' => $_POST['id_categoria']
+					'id_categoria' => $_POST['id_categoria'],
+					'slider'       => $_POST['slider'],
+					'bloque1'      => $_POST['bloque1'],
+					'bloque2'      => $_POST['bloque2'],
+					'bloque3'      => $_POST['bloque3']
 				];
+				var_dump($data); exit();
 				if ($this->contentsModel->insert($data)){
 					$mensaje = "Contenido creado";
 				}else{
@@ -59,6 +64,7 @@
 		public function edit($id){
 			$this->verificarSession();
 			if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+				$imagen = file_get_contents($_FILES['userfile']['tmp_name']);
 				$icono = $this->contentsModel->getCategoryForId($_POST['id_categoria']);
 				$data = [
 					'id_contenido' => $id,
@@ -66,7 +72,12 @@
 					'cuerpo'       => $_POST['cuerpo'],
 					'creador'      => $_POST['creador'],
 					'icono'        => $icono->icono,
-					'id_categoria' => $_POST['categoria']
+					'imagen'       => $imagen,
+					'id_categoria' => $_POST['categoria'],
+					'slider'       => $_POST['slider'],
+					'bloque1'      => $_POST['bloque1'],
+					'bloque2'      => $_POST['bloque2'],
+					'bloque3'      => $_POST['bloque3']
 				];
 				if ($this->contentsModel->update($data)){
 					$mensaje = "Contenido modificado";
@@ -82,8 +93,15 @@
 					'cuerpo'          => $content->cuerpo,
 					'creador'         => $content->creador,
 					'id_categoria'    => $content->id_categoria,
-					'icono'           => $content->icono
+					'icono'           => $content->icono,
+					'userfile'        => $content->imagen,
+					'slider'          => $content->slider,
+					'bloque1'         => $content->bloque1,
+					'bloque2'         => $content->bloque2,
+					'bloque3'         => $content->bloque3
 				];
+				var_dump($data['dataEditContent']);
+				exit();
 				$this->view('common/head');
 				$this->view('admin/header');
 				$data['categorias'] =  $this->contentsModel->getAllCategory();
@@ -97,20 +115,6 @@
 				$mensaje = "Contenido no eliminado, algo sucedió";
 			}
 			redireccionar('/content', $mensaje);
-		}
-
-		public function searchContent(){ //api rest
-			header("Access-Control-Allow-Origin: *");
-			header("Content-Type: application/json; charset=UTF-8");
-			header("Access-Control-Allow-Methods: POST");
-			header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-			if (!isset($_POST['busqueda'])){
-				echo json_encode("error");
-			}else{
-				$data = $_POST['busqueda'];
-				$result = $this->contentsModel->searchContent($data);
-	            echo json_encode($result);
-			}
 		}
 	}
 ?>

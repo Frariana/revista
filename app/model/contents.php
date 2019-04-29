@@ -9,13 +9,17 @@
 		}
 
 		public function insert($data){
-			$this->db->query("INSERT INTO ".$this->name_base.".content (content_titulo, cuerpo, fecha, creador, icono, id_categoria, imagen) VALUES (:titulo, :cuerpo, now(), :creador, :icono, :id_categoria, :imagen )");
+			$this->db->query("INSERT INTO ".$this->name_base.".content (content_titulo, cuerpo, fecha, creador, icono, id_categoria, imagen, slider, bloque1, bloque2, bloque3) VALUES (:titulo, :cuerpo, now(), :creador, :icono, :id_categoria, :imagen, :slider, :bloque1, :bloque2, :bloque3 )");
 			$this->db->bind(':titulo', $data['titulo']);
 			$this->db->bind(':cuerpo', $data['cuerpo']);
 			$this->db->bind(':creador', $data['creador']);
 			$this->db->bind(':icono', $data['icono']);
 			$this->db->bind(':id_categoria', $data['id_categoria']);
 			$this->db->bind(':imagen', $data['imagen']);
+			$this->db->bind(':slider', $data['slider']);
+			$this->db->bind(':bloque1', $data['bloque1']);
+			$this->db->bind(':bloque2', $data['bloque2']);
+			$this->db->bind(':bloque3', $data['bloque3']);
 			if ($this->db->execute()){
                 return true;
             }else{
@@ -24,13 +28,18 @@
 		}
 
 		public function update($data){
-			$this->db->query("UPDATE ".$this->name_base.".content SET content_titulo = :titulo, cuerpo = :cuerpo, icono = :icono, creador = :creador, id_categoria = :id_categoria WHERE id_contenido = :id_contenido");
+			$this->db->query("UPDATE ".$this->name_base.".content SET content_titulo = :titulo, cuerpo = :cuerpo, icono = :icono, creador = :creador, id_categoria = :id_categoria, imagen = :imagen, slider = :slider, bloque1 = :bloque1, bloque2 = :bloque2, bloque3 = :bloque3 WHERE id_contenido = :id_contenido");
 			$this->db->bind(':id_contenido', $data['id_contenido']);
 			$this->db->bind(':titulo', $data['titulo']);
 			$this->db->bind(':cuerpo', $data['cuerpo']);
 			$this->db->bind(':icono', $data['icono']);
 			$this->db->bind(':creador', $data['creador']);
 			$this->db->bind(':id_categoria', $data['id_categoria']);
+			$this->db->bind(':imagen', $data['imagen']);
+			$this->db->bind(':slider', $data['slider']);
+			$this->db->bind(':bloque1', $data['bloque1']);
+			$this->db->bind(':bloque2', $data['bloque2']);
+			$this->db->bind(':bloque3', $data['bloque3']);
 			if ($this->db->execute()){
 				return true;
 			}else{
@@ -75,7 +84,12 @@
 				    icono,
 				    fecha,
 					creador,
-					id_categoria
+					imagen,
+					id_categoria,
+					slider,
+					bloque1,
+					bloque2,
+					bloque3
 				FROM
 				    ".$this->name_base.".content
 				where id_contenido = :id_contenido
@@ -243,17 +257,6 @@
 			}else{
 				return false;
 			}
-		}
-		public function searchContent($data){
-			$this->db->query("
-				SELECT
-					content_titulo,
-					icono,
-					fecha,
-					creador 
-				FROM ".$this->name_base.".content
-				where content_titulo like '%" . $data . "%'");
-            return $this->db->rows();
 		}
 	}
 ?>

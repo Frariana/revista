@@ -33,7 +33,7 @@
             <label for="creador">Creador</label>
         </div>
         <div class="input-field col s6">
-            <i class="material-icons prefix">more</i>
+            <i class="material-icons prefix">class</i>
             <select id="categoria" name="id_categoria">
                 <?php if ($data['categorias']){?>
                     <option value="">Sin categoría</option>
@@ -44,21 +44,58 @@
                     <option value="">Sin categorías definidas aún</option>
                 <?php } ?>
             </select>
+            <label>Categoría</label>
             <input type="hidden" name="icono" value="">
         </div>
-        <div class="input-field col s8">
-            <i class="material-icons prefix">line_style</i>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">subtitles</i>
             <?php if ($edit) {?>
                 <input value="<?php echo $data['dataEditContent']['content_titulo'] ?>" id="titulo" name="titulo" type="text" required>
             <?php }else{ ?>
                 <input id="titulo" name="titulo" type="text" required>
             <?php } ?>
-      	     <label for="titulo">Título</label>
+      	    <label for="titulo">Título</label>
         </div>
-        <div class="input-field file-field col s4">
-            <div class="btn">Imagen<input type="file" name="userfile" id="userfile" value="NULL"></div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix">view_carousel</i>
+            <label>Mostrar éste contenido en:</label>&nbsp;
+        </div>
+        <div class="input-field col s12">
+            <div class="switch col s6 m3">
+                <label><input type="checkbox" name="slider"><span>Slider</span></label>
+            </div>
+            <div class="switch col s6 m3">
+                <label><input type="checkbox" name="bloque1"><span>Bloque 1</span></label>
+            </div>
+            <div class="switch col s6 m3">
+                <label><input type="checkbox" name="bloque2"><span>Bloque 2</span></label>
+            </div>
+            <div class="switch col s6 m3">
+                <label><input type="checkbox" name="bloque3"><span>Bloque 3</span></label>
+            </div>
+        </div>
+        <?php if($edit && $data['dataEditContent']['userfile']){ ?>
+            <div class="col s12">
+                <div class="container">
+                    <div class="card">
+                        <div class="card-image">
+                            <img class="responsive-img materialboxed" src="data:image/jpeg;base64,<?php echo base64_encode($data['dataEditContent']['userfile']);?>"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+        <div class="input-field file-field col s12">
+            <div class="btn">
+                <?php if($edit && $data['dataEditContent']['userfile']){?>
+                    Cambiar imagen principal
+                <?php }else{ ?>
+                    Imagen principal
+                <?php } ?>
+                <input type="file" name="userfile" id="userfile">
+            </div>
             <div class="file-path-wrapper">
-                <input type="file" class="form-control" id="image" name="image" multiple>
+                <input class="form-control file-path validate" type="text" id="image" name="image">
             </div>
         </div>
         <div class="input-field col s12">
