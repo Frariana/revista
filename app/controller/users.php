@@ -5,6 +5,7 @@
         
         public function __construct(){
 			$this->usersModel =  $this->model('user');
+			$this->session = new Session;
 			$this->session->getInstance();
         }
         public function index(){

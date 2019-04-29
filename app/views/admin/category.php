@@ -3,9 +3,6 @@
   if (array_key_exists('dataEditCategoria', $data)){
     $edit = true;
   }
-  if (isset($mensaje)){
-    echo "M.toast({html: '".$mensaje."'})";
-  }
 ?>
 <div>
   <a href="#modalCategoria" class="waves-effect waves-light btn modal-trigger right">Nueva categoría</a>
@@ -17,12 +14,12 @@
   <?php }else{ ?>
     <?php foreach ($data['categorias'] as $categoria) : ?>
       <li class="collection-item">
-        <div>
-          <i class="tiny material-icons"><?php echo $categoria->icono; ?></i>
-          <?php echo $categoria->category_titulo; ?>
-          <a href="#eliminar" name="<?php echo $categoria->id_categoria; ?>" class="secondary-content modal-trigger botonesBorrar"><i class="tiny material-icons">delete</i></a>
-          <a href="<?php echo RUTA_URL."/admin/editCategory/".$categoria->id_categoria; ?>" class="secondary-content"><i class="tiny material-icons">edit</i></a>
-        </div>
+          <i class="small material-icons"><?php echo $categoria->icono; ?></i>
+          <span style="font-size: 1.6rem"><?php echo $categoria->category_titulo; ?></span>
+          <div class="chip secondary-content" style="background-color: white">
+          <a style="left: 20px" href="#eliminar" name="<?php echo $categoria->id_categoria; ?>" class="secondary-content modal-trigger botonesBorrar waves-effect waves-circle waves-light btn-floating"><i class="tiny material-icons">delete</i></a>
+          <a href="<?php echo RUTA_URL."/admin/editCategory/".$categoria->id_categoria; ?>" class="secondary-content waves-effect waves-circle waves-light btn-floating"><i class="tiny material-icons">edit</i></a>
+          </div>
       </li>
     <?php endforeach; ?>
   <?php } ?>
@@ -35,7 +32,7 @@
   </div>
   <div class="modal-footer">
     <a id="buttonDelete" class="modal-close waves-effect waves-light lighten-1 btn">Eliminar</a>
-    <a href="#" class="modal-close waves-effect waves-light grey lighten-1 btn">Cancelar</a>
+    <a href="<?php echo RUTA_URL?>/admin/categorias" class="modal-close waves-effect waves-light grey lighten-1 btn">Cancelar</a>
   </div>
 </div>
 
@@ -1006,7 +1003,7 @@
     <?php if($edit){ ?>
       <a href="<?php echo RUTA_URL?>/admin/categorias" class="modal-close waves-effect waves-light grey lighten-1 btn">Cancelar</a>
     <?php }else{ ?>
-      <a href="#" class="modal-close waves-effect waves-light grey lighten-1 btn">Cancelar</a>
+      <a href="<?php echo RUTA_URL?>/admin/categorias" class="modal-close waves-effect waves-light grey lighten-1 btn">Cancelar</a>
     <?php } ?>
     </form>
   </div>

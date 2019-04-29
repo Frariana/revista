@@ -9,7 +9,7 @@
 	</div>
 </div>
 <div class="">
-	<ul class="collection" id="contenidoExistente">
+	<!-- <ul class="collection" id="contenidoExistente">
 		<?php if (!empty($data['contents']['contenido'])){ ?>
 			<?php foreach ($data['contents']['contenido'] as $content) : ?>
 				<li class="collection-item" id="collectionContent">
@@ -25,7 +25,27 @@
 		<?php }else{ ?>
 			<li class="collection-item">Sin contenido creado</li>
 		<?php } ?>
-	</ul>
+	</ul> -->
+
+	<?php if (!empty($data['contents']['contenido'])){ ?>
+		<?php foreach ($data['contents']['contenido'] as $content) : ?>
+			<div class="col s12 m6 l4">
+				<div class="card ">
+					<div class="card-image">
+						<img src="data:image/jpeg;base64,<?php echo base64_encode($content->imagen);?>">
+						<span class="card-title" style='background: rgba(3, 3, 3, .3); text-shadow: 1px 1px #000000'><?php echo $content->content_titulo; ?></span>
+					</div>
+					<div class="card-action">
+						<a href="<?php echo RUTA_URL.'/v/g/'.url($content->content_titulo); ?>" class="btn-floating waves-effect waves-light orange-text"><i class="tiny material-icons">find_in_page</i>Ver</a>
+						<a href="<?php echo RUTA_URL.'/content/edit/'.$content->id_contenido; ?>" class="btn-floating waves-effect waves-light orange-text"><i class="tiny material-icons">edit</i>Editar</a>
+						<a href="#eliminar" name="<?php echo $content->id_contenido; ?>" class="modal-trigger botonesBorrar btn-floating waves-effect waves-light btn red-text"><i class="tiny material-icons">delete</i>Eliminar</a>
+					</div>
+				</div>
+			</div>
+		<?php endforeach; ?>
+	<?php }else{ ?>
+		<li class="collection-item">Sin contenido creado</li>
+	<?php } ?>
 </div>
 <?php if ($data['contents']['paginasAMostrar'] > 1){ ?>
 	<ul class="pagination">

@@ -1,4 +1,4 @@
-<nav style="background-color: #010217">
+<nav style="opacity:0.5;">
 	<div class="container">
 		<div class="nav-wrapper">
             <a style="color: #F11919" href="<?php echo RUTA_URL; ?>" class="brand-logo center"><?php echo NOMBRE_SITIO; ?></a>
