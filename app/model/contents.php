@@ -28,18 +28,29 @@
 		}
 
 		public function update($data){
-			$this->db->query("UPDATE ".$this->name_base.".content SET content_titulo = :titulo, cuerpo = :cuerpo, icono = :icono, creador = :creador, id_categoria = :id_categoria, imagen = :imagen, slider = :slider, bloque1 = :bloque1, bloque2 = :bloque2, bloque3 = :bloque3 WHERE id_contenido = :id_contenido");
+			$this->db->query("UPDATE ".$this->name_base.".content SET content_titulo = :titulo, cuerpo = :cuerpo, icono = :icono, creador = :creador, id_categoria = :id_categoria, slider = :slider, bloque1 = :bloque1, bloque2 = :bloque2, bloque3 = :bloque3 WHERE id_contenido = :id_contenido");
 			$this->db->bind(':id_contenido', $data['id_contenido']);
 			$this->db->bind(':titulo', $data['titulo']);
 			$this->db->bind(':cuerpo', $data['cuerpo']);
 			$this->db->bind(':icono', $data['icono']);
 			$this->db->bind(':creador', $data['creador']);
 			$this->db->bind(':id_categoria', $data['id_categoria']);
-			$this->db->bind(':imagen', $data['imagen']);
+			// $this->db->bind(':imagen', $data['imagen']);
 			$this->db->bind(':slider', $data['slider']);
 			$this->db->bind(':bloque1', $data['bloque1']);
 			$this->db->bind(':bloque2', $data['bloque2']);
 			$this->db->bind(':bloque3', $data['bloque3']);
+			if ($this->db->execute()){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		public function updateImagen($data){
+			$this->db->query("UPDATE ".$this->name_base.".content SET imagen = :imagen  WHERE id_contenido = :id_contenido");
+			$this->db->bind(':id_contenido', $data['id_contenido']);
+			$this->db->bind(':imagen', $data['imagen']);
 			if ($this->db->execute()){
 				return true;
 			}else{
@@ -80,7 +91,7 @@
 				SELECT
 					id_contenido,
 				    content_titulo,
-				    SUBSTRING(cuerpo, 4, 50) AS cuerpo,
+				    cuerpo,
 				    icono,
 				    fecha,
 					creador,

@@ -46,7 +46,6 @@
 					'bloque2'      => $_POST['bloque2'],
 					'bloque3'      => $_POST['bloque3']
 				];
-				var_dump($data); exit();
 				if ($this->contentsModel->insert($data)){
 					$mensaje = "Contenido creado";
 				}else{
@@ -64,7 +63,14 @@
 		public function edit($id){
 			$this->verificarSession();
 			if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-				$imagen = file_get_contents($_FILES['userfile']['tmp_name']);
+				if ($_FILES['userfile']['tmp_name']){
+					$imagen = file_get_contents($_FILES['userfile']['tmp_name']);
+					$dataImg = [
+						'id_contenido' => $id,
+						'imagen'       => $imagen
+					];
+					$this->contentsModel->updateImagen($dataImg);
+				}
 				$icono = $this->contentsModel->getCategoryForId($_POST['id_categoria']);
 				$data = [
 					'id_contenido' => $id,
@@ -72,7 +78,7 @@
 					'cuerpo'       => $_POST['cuerpo'],
 					'creador'      => $_POST['creador'],
 					'icono'        => $icono->icono,
-					'imagen'       => $imagen,
+					// 'imagen'       => $imagen,
 					'id_categoria' => $_POST['categoria'],
 					'slider'       => $_POST['slider'],
 					'bloque1'      => $_POST['bloque1'],
@@ -100,8 +106,6 @@
 					'bloque2'         => $content->bloque2,
 					'bloque3'         => $content->bloque3
 				];
-				var_dump($data['dataEditContent']);
-				exit();
 				$this->view('common/head');
 				$this->view('admin/header');
 				$data['categorias'] =  $this->contentsModel->getAllCategory();

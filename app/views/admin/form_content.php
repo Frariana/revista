@@ -62,16 +62,16 @@
         </div>
         <div class="input-field col s12">
             <div class="switch col s6 m3">
-                <label><input type="checkbox" name="slider"><span>Slider</span></label>
+                <label><input type="checkbox" name="slider" <?php if($edit && $data['dataEditContent']['slider']=='on'){ echo "checked='checked'";} ?>><span>Slider</span></label>
             </div>
             <div class="switch col s6 m3">
-                <label><input type="checkbox" name="bloque1"><span>Bloque 1</span></label>
+                <label><input type="checkbox" name="bloque1" <?php if($edit && $data['dataEditContent']['bloque1']=='on'){ echo "checked='checked'";} ?>><span>Bloque 1</span></label>
             </div>
             <div class="switch col s6 m3">
-                <label><input type="checkbox" name="bloque2"><span>Bloque 2</span></label>
+                <label><input type="checkbox" name="bloque2" <?php if($edit && $data['dataEditContent']['bloque2']=='on'){ echo "checked='checked'";} ?>><span>Bloque 2</span></label>
             </div>
             <div class="switch col s6 m3">
-                <label><input type="checkbox" name="bloque3"><span>Bloque 3</span></label>
+                <label><input type="checkbox" name="bloque3" <?php if($edit && $data['dataEditContent']['bloque3']=='on'){ echo "checked='checked'";} ?>><span>Bloque 3</span></label>
             </div>
         </div>
         <?php if($edit && $data['dataEditContent']['userfile']){ ?>
@@ -84,20 +84,27 @@
                     </div>
                 </div>
             </div>
-        <?php } ?>
-        <div class="input-field file-field col s12">
-            <div class="btn">
-                <?php if($edit && $data['dataEditContent']['userfile']){?>
+            <div class="input-field file-field col s12">
+                <div class="btn">
                     Cambiar imagen principal
-                <?php }else{ ?>
+                    <input type="file" name="userfile" id="userfile">
+                </div>
+                <input type="file" name="userfile" id="userfile" >
+                    <div class="file-path-wrapper">
+                    <input class="form-control file-path validate" type="text" id="image" name="image">
+                </div>
+            </div>
+        <?php }else{ ?>
+            <div class="input-field file-field col s12">
+                <div class="btn">
                     Imagen principal
-                <?php } ?>
-                <input type="file" name="userfile" id="userfile">
+                    <input type="file" name="userfile" id="userfile">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="form-control file-path validate" type="text" id="image" name="image">
+                </div>
             </div>
-            <div class="file-path-wrapper">
-                <input class="form-control file-path validate" type="text" id="image" name="image">
-            </div>
-        </div>
+        <?php } ?>
         <div class="input-field col s12">
             <i class="material-icons prefix">chrome_reader_mode</i>
             <?php if ($edit) {?>

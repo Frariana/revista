@@ -5,7 +5,7 @@
         
         public function __construct(){
 			$this->usersModel =  $this->model('user');
-			$this->session = Session::getInstance();
+			$this->session->getInstance();
         }
         public function index(){
 			$this->verificarSession();
