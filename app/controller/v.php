@@ -13,6 +13,7 @@
             $data['categorias'] = $this->contentsModel->getAllCategory();
             $this->view('common/header', $data);
             $data['contents'] = $this->contentsModel->getAllContentsForCant(20);
+            $data['sliders'] = $this->contentsModel->getSliders();
             $this->view('common/home', $data);
             $this->view('common/footer', $data);
         }

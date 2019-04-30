@@ -9,28 +9,10 @@
 	</div>
 </div>
 <div class="">
-	<!-- <ul class="collection" id="contenidoExistente">
-		<?php if (!empty($data['contents']['contenido'])){ ?>
-			<?php foreach ($data['contents']['contenido'] as $content) : ?>
-				<li class="collection-item" id="collectionContent">
-          			<i class="material-icons tiny teal-text"><?php echo $content->icono; ?></i>
-					<span><?php echo $content->content_titulo; ?></span> -
-					<i><?php echo $content->creador; ?></i> -
-					<script>formatoFecha('<?php echo $content->fecha; ?>')</script>
-					<a href="#eliminar" name="<?php echo $content->id_contenido; ?>" class="secondary-content modal-trigger botonesBorrar"><i class="tiny material-icons">delete</i></a>
-        			<a href="<?php echo RUTA_URL.'/content/edit/'.$content->id_contenido; ?>" class="secondary-content"><i class="tiny material-icons">edit</i></a>
-					<a href="<?php echo RUTA_URL.'/v/g/'.url($content->content_titulo); ?>" class="secondary-content"><i class="tiny material-icons">find_in_page</i></a>
-				</li>
-			<?php endforeach; ?>
-		<?php }else{ ?>
-			<li class="collection-item">Sin contenido creado</li>
-		<?php } ?>
-	</ul> -->
-
 	<?php if (!empty($data['contents']['contenido'])){ ?>
 		<?php foreach ($data['contents']['contenido'] as $content) : ?>
 			<div class="col s12 m6 l4">
-				<div class="card ">
+				<div class="card">
 					<div class="card-image">
 						<img src="data:image/jpeg;base64,<?php echo base64_encode($content->imagen);?>">
 						<span class="card-title" style='background: rgba(3, 3, 3, .3); text-shadow: 1px 1px #000000'><?php echo $content->content_titulo; ?></span>
@@ -39,6 +21,10 @@
 						<a href="<?php echo RUTA_URL.'/v/g/'.url($content->content_titulo); ?>" class="btn-floating waves-effect waves-light orange-text"><i class="tiny material-icons">find_in_page</i>Ver</a>
 						<a href="<?php echo RUTA_URL.'/content/edit/'.$content->id_contenido; ?>" class="btn-floating waves-effect waves-light orange-text"><i class="tiny material-icons">edit</i>Editar</a>
 						<a href="#eliminar" name="<?php echo $content->id_contenido; ?>" class="modal-trigger botonesBorrar btn-floating waves-effect waves-light btn red-text"><i class="tiny material-icons">delete</i>Eliminar</a>
+						<?php if($content->slider=='on'){ echo "<label><i class='tiny material-icons'>filter</i></label>"; } ?>
+					<?php if($content->bloque1=='on'){ echo "<label><i class='tiny material-icons'>filter_1</i></label>"; } ?>
+					<?php if($content->bloque2=='on'){ echo "<label><i class='tiny material-icons'>filter_2</i></label>"; } ?>
+					<?php if($content->bloque3=='on'){ echo "<label><i class='tiny material-icons'>filter_3</i></label>"; } ?>
 					</div>
 				</div>
 			</div>

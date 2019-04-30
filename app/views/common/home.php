@@ -1,35 +1,19 @@
-<div class="slider">
-    <ul class="slides">
-      <li>
-        <img src="https://lorempixel.com/580/250/nature/1"> <!-- random image -->
-        <div class="caption center-align">
-          <h3>This is our big Tagline!</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-      <li>
-        <img src="https://lorempixel.com/580/250/nature/2"> <!-- random image -->
-        <div class="caption left-align">
-          <h3>Left Aligned Caption</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-      <li>
-        <img src="https://lorempixel.com/580/250/nature/3"> <!-- random image -->
-        <div class="caption right-align">
-          <h3>Right Aligned Caption</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-      <li>
-        <img src="https://lorempixel.com/580/250/nature/4"> <!-- random image -->
-        <div class="caption center-align">
-          <h3>This is our big Tagline!</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-        </div>
-      </li>
-    </ul>
-  </div>
+<?php if ($data['sliders']){?>
+	<div class="slider">
+		<ul class="slides">
+			<?php foreach($data['sliders'] as $sliders){ ?>
+				<li>
+					<img src="data:image/jpeg;base64,<?php echo base64_encode($sliders->imagen);?>"/>
+					<div class="caption left-align" style="text-shadow: 1px 1px #000;">
+						<h2 style="text-transform: uppercase;"><?php echo $sliders->content_titulo; ?></h2>
+						<h5 class="light grey-text text-lighten-3"><?php echo strip_tags($sliders->cuerpo).'...'; ?></h5><br>
+						<a class="pulse waves-effect waves-light btn red darken-4" href="<?php echo RUTA_URL.'/v/g/'.url($sliders->content_titulo); ?>">Ver más</a>
+					</div>
+				</li>
+			<?php } ?>
+		</ul>
+  	</div>
+<?php } ?>
 
 <?php if ($data['contents']){?>
 	<?php foreach($data['contents'] as $content){ ?>
@@ -73,7 +57,10 @@
 
 <script>
  $(document).ready(function(){
-    $('.slider').slider();
+    $('.slider').slider({
+		height : 600,
+		indicators: false
+	});
   });
      
 </script>

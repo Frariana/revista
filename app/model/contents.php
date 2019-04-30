@@ -211,6 +211,58 @@
 			return $res;
 		}
 
+		public function getSliders(){
+			$this->db->query("
+				SELECT
+					content_titulo,
+					SUBSTRING(cuerpo, 4, 50) AS cuerpo,
+					icono,
+					imagen
+				FROM ".$this->name_base.".content
+				WHERE slider = 'on'");
+			$res = $this->db->rows();
+			return $res;
+		}
+
+		public function getBloque1(){
+			$this->db->query("
+				SELECT
+					content_titulo,
+					SUBSTRING(co.cuerpo, 4, 50) AS cuerpo,
+					icono,
+					imagen
+				FROM ".$this->name_base.".content
+				WHERE bloque1 = 'on'");
+			$res = $this->db->rows();
+			return $res;
+		}
+
+		public function getBloque2(){
+			$this->db->query("
+				SELECT
+					content_titulo,
+					SUBSTRING(co.cuerpo, 4, 50) AS cuerpo,
+					icono,
+					imagen
+				FROM ".$this->name_base.".content
+				WHERE bloque2 = 'on'");
+			$res = $this->db->rows();
+			return $res;
+		}
+
+		public function getBloque3(){
+			$this->db->query("
+				SELECT
+					content_titulo,
+					SUBSTRING(co.cuerpo, 4, 50) AS cuerpo,
+					icono,
+					imagen
+				FROM ".$this->name_base.".content
+				WHERE bloque31 = 'on'");
+			$res = $this->db->rows();
+			return $res;
+		}
+
 		public function getAllCategory(){
 			$this->db->query("
 				SELECT 
