@@ -8,14 +8,23 @@
   		<label for="buscar">Buscar</label>
 	</div>
 </div>
-<div class="">
+<div>
 	<?php if (!empty($data['contents']['contenido'])){ ?>
 		<?php foreach ($data['contents']['contenido'] as $content) : ?>
 			<div class="col s12 m6 l4">
 				<div class="card">
 					<div class="card-image">
-						<img src="data:image/jpeg;base64,<?php echo base64_encode($content->imagen);?>">
-						<span class="card-title" style='background: rgba(3, 3, 3, .3); text-shadow: 1px 1px #000000'><?php echo $content->content_titulo; ?></span>
+						<?php if ($content->imagen){ ?>
+							<img src="data:image/jpeg;base64,<?php echo base64_encode($content->imagen);?>">
+						<?php }else{ ?>
+						<div>
+							<h5 class="center-align grey-text">
+								<i class="material-icons medium">broken_image</i>
+								<p>Sin imagen</p>
+							</h5>
+						</div>
+						<?php } ?>
+						<span class="card-title truncate" style='background: rgba(3, 3, 3, .3); text-shadow: 1px 1px #000000'><?php echo $content->content_titulo; ?></span>
 					</div>
 					<div class="card-action">
 						<a href="<?php echo RUTA_URL.'/v/g/'.url($content->content_titulo); ?>" class="btn-floating waves-effect waves-light orange-text"><i class="tiny material-icons">find_in_page</i>Ver</a>
@@ -30,7 +39,8 @@
 			</div>
 		<?php endforeach; ?>
 	<?php }else{ ?>
-		<li class="collection-item">Sin contenido creado</li>
+		<br><br>
+		<p class="center"><i class="material-icons">mood_bad</i>&nbsp;Sin contenido creado</p>
 	<?php } ?>
 </div>
 <?php if ($data['contents']['paginasAMostrar'] > 1){ ?>

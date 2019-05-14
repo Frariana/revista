@@ -14,6 +14,8 @@
     $edit = false;
     if (array_key_exists('dataEditContent', $data)){
         $edit = true;
+        // var_dump($data['dataEditContent']);
+        // exit();
     }
 ?>
 <div class="container">
@@ -62,16 +64,16 @@
         </div>
         <div class="input-field col s12">
             <div class="switch col s6 m3">
-                <label><input type="checkbox" name="slider" <?php if($edit && $data['dataEditContent']['slider']=='on'){ echo "checked='checked'";} ?>><span>Slider</span></label>
+                <label><input type="checkbox" class="filled-in" name="slider" <?php if($edit && $data['dataEditContent']['slider']=='on'){ echo "checked='checked'";} ?>><span>Slider</span></label>
             </div>
             <div class="switch col s6 m3">
-                <label><input type="checkbox" name="bloque1" <?php if($edit && $data['dataEditContent']['bloque1']=='on'){ echo "checked='checked'";} ?>><span>Bloque 1</span></label>
+                <label><input type="checkbox" class="filled-in" name="bloque1" <?php if($edit && $data['dataEditContent']['bloque1']=='on'){ echo "checked='checked'";} ?>><span>Bloque 1</span></label>
             </div>
             <div class="switch col s6 m3">
-                <label><input type="checkbox" name="bloque2" <?php if($edit && $data['dataEditContent']['bloque2']=='on'){ echo "checked='checked'";} ?>><span>Bloque 2</span></label>
+                <label><input type="checkbox" class="filled-in" name="bloque2" <?php if($edit && $data['dataEditContent']['bloque2']=='on'){ echo "checked='checked'";} ?>><span>Bloque 2</span></label>
             </div>
             <div class="switch col s6 m3">
-                <label><input type="checkbox" name="bloque3" <?php if($edit && $data['dataEditContent']['bloque3']=='on'){ echo "checked='checked'";} ?>><span>Bloque 3</span></label>
+                <label><input type="checkbox" class="filled-in" name="bloque3" <?php if($edit && $data['dataEditContent']['bloque3']=='on'){ echo "checked='checked'";} ?>><span>Bloque 3</span></label>
             </div>
         </div>
         <?php if($edit && $data['dataEditContent']['userfile']){ ?>

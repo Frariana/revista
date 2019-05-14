@@ -32,15 +32,15 @@
 		public function insert(){
 			$this->verificarSession();
 			if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-				$imagen = file_get_contents($_FILES['userfile']['tmp_name']);
-				$icono = $this->contentsModel->getCategoryForId($_POST['id_categoria']);
+				// var_dump($_POST['slider']);
+				// exit();
 				$data = [
 					'titulo'       => $_POST['titulo'],
 					'cuerpo'       => $_POST['cuerpo'],
 					'creador'      => $_POST['creador'],
-					'icono'        => $icono->icono,
-					'imagen'       => $imagen,
-					'id_categoria' => $_POST['id_categoria'],
+					'icono'        => $_POST['id_categoria'] ? $icono->icono : NULL,
+					'imagen'       => $_POST['image'] ? file_get_contents($_FILES['userfile']['tmp_name']) : NULL,
+					'id_categoria' => $_POST['id_categoria'] ? $icono->icono : NULL,
 					'slider'       => $_POST['slider'],
 					'bloque1'      => $_POST['bloque1'],
 					'bloque2'      => $_POST['bloque2'],

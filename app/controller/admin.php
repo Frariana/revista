@@ -12,7 +12,7 @@
 				redireccionar('/admin/home', $mensaje);
 			}else{
 				$this->view('common/head');
-				$this->view('common/header');
+				// $this->view('common/header');
 				$this->view('admin/login');	
 				$this->view('admin/footer');
 			}
