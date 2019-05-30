@@ -47,14 +47,14 @@
 						redireccionar('/admin/home', $mensaje);
 					}else{
 						$data = [
-							'mensaje' => 'Acceso denegado'];
+							'mensaje' => 'Acceso denegado1'];
 					}
 				}else{
 					$data = [
-						'mensaje' => 'Acceso denegado'];
-				} 
+						'mensaje' => 'Acceso denegado2'];
+				}
 				$this->view('common/head');
-				$this->view('common/header');
+				// $this->view('common/header');
 				$this->view('admin/login', $data);
 			}
 		}

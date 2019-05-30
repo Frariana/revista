@@ -24,7 +24,7 @@
 							</h5>
 						</div>
 						<?php } ?>
-						<span class="card-title truncate" style='background: rgba(3, 3, 3, .3); text-shadow: 1px 1px #000000'><?php echo $content->content_titulo; ?></span>
+						<span class="card-title truncate sombra-negra"><?php echo $content->content_titulo; ?></span>
 					</div>
 					<div class="card-action">
 						<a href="<?php echo RUTA_URL.'/v/g/'.url($content->content_titulo); ?>" class="btn-floating waves-effect waves-light orange-text"><i class="tiny material-icons">find_in_page</i>Ver</a>

@@ -1,11 +1,3 @@
-<?php
-    $cantidadCategorias = count($data['categorias']);
-    if ($cantidadCategorias > 3){
-        $logoCenter = true;
-    }else{
-        
-    }
-?>
 <nav class="grey darken-4" style="z-index: 10; position: fixed; ">
 	<div class="container">
 		<div class="nav-wrapper">
@@ -30,7 +22,7 @@
                 <?php } ?>
                 </ul>
             <?php } ?>
-            <a href="<?php echo RUTA_URL; ?>" class="brand-logo center" style="z-index: 5;"><img class="responsive-img" src="<?php echo RUTA_URL.'/public/img/logo-gato.png'?>"></a> 
+            <a href="<?php echo RUTA_URL; ?>" class="brand-logo center" style="z-index: 5;"><i class="material-icons large">all_inclusive</i></a> 
         </div>
 	</div>
 </nav>
@@ -43,3 +35,4 @@
         $('.tooltipped').tooltip();
     });
 </script>
+

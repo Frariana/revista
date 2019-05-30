@@ -36,6 +36,10 @@
                         icono varchar(60),
                         imagen longblob,
                         id_categoria int(11),
+                        slider tinyint(1),
+                        bloque1 tinyint(1),
+                        bloque2 tinyint(1),
+                        bloque3 tinyint(1)
                         PRIMARY KEY (id_contenido)
                     ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
                     CREATE TABLE IF NOT EXISTS ".$this->name_base.".category (

@@ -20,3 +20,7 @@
 /*.borde-gris{
 	border: 1px solid #e0e0e0 !important;
 }*/
+.sombra-negra{
+	background: rgba(3, 3, 3, .3);
+	text-shadow: 1px 1px #000000;
+}

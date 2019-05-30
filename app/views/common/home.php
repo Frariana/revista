@@ -6,7 +6,7 @@
 					<div class="card">
 						<div class="card-image">
 							<img width="100%" src="data:image/jpeg;base64,<?php echo base64_encode($content->imagen);?>"/>
-							<span class="card-title" style='background: rgba(3, 3, 3, .3); text-shadow: 1px 1px #000000'>
+							<span class="card-title sombra-negra">
 								<strong class="flow-text">
 									<?php if ($content->icono){
 										echo "<i class='material-icons'>".$content->icono."</i>";
