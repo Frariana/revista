@@ -52,5 +52,45 @@
     	$url = preg_replace("/[^a-zA-Z0-9\_\-\.\,\:]+/", "", $url);
     	return $url;
     }
-    
+    function GetPager($totalItems, $currentPage = 1, $pageSize = 10) {
+	    $totalPages = $totalItems;
+	    $startPage = $endPage = 0;
+	    if ($totalPages <= 10) {
+	        // less than 10 total pages so show all
+	        $startPage = 1;
+	        $endPage = $totalPages;
+	    } else {
+	        // more than 10 total pages so calculate start and end pages
+	        if ($currentPage <= 6) {
+	            $startPage = 1;
+	            $endPage = 10;
+	        } else if ($currentPage + 4 >= $totalPages) {
+	            $startPage = $totalPages - 9;
+	            $endPage = $totalPages;
+	        } else {
+	            $startPage = $currentPage - 5;
+	            $endPage = $currentPage + 4;
+	        }
+	    }
+	    // calculate start and end item indexes
+	    $startIndex = ($currentPage - 1) * $pageSize;
+	    $endIndex = min($startIndex + $pageSize - 1,$totalItems - 1);
+	    // create an array of pages to ng-repeat in the pager control
+	    //pages = _.range(startPage, endPage + 1);
+	    $pages = [];
+	    for ($i = $startPage; $i <= $endPage; $i++) {
+	        array_push($pages, $i);
+	    }
+	    // return object with all pager properties required by the view
+        $data['totalItems'] = $totalItems;
+        $data['currentPage'] = $currentPage;
+        $data['pageSize'] = $pageSize;
+        $data['totalPages'] = $totalPages;
+        $data['startPage'] = $startPage;
+        $data['endPage'] = $endPage;
+        $data['startIndex'] = $startIndex;
+        $data['endIndex'] = $endIndex;
+        $data['pages'] = $pages;
+	    return $data;    
+	}
 ?>

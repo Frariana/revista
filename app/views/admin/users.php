@@ -1,20 +1,22 @@
-<div>
-    <a class="waves-effect waves-light btn right" href="<?php echo RUTA_URL."/users/insert";?>">Crear usuario</a>
+<div class="row" style="margin-top: 1em">
+    <div class="container">
+        <a class="waves-effect waves-light btn right" href="<?php echo RUTA_URL."/users/insert";?>">Crear usuario</a>
+        <div class="row" style="margin-left: 1rem;">Usuarios creados:</div>
+        <ul class="collection">
+            <?php for ($i=0; $i < count($data['users']); $i++) { ?>
+                <li class="collection-item grey-text text-darken-2 ">
+                    <i class="material-icons">account_circle</i>
+                    <a class="modal-trigger borrar secondary-content deep-orange-text text-darken-3" <?php if ($i != 0){ echo "href='#eliminar'"; } ?> name="<?php echo $data['users'][$i]->id_user; ?>">Eliminar</a>
+                    <span class="secondary-content grey-text">&nbsp;|&nbsp;</span>
+                    <a class="editar secondary-content orange-text text-darken-3" href="<?php echo RUTA_URL ?>/users/edit/<?php echo $data['users'][$i]->id_user; ?>">Editar</a>
+                    <b><?php echo $data['users'][$i]->user; ?></b><br>
+                    <?php echo $data['users'][$i]->email;?><br>
+                    <i><?php if($data['users'][$i]->rol){ echo "Administrador"; }else{ echo "Creador"; } ?></i>
+                </li>
+            <?php } ?>
+        </ul>
+    </div>
 </div>
-<p style="margin-left: 1rem;">Usuarios creados:</p>
-<ul class="collection">
-    <?php for ($i=0; $i < count($data['users']); $i++) { ?>
-        <li class="collection-item">
-            <img src="<?php echo RUTA_URL.'/public/img/face.svg'?>" class="">
-            <?php echo $data['users'][$i]->user; ?><br>
-            <?php echo $data['users'][$i]->email;?><br>
-            <i><?php if($data['users'][$i]->rol){ echo "Administrador"; }else{ echo "Creador"; } ?></i>
-            <a class="modal-trigger borrar secondary-content deep-orange-text text-darken-3" <?php if ($i != 0){ echo "href='#eliminar'"; } ?> name="<?php echo $data['users'][$i]->id_user; ?>">Eliminar</a>
-            <span class="secondary-content grey-text">&nbsp;|&nbsp;</span>
-            <a class="editar secondary-content orange-text text-darken-3" href="<?php echo RUTA_URL ?>/users/edit/<?php echo $data['users'][$i]->id_user; ?>">Editar</a>
-        </li>
-    <?php } ?>
-</ul>
 
 <div id="eliminar" class="modal">
     <div class="modal-content">
@@ -31,7 +33,6 @@
         
 <script>
     $(document).ready(function(){
-        $('.modal').modal();
         $('.borrar').first().css({'color': 'silver'});
         $('.borrar').click(function(e){
             var id = this.name;

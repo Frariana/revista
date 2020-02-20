@@ -8,6 +8,8 @@
           		<li><a class="blue-grey-text tooltipped" data-position="bottom" data-tooltip="Cerrar Sesión" href="<?php echo RUTA_URL ?>/admin/logout"><i class="tiny material-icons">directions_run</i></a></li>
           	</ul>
           	<ul class="sidenav" id="mobile-demo">
+              <li><a href="#!"><i class="material-icons">menu</i>Menú</a></li>
+              <div class="divider"></div>
             	<li><a href="<?php echo RUTA_URL."/content";?>"><i class="tiny material-icons">content_copy</i>Contenido</a></li>
           		<li><a href="<?php echo RUTA_URL."/admin/categorias"?>"><i class="tiny material-icons">list</i>Categorias</a></li>
           		<li><a href="<?php echo RUTA_URL; ?>/users"><i class="tiny material-icons">person</i>Usuarios</a></li>

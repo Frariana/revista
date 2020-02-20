@@ -10,17 +10,22 @@
 
         public function index(){
             $this->view('common/head');
+            $data['bloque1'] = $this->contentsModel->getBloque1();
+            $data['bloque2'] = $this->contentsModel->getBloque2();
+            $data['bloque3'] = $this->contentsModel->getBloque3();
             $data['categorias'] = $this->contentsModel->getAllCategory();
             $this->view('common/header', $data);
             $data['sliders'] = $this->contentsModel->getSliders();
             $this->view('common/sliders', $data);
             $data['contents'] = $this->contentsModel->getAllContentsForCant(20);
             $this->view('common/home', $data);
-            $this->view('common/footer', $data);
         }
 
         public function g($link){ #ver contenido por titulo
             $this->view('common/head');
+            $data['bloque1'] = $this->contentsModel->getBloque1();
+            $data['bloque2'] = $this->contentsModel->getBloque2();
+            $data['bloque3'] = $this->contentsModel->getBloque3();
             $data['categorias'] = $this->contentsModel->getAllCategory();
             $this->view('common/header', $data);
             $data['content'] = $this->contentsModel->getContentForTitle(_url($link));
@@ -35,14 +40,19 @@
             $this->view('common/footer', $data);
         }
 
-        public function c($link){ #ver categorias
+        public function c($id_categoria){ #ver categorias
             $this->view('common/head');
+            $data['bloque1'] = $this->contentsModel->getBloque1();
+            $data['bloque2'] = $this->contentsModel->getBloque2();
+            $data['bloque3'] = $this->contentsModel->getBloque3();
             $data['categorias'] = $this->contentsModel->getAllCategory();#ver si existe contenido para la cat
             $this->view('common/header', $data);
-            $data['contents'] = $this->contentsModel->getContentForCategory(_url($link), 10);
-            $data['categoria'] = _url(ucwords($link));
+            // $data['contents'] = $this->contentsModel->getContentForCategory(_url($link), 10);
+            $data['contents'] = $this->contentsModel->getContentForCategoryId($id_categoria);
+            $data['categoria'] = $this->contentsModel->getCategoryForId($id_categoria);
+            $data['categoria'] = $data['categoria']->category_titulo;
             if (!$data['contents']){
-                $data['mensajeNotFound'] = 'Sin contenido';
+                $data['mensajeNotFound'] = 'Error 404 | Contenido no encontrado';
                 $this->view('common/not-found', $data);
             }else{
                 $this->view('common/list', $data);

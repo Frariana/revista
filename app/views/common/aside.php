@@ -1,27 +1,35 @@
-<br>
-<div class="col l3">
+<div class="grey darken-3 grey-text text-lighten-4" style="padding-bottom: 2em">
 	<div class="row">
-		<div class="row">
-			<div style='font-size: 1.2em;'>Recientes</div><div class='divider'></div>
-		</div>
-		<?php foreach($data['contents'] as $content) {?>
-			<?php if (!strstr($_SERVER['REQUEST_URI'], url($content->content_titulo))){?>
-			<div class="row">
-				<a class="grey-text text-darken-3" href="<?php echo RUTA_URL.'/v/g/'.url($content->content_titulo); ?>" >
-					<div class="col s3">
-						<div class="white-text blue-grey ?> lighten-2 center" class='flow-text'>
-							<?php echo day($content->fecha); ?>
-						</div>
-	                    <div class="white-text blue-grey lighten-1 center" style="font-size: .7em">
-	                    	<?php echo moth($content->fecha); ?>
-	                    </div>
+		<div class="container">
+			<br><div class="row flow-text bernard">Recientes</div>
+			<?php foreach($data['contents'] as $content) {?>
+				<?php if (!strstr($_SERVER['REQUEST_URI'], url($content->content_titulo))){?>
+					<div class="col l3 m4 6">
+						<a href="<?php echo RUTA_URL.'/v/g/'.url($content->content_titulo); ?>">
+							<?php if ($content->imagen){ ?>
+								<div class="card">
+									<div class="card-image" style="background-image: url(data:image/jpeg;base64,<?php echo base64_encode($content->imagen);?>); background-size: cover; background-position: center;">
+										<span class="card-title sombra-negra">
+											<strong class="flow-text">
+												<?php echo $content->content_titulo; ?>
+											</strong>
+										</span>
+									</div>
+								</div>
+							<?php }else{ ?>
+								<div class="card blue-grey darken-1">
+									<div class="card-content white-text">
+										<span class="card-title flow-text">
+											<?php echo $content->content_titulo; ?>
+										</span>
+					          			<p><?php echo $content->cuerpo; ?></p>
+					        		</div>
+					        	</div>
+							<?php } ?>
+						</a>
 					</div>
-					<div class="col s9" style="padding: 0">
-						<span><?php echo substr($content->content_titulo, 0, 40); ?></span>
-					</div>
-				</a>
-			</div>
+				<?php } ?>
 			<?php } ?>
-		<?php } ?>
+		</div>
 	</div>
 </div>

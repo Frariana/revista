@@ -1,6 +1,27 @@
 *{
 	/*color: #607d8b !important;*/
 }
+a{
+	color: #fafafa;
+}
+a:hover{
+	/*color: #424242;*/
+}
+.bajo-fullscreen a{
+	color: #e0e0e0;
+}
+.bajo-fullscreen a:hover{
+	color: #b71c1c;
+	text-shadow: 1px 1px #FFF;
+}
+blockquote {
+  border-left: 5px solid #424242; /* #b71c1c */
+  color: #b71c1c !important;
+}
+.sobre-slider{
+	position: relative;
+	z-index: 1000;
+}
 .uppercase{
 	text-transform: uppercase;
 }
@@ -14,13 +35,48 @@
 .card-content{
 	height: 250px;
 }
+.sobre-slider{
+  position: relative;
+  z-index: 1000;
+}
+.sombra-gris {
+  text-shadow: 1px 1px #e0e0e0;
+}
+.sombra-blanca {
+  text-shadow: 1px 1px #FFF;
+}
+.sombra-negra{
+	/*background: rgba(3, 3, 3, .3);*/
+	text-shadow: 1px 1px #000000;
+}
+.fondo-negro-transparente {
+	background: rgba(3, 3, 3, .3);
+}
+.slider{
+	height: 100%;
+	position: relative;
+}
+.slider .indicators .indicator-item.active {
+  background-color: #b71c1c;
+}
+.bajo-fullscreen {
+    top: 100%;
+	position: absolute;
+    width: 100%;
+}
 #mobile-demo > li{
 	color: rgba(0,0,0,0.54);
 }
-/*.borde-gris{
-	border: 1px solid #e0e0e0 !important;
-}*/
-.sombra-negra{
-	background: rgba(3, 3, 3, .3);
-	text-shadow: 1px 1px #000000;
+.bernard{
+	font-family: "Bernard MT Condensed";
+}
+.pagination li.active {
+  background-color: #009688 !important;
+}
+.dropdown-content {
+   overflow-y: visible;
+}
+
+.dropdown-content .dropdown-content {
+   margin-left: 100%;
 }

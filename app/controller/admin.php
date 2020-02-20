@@ -91,7 +91,7 @@
 		public function editCategory($id){
 			if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 				$data = [
-					'id_categoria' => $id,
+					'id' => $id,
 					'titulo' => $_POST['titulo'],
 					'icono' => $_POST['icono']
 				];
@@ -104,16 +104,16 @@
 			}else{
 				$categoria = $this->contentsModel->getCategoryForId($id);
 				$dataEditCategoria = [
-					'id_categoria' => $categoria->id_categoria,
+					'id_categoria' => $categoria->id,
 					'category_titulo' => $categoria->category_titulo,
 					'icono' => $categoria->icono 
 				];
-				$this->view('common/head');
-				$this->view('admin/header');
 				$data = [
 					'categorias' => $this->contentsModel->getAllCategory(),
 					'dataEditCategoria' => $dataEditCategoria
 				];
+				$this->view('common/head');
+				$this->view('admin/header');
 				$this->view('admin/menu', $data);
 				$this->view('admin/category', $data);
 			}

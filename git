@@ -1,4 +1,0 @@
-git log -> ultimos commits
-git checkout <rama> -> ir a la rama
-git checkout master -> ir rama principal
-git log > commits.txt -> guardar todos los commits

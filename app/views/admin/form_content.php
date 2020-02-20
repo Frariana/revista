@@ -21,7 +21,7 @@
 <div class="container">
     <div class="row"><br>
         <?php if ($edit) {?>
-            <form action="<?php echo RUTA_URL.'/content/edit/'.$data['dataEditContent']['id_contenido'] ?>" method="POST" enctype="multipart/form-data">
+            <form action="<?php echo RUTA_URL.'/content/edit/'.$data['dataEditContent']['id'] ?>" method="POST" enctype="multipart/form-data">
         <?php }else{ ?>
             <form action="<?php echo RUTA_URL."/content/insert" ?>" method="POST" enctype="multipart/form-data">
         <?php } ?>
@@ -40,14 +40,15 @@
                 <?php if ($data['categorias']){?>
                     <option value="">Sin categoría</option>
                     <?php foreach ($data['categorias'] as $categoria) { ?>
-                        <option <?php if($edit == true){ if($categoria->id_categoria == $data['dataEditContent']['id_categoria']){ echo "selected"; } } ?> value="<?php echo $categoria->id_categoria; ?>"><?php echo $categoria->category_titulo; ?></option>
+                        <option <?php if($edit == true){ if($categoria->id == $data['dataEditContent']['id_categoria']){ echo "selected"; } } ?> value="<?php echo $categoria->id; ?>">
+                            <?php echo $categoria->category_titulo; ?>
+                        </option>
                     <?php } ?>
                 <?php }else{ ?>
                     <option value="">Sin categorías definidas aún</option>
                 <?php } ?>
             </select>
             <label>Categoría</label>
-            <input type="hidden" name="icono" value="">
         </div>
         <div class="input-field col s12">
             <i class="material-icons prefix">subtitles</i>
@@ -64,16 +65,16 @@
         </div>
         <div class="input-field col s12">
             <div class="switch col s6 m3">
-                <label><input type="checkbox" class="filled-in" name="slider" <?php if($edit && $data['dataEditContent']['slider']=='on'){ echo "checked='checked'";} ?>><span>Slider</span></label>
+                <label><input type="checkbox" class="filled-in" name="slider" <?php if($edit && $data['dataEditContent']['slider']==true){ echo "checked='checked'";} ?>><span>Slider</span></label>
             </div>
             <div class="switch col s6 m3">
-                <label><input type="checkbox" class="filled-in" name="bloque1" <?php if($edit && $data['dataEditContent']['bloque1']=='on'){ echo "checked='checked'";} ?>><span>Bloque 1</span></label>
+                <label><input type="checkbox" class="filled-in" name="bloque1" <?php if($edit && $data['dataEditContent']['bloque1']==true){ echo "checked='checked'";} ?>><span>Bloque 1</span></label>
             </div>
             <div class="switch col s6 m3">
-                <label><input type="checkbox" class="filled-in" name="bloque2" <?php if($edit && $data['dataEditContent']['bloque2']=='on'){ echo "checked='checked'";} ?>><span>Bloque 2</span></label>
+                <label><input type="checkbox" class="filled-in" name="bloque2" <?php if($edit && $data['dataEditContent']['bloque2']==true){ echo "checked='checked'";} ?>><span>Bloque 2</span></label>
             </div>
             <div class="switch col s6 m3">
-                <label><input type="checkbox" class="filled-in" name="bloque3" <?php if($edit && $data['dataEditContent']['bloque3']=='on'){ echo "checked='checked'";} ?>><span>Bloque 3</span></label>
+                <label><input type="checkbox" class="filled-in" name="bloque3" <?php if($edit && $data['dataEditContent']['bloque3']==true){ echo "checked='checked'";} ?>><span>Bloque 3</span></label>
             </div>
         </div>
         <?php if($edit && $data['dataEditContent']['userfile']){ ?>
