@@ -27,7 +27,9 @@
 			$this->view('admin/header');
 			$this->view('admin/menu');
 			$res = $this->contentsModel->contarTotalVisitas();
+			$data['numeroDeVisitantes'] = $this->contentsModel->numeroDeVisitantes();
 			$data['totalVisitas'] = $res[0]->visitas;
+			$data['recientes'] = $this->contentsModel->getAllContentsForCant(10);
 			$this->view('admin/home', $data);
 			$this->view('admin/footer');
 		}

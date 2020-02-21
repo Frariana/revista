@@ -182,7 +182,7 @@
 		}
 
 		public function getCantContent(){
-			$this->db->query("SELECT * FROM ".$this->name_base.".content where 1");
+			$this->db->query("SELECT * FROM ".$this->name_base.".content");
 			$this->db->execute();
 			$res = $this->db->rowCount();
 			return $res;
@@ -353,6 +353,12 @@
 			}else{
 				return false;
 			}
+		}
+
+		public function numeroDeVisitantes(){ 
+			$this->db->query("SELECT * FROM ".$this->name_base.".visitaip");
+			$this->db->execute();
+			return $this->db->rowCount();
 		}
 
 		public function revisarIp($ip){ 

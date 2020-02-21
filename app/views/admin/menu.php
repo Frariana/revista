@@ -10,7 +10,7 @@
       <li>
         <div style="border-top: 1px solid #ddd" class="collapsible-header"><i class="material-icons">place</i>Diseño</div>
         <div class="collection">
-          <a href="<?php echo RUTA_URL."/admin/categorias"?>" class="collection-item">Categorias</a>
+          <a href="<?php echo RUTA_URL."/admin/categorias"?>" class="collection-item">Categorías</a>
           <a href="#!" class="collection-item ">Distribución</a>
         </div>
       </li>

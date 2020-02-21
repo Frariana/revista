@@ -11,7 +11,7 @@
               <li><a href="#!"><i class="material-icons">menu</i>Menú</a></li>
               <div class="divider"></div>
             	<li><a href="<?php echo RUTA_URL."/content";?>"><i class="tiny material-icons">content_copy</i>Contenido</a></li>
-          		<li><a href="<?php echo RUTA_URL."/admin/categorias"?>"><i class="tiny material-icons">list</i>Categorias</a></li>
+          		<li><a href="<?php echo RUTA_URL."/admin/categorias"?>"><i class="tiny material-icons">list</i>Categorías</a></li>
           		<li><a href="<?php echo RUTA_URL; ?>/users"><i class="tiny material-icons">person</i>Usuarios</a></li>
           		<hr style="border: 1px solid #e0e0e0 !important;">
                 <li><a href="<?php echo RUTA_URL; ?>"><i class="tiny material-icons">desktop_windows</i>Ir a Home</a></li>
