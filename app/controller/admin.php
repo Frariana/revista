@@ -12,7 +12,6 @@
 				redireccionar('/admin/home', $mensaje);
 			}else{
 				$this->view('common/head');
-				// $this->view('common/header');
 				$this->view('admin/login');	
 				$this->view('admin/footer');
 			}
@@ -27,7 +26,9 @@
 			$this->view('common/head');
 			$this->view('admin/header');
 			$this->view('admin/menu');
-			$this->view('admin/home');
+			$res = $this->contentsModel->contarTotalVisitas();
+			$data['totalVisitas'] = $res[0]->visitas;
+			$this->view('admin/home', $data);
 			$this->view('admin/footer');
 		}
 		public function login(){

@@ -1,3 +1,14 @@
-<p>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus cumque rerum doloremque accusantium itaque quidem repellendus facere deleniti nam aliquam, perspiciatis laudantium alias non omnis neque sequi quis distinctio error? Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi quas harum quaerat blanditiis exercitationem provident nostrum, unde culpa officiis laudantium mollitia aperiam quasi placeat earum facere quidem eum adipisci fugit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium dicta incidunt, id optio ducimus reprehenderit, accusamus ex, ab minima officiis dolore ratione? Cumque laborum omnis enim, et qui suscipit nemo.
-</p>
+<div class="row" style="margin-top: 1em">
+    <div class="container">
+        <div class="col m3 s6">
+          	<div class="card" style="padding: .3em .3em !important; height: 10em">
+            	<div class=" center">
+            		<p><i class="material-icons" style="font-size: 1.2rem;
+    position: relative;
+    top: 3px;">language</i><strong style="font-size: 1em"> Total visitas</strong></p>
+              		<p><b><span style="font-size: 2rem;"><?php echo $data['totalVisitas']; ?></span></b></p>
+            	</div>
+          	</div>
+        </div>
+    </div>
+</div>

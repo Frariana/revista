@@ -354,5 +354,39 @@
 				return false;
 			}
 		}
+
+		public function revisarIp($ip){ 
+			$this->db->query("SELECT * FROM ".$this->name_base.".visitaip WHERE ip = :ip");
+			$this->db->bind(':ip', $ip);
+			return $this->db->rows();
+		}
+		
+		public function agregarVisita($ip){
+			$this->db->query("INSERT INTO ".$this->name_base.".visitaip (ip, fecha, numero) VALUES (:ip, :hoy, 1)");
+			$this->db->bind(':ip', $ip);
+			$this->db->bind(':hoy', date("Y-m-d"));
+			if ($this->db->execute()){
+                return true;
+            }else{
+                return false;
+            }
+		}
+
+		public function sumarVisita($id, $numero){
+			$this->db->query("UPDATE ".$this->name_base.".visitaip SET numero = :numero WHERE id = :id");
+			$this->db->bind(':id', $id);
+			$this->db->bind(':numero', $numero + 1);
+			if ($this->db->execute()){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		public function contarTotalVisitas(){ 
+			$this->db->query("SELECT SUM(numero) as visitas FROM ".$this->name_base.".visitaip ");
+			return $this->db->rows();
+		}
+		
 	}
 ?>

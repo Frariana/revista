@@ -18,6 +18,12 @@
             $data['sliders'] = $this->contentsModel->getSliders();
             $this->view('common/sliders', $data);
             $data['contents'] = $this->contentsModel->getAllContentsForCant(20);
+            $res = $this->contentsModel->revisarIp($_SERVER['REMOTE_ADDR']);
+            if (count($res) == 0){
+                $this->contentsModel->agregarVisita($_SERVER['REMOTE_ADDR']);
+            }else{
+                $this->contentsModel->sumarVisita($res[0]->id, $res[0]->numero);
+            }
             $this->view('common/home', $data);
         }
 

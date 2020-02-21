@@ -8,7 +8,7 @@
     #ruta de la app
     define ('RUTA_APP', dirname(dirname(__FILE__)));
     // define ('RUTA_URL', 'http://192.168.0.21/revista/'); #
-    define ('RUTA_URL', 'http://localhost/revista');
+    define ('RUTA_URL', 'http://192.168.1.111/revista');
     #nombre sitio
     define ('NOMBRE_SITIO','Gato Pardo Estudio');
     #controller principal
