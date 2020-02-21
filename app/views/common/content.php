@@ -1,7 +1,7 @@
 <div class="grey darken-3 grey-text text-lighten-4" style="padding-bottom: 2em">
 	<?php if ($data['content']){  ?>
 		<?php if ($data['content']->imagen){ 
-			echo '<img class="materialboxed" width="100%" src="data:image/jpeg;base64,'.base64_encode( $data['content']->imagen ).'"/>';
+			echo '<img class="materialboxed centro" width="100%" height="70%" src="data:image/jpeg;base64,'.base64_encode( $data['content']->imagen ).'"/>';
 		} ?>
 		<br>
 		<div class="container">

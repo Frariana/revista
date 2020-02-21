@@ -46,7 +46,7 @@
       var lista = $('#lista');
       lista.append("");
       $.each(data.contenido, function( key, value ) {
-        var contenido = "<li class='collection-item grey-text text-darken-2'><a name='"+value.id+"' class='botonesBorrar secondary-content deep-orange-text text-darken-3' onclick='borrar("+value.id+")'>Eliminar</a><span class='secondary-content grey-text'>&nbsp;|&nbsp;</span><a href='<?php echo RUTA_URL.'/content/edit/'; ?>"+value.id+"' class='secondary-content orange-text text-darken-3'>&nbsp;Editar&nbsp;</a><span class='secondary-content grey-text'>&nbsp;|&nbsp;</span><a href='<?php echo RUTA_URL.'/v/g/'; ?>"+url(value.content_titulo)+"' class='secondary-content'>Ver</a><b>"+value.content_titulo+"</b>";
+        var contenido = "<li class='collection-item grey-text text-darken-2'><a href='' name='"+value.id+"' class='botonesBorrar secondary-content deep-orange-text text-darken-3' onclick='borrar("+value.id+")'>Eliminar</a><span class='secondary-content grey-text'>&nbsp;|&nbsp;</span><a href='<?php echo RUTA_URL.'/content/edit/'; ?>"+value.id+"' class='secondary-content orange-text text-darken-3'>&nbsp;Editar&nbsp;</a><span class='secondary-content grey-text'>&nbsp;|&nbsp;</span><a href='<?php echo RUTA_URL.'/v/g/'; ?>"+url(value.content_titulo)+"' class='secondary-content'>Ver</a><b>"+value.content_titulo+"</b>";
         if (value.slider == true){
           contenido += "&nbsp;<i class='tiny material-icons'>filter</i>";
         }if (value.bloque1 == true){

@@ -35,7 +35,7 @@
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
                             <?php foreach ($data['bloque1'] as $bloque1){ ?>
                                 <li>
-                                    <a class="sombra-negra" href="<?php echo RUTA_URL.'/v/g/'.url($bloque1->id); ?>">
+                                    <a class="sombra-negra" href="<?php echo RUTA_URL.'/v/g/'.url($bloque1->content_titulo); ?>">
                                         <?php echo $bloque1->content_titulo; ?>
                                     </a>
                                 </li>
@@ -79,9 +79,15 @@
             <?php } ?>
             <!-- version movil -->
             <ul class="sidenav" id="mobile-demo">
-                <li><a href="sass.html">Juegos</a></li>
-                <li><a href="badges.html">Pedagógica</a></li>
-                <li><a href="collapsible.html">Multimedia</a></li>
+                <?php if($data['bloque1']){ ?>
+                    <?php foreach ($data['bloque1'] as $bloque1){ ?>
+                        <li>
+                            <a href="<?php echo RUTA_URL.'/v/g/'.url($bloque1->content_titulo); ?>">
+                                <?php echo $bloque1->content_titulo; ?>
+                            </a>
+                        </li>
+                    <?php } ?>
+                <?php } ?>
                 <div class="divider"></div>
                 <?php if ($data['categorias']){ ?>
                     <?php foreach ($data['categorias'] as $categoria){ ?>

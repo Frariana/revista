@@ -262,6 +262,7 @@
 		public function getBloque1(){
 			$this->db->query("
 				SELECT
+					id,
 					content_titulo,
 					SUBSTRING(cuerpo, 4, 50) AS cuerpo
 				FROM ".$this->name_base.".content
@@ -273,6 +274,7 @@
 		public function getBloque2(){
 			$this->db->query("
 				SELECT
+					id,
 					content_titulo,
 					SUBSTRING(cuerpo, 4, 50) AS cuerpo
 				FROM ".$this->name_base.".content
@@ -284,6 +286,7 @@
 		public function getBloque3(){
 			$this->db->query("
 				SELECT
+					id,
 					content_titulo,
 					SUBSTRING(cuerpo, 4, 50) AS cuerpo,
 					imagen
